@@ -1,0 +1,31 @@
+---
+// src/layouts/Layout.astro
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+---
+<!doctype html>
+<html lang="fr" class="bg-black text-white overflow-x-hidden">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+  </head>
+  <body class="font-sans antialiased">
+    <!-- Barre de navigation fixée en haut -->
+    <nav class="fixed top-0 w-full z-50 p-6 flex justify-between mix-blend-difference text-white">
+      <span class="font-bold tracking-widest uppercase text-sm">Portfolio.</span>
+      <div class="flex gap-6 text-sm font-medium">
+        <a href="/" class="hover:text-gray-400 transition-colors">Accueil</a>
+        <a href="/projets" class="hover:text-gray-400 transition-colors">Projets</a>
+        <a href="/cv" class="hover:text-gray-400 transition-colors">CV</a>
+      </div>
+    </nav>
+    
+    <!-- C'est ici que le contenu de chaque page viendra s'injecter -->
+    <slot />
+  </body>
+</html>
