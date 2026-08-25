@@ -2,6 +2,12 @@
 // src/layouts/Layout.astro
 import '../styles/global.css';
 
+// 1. On importe le composant Image intégré à Astro
+import { Image } from 'astro:assets'; 
+
+// 2. On importe ton fichier physique sous forme de variable
+import monLogo from '../Images/bcb.svg'; 
+
 interface Props {
   title: string;
 }
@@ -10,14 +16,20 @@ const { title } = Astro.props;
 <!doctype html>
 <html lang="fr" class="bg-black text-white overflow-x-hidden">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>{title}</title>
-  </head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <link rel="icon" type="image/svg+xml" href="/bcb.svg" /> 
+  
+  <title>{title}</title>
+</head>
   <body class="font-sans antialiased">
     <!-- Barre de navigation fixée en haut -->
     <nav class="fixed top-0 w-full z-50 p-6 flex justify-between mix-blend-difference text-white">
-      <span class="font-bold tracking-widest uppercase text-sm">Portfolio.</span>
+      <a href="/" class="flex items-center">
+        <!-- On utilise la variable {monLogo} et non pas des guillemets -->
+        <Image src={monLogo} alt="Logo Portfolio Batiste" class="h-8 w-auto object-contain" />
+      </a>
+      
       <div class="flex gap-6 text-sm font-medium">
         <a href="/" class="hover:text-gray-400 transition-colors">Accueil</a>
         <a href="/projets" class="hover:text-gray-400 transition-colors">Projets</a>

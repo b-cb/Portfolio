@@ -3,64 +3,188 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Portfolio | Ingénierie Image & VR">
+<Layout title="Batiste COMET-BARTHE | Portfolio">
   
-  <!-- Hero Section -->
-  <section class="h-screen flex flex-col items-center justify-center">
-    <h1 class="text-5xl md:text-7xl font-light tracking-tight text-center">
-      Ingénierie <br/> 
-      <span class="font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-300 to-gray-600">
-        Image | Multimédia | VR | Computer Vision
-      </span>
-    </h1>
-    <p class="mt-8 text-gray-500 animate-pulse">Scrollez pour explorer</p>
+  <!-- HERO SECTION : Minimaliste avec fond radial subtil -->
+  <section class="h-screen flex flex-col items-center justify-center relative overflow-hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-zinc-900 via-black to-black" id="hero-section">
+    <div class="text-center px-4 will-change-transform z-10" id="hero-content">
+      <h1 class="text-5xl md:text-7xl font-light tracking-tight text-white">
+        Ingénieur Informaticien<br/> 
+        <span class="font-medium text-transparent bg-clip-text bg-gradient-to-r from-zinc-300 via-zinc-400 to-zinc-600">
+          Image & Multimédia.
+        </span>
+      </h1>
+      <p class="mt-10 text-zinc-500 text-xs uppercase tracking-[0.3em]">Scrollez pour explorer</p>
+    </div>
   </section>
 
-  <!-- Section Scrollytelling (La Piste) -->
-  <section class="relative h-[300vh]" id="scroll-section">
-    
-    <!-- La Caméra (Le bloc Sticky) -->
-    <div class="sticky top-0 h-screen flex items-center overflow-hidden bg-zinc-950">
+  <!-- SECTION : PRÉSENTATION PERSONNELLE & ACADÉMIQUE -->
+  <section class="min-h-screen py-32 bg-black text-white px-6 flex flex-col justify-center border-t border-white/5 will-change-transform" id="a-propos">
+    <div class="max-w-6xl mx-auto w-full" id="about-content">
       
-      <!-- Grille de mise en page : 2 colonnes -->
-      <div class="w-full max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        
-        <!-- COLONNE GAUCHE : Textes -->
-        <div class="relative h-64">
-          <!-- Projet 1 -->
-          <div class="absolute inset-0 flex flex-col justify-center" id="text-1">
-            <h2 class="text-4xl md:text-5xl font-bold">Visualisation<br/>Comportementale VR</h2>
-            <p class="text-xl text-gray-400 mt-4">Analyse eye-tracking 3D immersive sur modèles architecturaux (Temple de Mars).</p>
-          </div>
+      <!-- En-tête de section -->
+      <div class="mb-16 flex flex-col items-center text-center">
+        <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest mb-3">À propos</span>
+        <h2 class="text-3xl md:text-5xl font-medium tracking-tight">Profil & Parcours</h2>
+      </div>
+
+      <!-- 1. PARTIE HAUTE : Profil & Vision (Centré) -->
+      <div class="max-w-3xl mx-auto text-center space-y-8 mb-24">
+        <p class="text-zinc-400 leading-relaxed text-lg font-light">
+          Élève-ingénieur passionné par le traitement d'image, la réalité virtuelle et le rendu temps réel. Mon approche combine rigueur algorithmique bas niveau (C++, Python) et conception d'expériences interactives immersives sous Linux et casques autonomes.
+        </p>
+        <p class="text-zinc-400 leading-relaxed text-lg font-light">
+          Au-delà du code, je cultive une approche pluridisciplinaire alliant persévérance sportive (sports d'endurance, tennis), création multimédia et gestion de projets associatifs.
+        </p>
+
+        <!-- Puces de compétences centrées -->
+        <div class="pt-4 flex flex-wrap justify-center gap-3">
+          <span class="px-4 py-1.5 bg-white/5 border border-white/10 text-zinc-300 text-xs rounded-full font-mono hover:bg-white/10 transition-colors cursor-default">VR / XR</span>
+          <span class="px-4 py-1.5 bg-white/5 border border-white/10 text-zinc-300 text-xs rounded-full font-mono hover:bg-white/10 transition-colors cursor-default">Computer Graphics</span>
+          <span class="px-4 py-1.5 bg-white/5 border border-white/10 text-zinc-300 text-xs rounded-full font-mono hover:bg-white/10 transition-colors cursor-default">Linux Native</span>
+          <span class="px-4 py-1.5 bg-white/5 border border-white/10 text-zinc-300 text-xs rounded-full font-mono hover:bg-white/10 transition-colors cursor-default">Anglais C1</span>
+        </div>
+      </div>
+
+      <!-- 2. PARTIE BASSE : Frise Chronologique -->
+      <div class="w-full mt-12">
+
+        <!-- A. Version BUREAU (Horizontale fidèle au croquis) -->
+        <div class="hidden md:block relative w-full mt-10 h-64">
           
-          <!-- Projet 2 -->
-          <div class="absolute inset-0 flex flex-col justify-center opacity-0 translate-y-10" id="text-2">
-            <h2 class="text-4xl md:text-5xl font-bold">Cartographie<br/>Interactive Mobile</h2>
-            <p class="text-xl text-gray-400 mt-4">Intégration d'un globe 3D MapLibre et base de données spatiale pour l'exploration.</p>
+          <!-- Ligne de fond globale -->
+          <div class="absolute top-1/2 left-0 w-full h-px bg-zinc-800/80"></div>
+          
+          <!-- Segments de ligne colorés -->
+          <!-- Prépa (environ 35% de la durée) -->
+          <div class="absolute top-1/2 -translate-y-[0.5px] left-0 w-[35%] h-[2px] bg-zinc-500"></div>
+          <!-- ENSEEIHT (environ 65% de la durée) -->
+          <div class="absolute top-1/2 -translate-y-[0.5px] left-[35%] w-[65%] h-[2px] bg-emerald-500"></div>
+          
+          <!-- Séparateur vertical discret (le trait noir sur ton croquis) -->
+          <div class="absolute top-1/2 left-[35%] h-8 w-px bg-zinc-600 -translate-y-1/2"></div>
+
+          <!-- Étape 1 : CPGE (Au-dessus, à gauche) -->
+          <div class="absolute top-0 left-0 w-[35%] h-1/2 flex flex-col justify-end pb-6 pl-4 group cursor-default">
+            <div class="border-l border-transparent group-hover:border-zinc-500 transition-colors pl-2">
+              <span class="text-xs font-mono text-zinc-400 tracking-widest">2022 — 2024</span>
+              <h4 class="text-lg font-medium text-zinc-200 mt-2">CPGE (PT*)</h4>
+              <p class="text-sm text-zinc-500 mt-1 font-light">Lycée Déodat de Séverac</p>
+            </div>
           </div>
+
+          <!-- Étape 2 : ENSEEIHT (Au-dessus, à droite) -->
+          <div class="absolute top-0 left-[35%] w-[65%] h-1/2 flex flex-col justify-end pb-6 pl-8 group cursor-default">
+            <div class="border-l border-transparent group-hover:border-emerald-500 transition-colors pl-2">
+              <span class="text-xs font-mono text-emerald-400/80 tracking-widest">2024 — 2027</span>
+              <h4 class="text-lg font-medium text-zinc-200 mt-2">Ingénierie Image & Multimédia</h4>
+              <p class="text-sm text-zinc-500 mt-1 font-light">ENSEEIHT (Toulouse INP)</p>
+            </div>
+          </div>
+
+          <!-- Étape 3 : Stage (En-dessous, accroché à la ligne ENSEEIHT) -->
+          <!-- Placé à 70% de la largeur totale pour correspondre à l'été 2026 -->
+          <div class="absolute top-1/2 left-[70%] w-[30%] h-1/2 flex flex-col justify-start pt-6 pl-0 group cursor-default">
+            
+            <!-- Le point sur la ligne -->
+            <div class="absolute top-0 left-0 w-3 h-3 bg-blue-500 rounded-full -translate-y-[6px] -translate-x-[6px] ring-4 ring-black shadow-[0_0_12px_rgba(59,130,246,0.5)] group-hover:scale-125 transition-transform z-10"></div>
+            
+            <!-- Petit trait de liaison vertical vers le texte -->
+            <div class="absolute top-0 left-0 w-px h-6 bg-blue-500/50 -translate-x-[0.5px]"></div>
+            
+            <!-- Contenu du stage -->
+            <div class="pl-4 mt-2 border-l border-transparent group-hover:border-blue-900 transition-colors">
+              <span class="text-xs font-mono text-blue-400/80 tracking-widest">ÉTÉ 2026</span>
+              <h4 class="text-lg font-medium text-zinc-200 mt-1">Stage : Neuro-archéologie VR</h4>
+              <p class="text-sm text-zinc-500 mt-1 font-light">IRISA / Inria (Rennes)</p>
+            </div>
+          </div>
+
         </div>
 
-        <!-- COLONNE DROITE : Médias -->
-        <div class="relative h-96">
-          <!-- Média 1 -->
-          <div class="absolute inset-0 bg-zinc-900 rounded-xl border border-zinc-800 flex items-center justify-center shadow-2xl" id="media-1">
-            <span class="text-zinc-600 font-mono">[Vidéo Capture Meta Quest 3]</span>
-          </div>
+        <!-- B. Version MOBILE (Verticale adaptée) -->
+        <div class="md:hidden mt-8 max-w-sm mx-auto">
           
-          <!-- Média 2 -->
-          <div class="absolute inset-0 bg-zinc-900 rounded-xl border border-zinc-800 flex items-center justify-center shadow-2xl opacity-0 scale-95" id="media-2">
-            <span class="text-zinc-600 font-mono">[Démo App Android]</span>
+          <!-- Période 1 : CPGE -->
+          <div class="border-l-2 border-zinc-500 pl-6 pb-8">
+            <span class="text-xs font-mono text-zinc-400 tracking-widest">2022 — 2024</span>
+            <h4 class="text-lg font-medium text-zinc-200 mt-1">CPGE (PT*)</h4>
+            <p class="text-sm text-zinc-500 font-light mt-1">Lycée Déodat de Séverac</p>
           </div>
+
+          <!-- Période 2 : ENSEEIHT -->
+          <div class="border-l-2 border-emerald-500 pl-6 pb-4 relative">
+            <span class="text-xs font-mono text-emerald-400/80 tracking-widest">2024 — 2027</span>
+            <h4 class="text-lg font-medium text-zinc-200 mt-1">Ingénierie Image & Multimédia</h4>
+            <p class="text-sm text-zinc-500 font-light mt-1 mb-8">ENSEEIHT (Toulouse INP)</p>
+
+            <!-- Événement 3 : Stage (Imbriqué visuellement sur la ligne ENSEEIHT) -->
+            <div class="relative mt-6">
+              <!-- Point du stage placé exactement sur la bordure verte -->
+              <span class="absolute -left-[31px] top-1 h-3 w-3 rounded-full bg-blue-500 ring-4 ring-black shadow-[0_0_10px_rgba(44,16,221,0.8)]"></span>
+              <span class="text-xs font-mono text-blue-400/80 tracking-widest">ÉTÉ 2026</span>
+              <h4 class="text-lg font-medium text-zinc-200 mt-1">Stage : Neuro-archéologie VR</h4>
+              <p class="text-sm text-zinc-500 font-light mt-1">IRISA / Inria (Rennes)</p>
+            </div>
+          </div>
+
         </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- NIVEAU 1 : GRILLE DES PROJETS -->
+  <section class="min-h-screen py-32 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-zinc-900/40 via-black to-black flex flex-col justify-center px-6 overflow-hidden border-t border-white/5" id="niveau-1">
+    <div class="max-w-7xl mx-auto w-full">
+      <div class="mb-16 flex flex-col items-center text-center will-change-transform" id="projets-titre">
+        <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest mb-3">Portfolio</span>
+        <h2 class="text-3xl md:text-5xl font-medium tracking-tight text-white">Explorations & Projets</h2>
+      </div>
+      
+      <!-- Grille des Projets -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="projets-grille">
         
+        <!-- Carte 1 -->
+        <div class="projet-carte group bg-white/[0.02] border border-white/5 p-6 rounded-2xl hover:bg-white/[0.04] hover:border-white/10 transition-all duration-500 cursor-pointer">
+          <div class="h-40 bg-zinc-900/50 rounded-xl mb-6 flex items-center justify-center text-zinc-600 text-xs font-mono uppercase tracking-widest border border-white/5 group-hover:border-zinc-700 transition-colors overflow-hidden">
+            [Média IRISA]
+          </div>
+          <h3 class="font-medium text-lg text-zinc-200">Neuro-archéologie VR</h3>
+          <p class="text-sm text-zinc-500 mt-2 font-light leading-relaxed">Visualisation d'eye-tracking 3D sur un temple gallo-romain reconstitué.</p>
+        </div>
+
+        <!-- Carte 2 -->
+        <div class="projet-carte group bg-white/[0.02] border border-white/5 p-6 rounded-2xl hover:bg-white/[0.04] hover:border-white/10 transition-all duration-500 cursor-pointer">
+          <div class="h-40 bg-zinc-900/50 rounded-xl mb-6 flex items-center justify-center text-zinc-600 text-xs font-mono uppercase tracking-widest border border-white/5 group-hover:border-zinc-700 transition-colors overflow-hidden">
+            [Média App]
+          </div>
+          <h3 class="font-medium text-lg text-zinc-200">Globe Historique Mobile</h3>
+          <p class="text-sm text-zinc-500 mt-2 font-light leading-relaxed">App Kotlin avec Jetpack Compose, Room SQLite et rendu 3D MapLibre.</p>
+        </div>
+
+        <!-- Carte 3 -->
+        <div class="projet-carte group bg-white/[0.02] border border-white/5 p-6 rounded-2xl hover:bg-white/[0.04] hover:border-white/10 transition-all duration-500 cursor-pointer">
+          <div class="h-40 bg-zinc-900/50 rounded-xl mb-6 flex items-center justify-center text-zinc-600 text-xs font-mono uppercase tracking-widest border border-white/5 group-hover:border-zinc-700 transition-colors overflow-hidden">
+            [Média Amazfit]
+          </div>
+          <h3 class="font-medium text-lg text-zinc-200">Tracker de Golf</h3>
+          <p class="text-sm text-zinc-500 mt-2 font-light leading-relaxed">Application de suivi de performances sportives embarquée pour montres connectées.</p>
+        </div>
+
+        <!-- Carte 4 -->
+        <div class="projet-carte group bg-white/[0.02] border border-white/5 p-6 rounded-2xl hover:bg-white/[0.04] hover:border-white/10 transition-all duration-500 cursor-pointer">
+          <div class="h-40 bg-zinc-900/50 rounded-xl mb-6 flex items-center justify-center text-zinc-600 text-xs font-mono uppercase tracking-widest border border-white/5 group-hover:border-zinc-700 transition-colors overflow-hidden">
+            [Média Quest 3]
+          </div>
+          <h3 class="font-medium text-lg text-zinc-200">Déploiement Quest 3</h3>
+          <p class="text-sm text-zinc-500 mt-2 font-light leading-relaxed">Développement et optimisation sous Linux via OpenXR, Unity et scripts C#.</p>
+        </div>
+
       </div>
     </div>
   </section>
   
-  <!-- Footer basique -->
-  <section class="h-[50vh] flex items-center justify-center border-t border-zinc-900">
-    <p class="text-gray-500">Contact et CV à venir...</p>
-  </section>
 </Layout>
 
 <script>
@@ -69,22 +193,58 @@ import Layout from '../layouts/Layout.astro';
 
   gsap.registerPlugin(ScrollTrigger);
 
-  // La chronologie d'animation
-  const tl = gsap.timeline({
+  // 1. TRANSITION HERO -> PRÉSENTATION
+  // Sortie du Hero
+  gsap.to("#hero-content", {
     scrollTrigger: {
-      trigger: "#scroll-section", 
+      trigger: "#hero-section",
       start: "top top",
-      end: "bottom bottom",
-      scrub: 1, // Le "1" ajoute un léger lissage (smooth) au scroll
-    }
+      end: "bottom top",
+      scrub: 1.5,
+    },
+    opacity: 0,
+    y: -50,
+    scale: 0.95,
   });
 
-  // Étape 1 : On fait disparaître le Projet 1 (Texte vers le haut, Média rétrécit)
-  tl.to("#text-1", { opacity: 0, y: -50, duration: 1 })
-    .to("#media-1", { opacity: 0, scale: 0.95, duration: 1 }, "<"); 
-    // Le symbole "<" dit à GSAP : "Joue cette animation en même temps que la précédente"
+  // Entrée de la Présentation
+  gsap.from("#about-content", {
+    scrollTrigger: {
+      trigger: "#a-propos",
+      start: "top 85%",
+      end: "top 30%",
+      scrub: 1.5,
+    },
+    opacity: 0,
+    y: 60,
+  });
 
-  // Étape 2 : On fait apparaître le Projet 2 (Texte monte, Média grandit)
-  tl.to("#text-2", { opacity: 1, y: 0, duration: 1 })
-    .to("#media-2", { opacity: 1, scale: 1, duration: 1 }, "<");
-</script> 
+  // 2. TRANSITION PRÉSENTATION -> PROJETS (Effet de profondeur)
+  // Entrée du Titre des Projets
+  gsap.from("#projets-titre", {
+    scrollTrigger: {
+      trigger: "#niveau-1",
+      start: "top 85%",
+      end: "top 45%",
+      scrub: 1.5,
+    },
+    opacity: 0,
+    scale: 0.9,
+  });
+
+  // Entrée des cartes depuis l'arrière-plan (Zoom out vers In)
+  gsap.from(".projet-carte", {
+    scrollTrigger: {
+      trigger: "#projets-grille",
+      start: "top 85%",
+      end: "top 40%",
+      scrub: 1.5,
+    },
+    opacity: 0,
+    scale: 0.85, // C'est ici que l'effet "venir de l'arrière" se crée
+    y: 20,       // Léger mouvement vertical pour accompagner le zoom
+    transformOrigin: "center center",
+    stagger: 0.1, // Décalage fluide entre chaque carte
+    ease: "power2.out",
+  });
+</script>
