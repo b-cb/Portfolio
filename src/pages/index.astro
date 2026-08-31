@@ -1,31 +1,68 @@
 ---
 // src/pages/index.astro
 import Layout from '../layouts/Layout.astro';
+
+import { Image } from 'astro:assets'; 
+import History from '../Images/History.png';
+
+
 ---
 
 <Layout title="Batiste COMET-BARTHE | Portfolio">
   
-  <!-- HERO SECTION : Minimaliste avec fond radial subtil -->
-  <section class="h-screen flex flex-col items-center justify-center relative overflow-hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-zinc-900 via-black to-black" id="hero-section">
-    <div class="text-center px-4 will-change-transform z-10" id="hero-content">
-      <h1 class="text-5xl md:text-7xl font-light tracking-tight text-white">
-        Ingénieur Informaticien<br/> 
-        <span class="font-medium text-transparent bg-clip-text bg-gradient-to-r from-zinc-300 via-zinc-400 to-zinc-600">
-          Image & Multimédia.
+  <!-- HERO SECTION : Fond sombre avec accent violet/indigo -->
+  <section class="h-screen flex flex-col items-center justify-center relative overflow-hidden" id="hero-section"
+    style="background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(99,60,180,0.25) 0%, transparent 70%), radial-gradient(ellipse 60% 40% at 80% 80%, rgba(59,130,246,0.12) 0%, transparent 60%), #09090b;">
+    
+    <!-- Orbe décoratif flou en arrière-plan -->
+    <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] rounded-full pointer-events-none"
+      style="background: radial-gradient(ellipse, rgba(120,80,220,0.18) 0%, transparent 70%); filter: blur(40px);">
+    </div>
+    <!-- Grille de points subtile -->
+    <div class="absolute inset-0 pointer-events-none opacity-[0.04]"
+      style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 40px 40px;">
+    </div>
+
+    <div class="text-center px-4 will-change-transform z-10 relative" id="hero-content">
+      <!-- Badge accrocheur -->
+      <div class="inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-full border text-xs font-mono tracking-widest uppercase"
+        style="background: rgba(120,80,220,0.12); border-color: rgba(120,80,220,0.3); color: rgba(180,150,255,0.9);">
+        <span class="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse"></span>
+        Disponible — Stage terminé · IRISA / Inria
+      </div>
+
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-white leading-[1.05]">
+        Ingénieur<br/>
+        <span class="font-semibold" style="background: linear-gradient(135deg, #a78bfa 0%, #818cf8 40%, #60a5fa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+          Image &amp; Multimédia
         </span>
       </h1>
-      <p class="mt-10 text-zinc-500 text-xs uppercase tracking-[0.3em]">Scrollez pour explorer</p>
+
+      <p class="mt-6 text-zinc-400 text-base font-light max-w-md mx-auto leading-relaxed">
+        VR · Computer Graphics · C++ · Linux Native
+      </p>
+
+      <!-- CTA scrolldown -->
+      <div class="mt-14 flex flex-col items-center gap-3">
+        <a href="#a-propos" class="group flex flex-col items-center gap-2 text-zinc-500 hover:text-zinc-300 transition-colors duration-300 cursor-pointer">
+          <span class="text-xs font-mono uppercase tracking-[0.3em]">Découvrir</span>
+          <svg class="w-4 h-4 animate-bounce opacity-60 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </a>
+      </div>
     </div>
   </section>
 
   <!-- SECTION : PRÉSENTATION PERSONNELLE & ACADÉMIQUE -->
-  <section class="min-h-screen py-32 bg-black text-white px-6 flex flex-col justify-center border-t border-white/5 will-change-transform" id="a-propos">
+  <section class="min-h-screen py-32 text-white px-6 flex flex-col justify-center will-change-transform" id="a-propos"
+    style="background: linear-gradient(180deg, #09090b 0%, #0f0f14 50%, #0d0d12 100%);">  
     <div class="max-w-6xl mx-auto w-full" id="about-content">
       
       <!-- En-tête de section -->
       <div class="mb-16 flex flex-col items-center text-center">
-        <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest mb-3">À propos</span>
-        <h2 class="text-3xl md:text-5xl font-medium tracking-tight">Profil & Parcours</h2>
+        <span class="text-xs font-mono uppercase tracking-widest mb-3" style="color: rgba(167,139,250,0.7);">À propos</span>
+        <h2 class="text-3xl md:text-5xl font-medium tracking-tight">Profil &amp; Parcours</h2>
       </div>
 
       <!-- 1. PARTIE HAUTE : Profil & Vision (Centré) -->
@@ -39,10 +76,10 @@ import Layout from '../layouts/Layout.astro';
 
         <!-- Puces de compétences centrées -->
         <div class="pt-4 flex flex-wrap justify-center gap-3">
-          <span class="px-4 py-1.5 bg-white/5 border border-white/10 text-zinc-300 text-xs rounded-full font-mono hover:bg-white/10 transition-colors cursor-default">VR / XR</span>
-          <span class="px-4 py-1.5 bg-white/5 border border-white/10 text-zinc-300 text-xs rounded-full font-mono hover:bg-white/10 transition-colors cursor-default">Computer Graphics</span>
-          <span class="px-4 py-1.5 bg-white/5 border border-white/10 text-zinc-300 text-xs rounded-full font-mono hover:bg-white/10 transition-colors cursor-default">Linux Native</span>
-          <span class="px-4 py-1.5 bg-white/5 border border-white/10 text-zinc-300 text-xs rounded-full font-mono hover:bg-white/10 transition-colors cursor-default">Anglais C1</span>
+          <span class="px-4 py-1.5 text-xs rounded-full font-mono cursor-default transition-colors" style="background: rgba(99,60,180,0.15); border: 1px solid rgba(99,60,180,0.35); color: rgba(180,150,255,0.9);">VR / XR</span>
+          <span class="px-4 py-1.5 text-xs rounded-full font-mono cursor-default transition-colors" style="background: rgba(99,60,180,0.15); border: 1px solid rgba(99,60,180,0.35); color: rgba(180,150,255,0.9);">Computer Graphics</span>
+          <span class="px-4 py-1.5 text-xs rounded-full font-mono cursor-default transition-colors" style="background: rgba(99,60,180,0.15); border: 1px solid rgba(99,60,180,0.35); color: rgba(180,150,255,0.9);">Linux Native</span>
+          <span class="px-4 py-1.5 text-xs rounded-full font-mono cursor-default transition-colors" style="background: rgba(99,60,180,0.15); border: 1px solid rgba(99,60,180,0.35); color: rgba(180,150,255,0.9);">Anglais C1</span>
         </div>
       </div>
 
@@ -61,7 +98,7 @@ import Layout from '../layouts/Layout.astro';
           <!-- ENSEEIHT (environ 65% de la durée) -->
           <div class="absolute top-1/2 -translate-y-[0.5px] left-[35%] w-[65%] h-[2px] bg-emerald-500"></div>
           
-          <!-- Séparateur vertical discret (le trait noir sur ton croquis) -->
+          <!-- Séparateur vertical discret -->
           <div class="absolute top-1/2 left-[35%] h-8 w-px bg-zinc-600 -translate-y-1/2"></div>
 
           <!-- Étape 1 : CPGE (Au-dessus, à gauche) -->
@@ -77,21 +114,17 @@ import Layout from '../layouts/Layout.astro';
           <div class="absolute top-0 left-[35%] w-[65%] h-1/2 flex flex-col justify-end pb-6 pl-8 group cursor-default">
             <div class="border-l border-transparent group-hover:border-emerald-500 transition-colors pl-2">
               <span class="text-xs font-mono text-emerald-400/80 tracking-widest">2024 — 2027</span>
-              <h4 class="text-lg font-medium text-zinc-200 mt-2">Ingénierie Image & Multimédia</h4>
+              <h4 class="text-lg font-medium text-zinc-200 mt-2">Ingénierie Image &amp; Multimédia</h4>
               <p class="text-sm text-zinc-500 mt-1 font-light">ENSEEIHT (Toulouse INP)</p>
             </div>
           </div>
 
           <!-- Étape 3 : Stage (En-dessous, accroché à la ligne ENSEEIHT) -->
-          <!-- Placé à 70% de la largeur totale pour correspondre à l'été 2026 -->
           <div class="absolute top-1/2 left-[70%] w-[30%] h-1/2 flex flex-col justify-start pt-6 pl-0 group cursor-default">
-            
             <!-- Le point sur la ligne -->
             <div class="absolute top-0 left-0 w-3 h-3 bg-blue-500 rounded-full -translate-y-[6px] -translate-x-[6px] ring-4 ring-black shadow-[0_0_12px_rgba(59,130,246,0.5)] group-hover:scale-125 transition-transform z-10"></div>
-            
             <!-- Petit trait de liaison vertical vers le texte -->
             <div class="absolute top-0 left-0 w-px h-6 bg-blue-500/50 -translate-x-[0.5px]"></div>
-            
             <!-- Contenu du stage -->
             <div class="pl-4 mt-2 border-l border-transparent group-hover:border-blue-900 transition-colors">
               <span class="text-xs font-mono text-blue-400/80 tracking-widest">ÉTÉ 2026</span>
@@ -115,12 +148,11 @@ import Layout from '../layouts/Layout.astro';
           <!-- Période 2 : ENSEEIHT -->
           <div class="border-l-2 border-emerald-500 pl-6 pb-4 relative">
             <span class="text-xs font-mono text-emerald-400/80 tracking-widest">2024 — 2027</span>
-            <h4 class="text-lg font-medium text-zinc-200 mt-1">Ingénierie Image & Multimédia</h4>
+            <h4 class="text-lg font-medium text-zinc-200 mt-1">Ingénierie Image &amp; Multimédia</h4>
             <p class="text-sm text-zinc-500 font-light mt-1 mb-8">ENSEEIHT (Toulouse INP)</p>
 
-            <!-- Événement 3 : Stage (Imbriqué visuellement sur la ligne ENSEEIHT) -->
+            <!-- Événement 3 : Stage -->
             <div class="relative mt-6">
-              <!-- Point du stage placé exactement sur la bordure verte -->
               <span class="absolute -left-[31px] top-1 h-3 w-3 rounded-full bg-blue-500 ring-4 ring-black shadow-[0_0_10px_rgba(44,16,221,0.8)]"></span>
               <span class="text-xs font-mono text-blue-400/80 tracking-widest">ÉTÉ 2026</span>
               <h4 class="text-lg font-medium text-zinc-200 mt-1">Stage : Neuro-archéologie VR</h4>
@@ -133,59 +165,278 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </div>
   </section>
+  <!-- PROJETS & DÉCOUVERTES -->
+  <section class="py-32 flex flex-col justify-center px-6 overflow-hidden" id="niveau-1"
+    style="background: linear-gradient(180deg, #0d0d12 0%, #0a0a10 100%);">
 
-  <!-- NIVEAU 1 : GRILLE DES PROJETS -->
-  <section class="min-h-screen py-32 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-zinc-900/40 via-black to-black flex flex-col justify-center px-6 overflow-hidden border-t border-white/5" id="niveau-1">
     <div class="max-w-7xl mx-auto w-full">
-      <div class="mb-16 flex flex-col items-center text-center will-change-transform" id="projets-titre">
-        <span class="text-xs font-mono text-zinc-500 uppercase tracking-widest mb-3">Portfolio</span>
-        <h2 class="text-3xl md:text-5xl font-medium tracking-tight text-white">Explorations & Projets</h2>
+
+      <!-- Titre de section -->
+      <div class="mb-10 flex flex-col items-center text-center will-change-transform" id="projets-titre">
+        <span class="text-xs font-mono uppercase tracking-widest mb-3" style="color: rgba(167,139,250,0.7);">Portfolio</span>
+        <h2 class="text-3xl md:text-5xl font-medium tracking-tight text-white">Projets &amp; Découvertes</h2>
+        <p class="mt-4 text-zinc-500 text-sm font-light max-w-lg">Découvrez mes travaux académiques et personnels.</p>
       </div>
-      
-      <!-- Grille des Projets -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="projets-grille">
-        
-        <!-- Carte 1 -->
-        <div class="projet-carte group bg-white/[0.02] border border-white/5 p-6 rounded-2xl hover:bg-white/[0.04] hover:border-white/10 transition-all duration-500 cursor-pointer">
-          <div class="h-40 bg-zinc-900/50 rounded-xl mb-6 flex items-center justify-center text-zinc-600 text-xs font-mono uppercase tracking-widest border border-white/5 group-hover:border-zinc-700 transition-colors overflow-hidden">
-            [Média IRISA]
-          </div>
-          <h3 class="font-medium text-lg text-zinc-200">Neuro-archéologie VR</h3>
-          <p class="text-sm text-zinc-500 mt-2 font-light leading-relaxed">Visualisation d'eye-tracking 3D sur un temple gallo-romain reconstitué.</p>
-        </div>
 
-        <!-- Carte 2 -->
-        <div class="projet-carte group bg-white/[0.02] border border-white/5 p-6 rounded-2xl hover:bg-white/[0.04] hover:border-white/10 transition-all duration-500 cursor-pointer">
-          <div class="h-40 bg-zinc-900/50 rounded-xl mb-6 flex items-center justify-center text-zinc-600 text-xs font-mono uppercase tracking-widest border border-white/5 group-hover:border-zinc-700 transition-colors overflow-hidden">
-            [Média App]
-          </div>
-          <h3 class="font-medium text-lg text-zinc-200">Globe Historique Mobile</h3>
-          <p class="text-sm text-zinc-500 mt-2 font-light leading-relaxed">App Kotlin avec Jetpack Compose, Room SQLite et rendu 3D MapLibre.</p>
-        </div>
+      <!-- ═══════════════════════════════════════════════════ -->
+      <!-- GRAND PANNEAU PROJETS (enveloppe les sous-panneaux) -->
+      <!-- ═══════════════════════════════════════════════════ -->
+      <div class="rounded-3xl overflow-hidden" id="projets-panneaux"
+        style="border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.02);">
 
-        <!-- Carte 3 -->
-        <div class="projet-carte group bg-white/[0.02] border border-white/5 p-6 rounded-2xl hover:bg-white/[0.04] hover:border-white/10 transition-all duration-500 cursor-pointer">
-          <div class="h-40 bg-zinc-900/50 rounded-xl mb-6 flex items-center justify-center text-zinc-600 text-xs font-mono uppercase tracking-widest border border-white/5 group-hover:border-zinc-700 transition-colors overflow-hidden">
-            [Média Amazfit]
+        <!-- Header du grand panneau → lien vers /projets -->
+        <a href="/projets" class="group flex items-center justify-between px-8 py-6 transition-colors duration-300 hover:bg-white/[0.03]"
+          style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+              style="background: rgba(167,139,250,0.12); border: 1px solid rgba(167,139,250,0.2);">
+              <svg class="w-5 h-5 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
+              </svg>
+            </div>
+            <div>
+              <p class="text-white font-medium group-hover:text-violet-200 transition-colors">Tous les projets</p>
+              <p class="text-zinc-600 text-xs font-mono mt-0.5">4 projets · Voir la page complète</p>
+            </div>
           </div>
-          <h3 class="font-medium text-lg text-zinc-200">Tracker de Golf</h3>
-          <p class="text-sm text-zinc-500 mt-2 font-light leading-relaxed">Application de suivi de performances sportives embarquée pour montres connectées.</p>
-        </div>
-
-        <!-- Carte 4 -->
-        <div class="projet-carte group bg-white/[0.02] border border-white/5 p-6 rounded-2xl hover:bg-white/[0.04] hover:border-white/10 transition-all duration-500 cursor-pointer">
-          <div class="h-40 bg-zinc-900/50 rounded-xl mb-6 flex items-center justify-center text-zinc-600 text-xs font-mono uppercase tracking-widest border border-white/5 group-hover:border-zinc-700 transition-colors overflow-hidden">
-            [Média Quest 3]
+          <div class="flex items-center gap-2 text-zinc-600 group-hover:text-violet-400 transition-colors">
+            <span class="text-xs font-mono hidden sm:block">Ouvrir</span>
+            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+            </svg>
           </div>
-          <h3 class="font-medium text-lg text-zinc-200">Déploiement Quest 3</h3>
-          <p class="text-sm text-zinc-500 mt-2 font-light leading-relaxed">Développement et optimisation sous Linux via OpenXR, Unity et scripts C#.</p>
-        </div>
+        </a>
 
+        <!-- Corps : les deux sous-panneaux -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 items-start">
+
+          <!-- ══════════════════════════════════════════ -->
+          <!-- SOUS-PANNEAU GAUCHE : Académiques          -->
+          <!-- ══════════════════════════════════════════ -->
+          <div class="panneau transition-all duration-500"
+            style="border-right: 1px solid rgba(255,255,255,0.06);">
+
+            <!-- Header cliquable -->
+            <button class="panneau-header w-full p-8 flex items-center justify-between text-left group"
+              data-cible="panneau-academique" aria-expanded="true">
+              <div>
+                <span class="text-xs font-mono uppercase tracking-widest mb-2 block" style="color: rgba(167,139,250,0.7);">Catégorie 01</span>
+                <h3 class="text-xl font-medium text-white group-hover:text-violet-200 transition-colors">Académiques</h3>
+                <p class="text-sm text-zinc-500 mt-1 font-light">Projets scolaires &amp; universitaires · 2 projets</p>
+              </div>
+              <div class="panneau-icone flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 ml-4"
+                style="border: 1px solid rgba(167,139,250,0.25); background: rgba(120,80,220,0.08);">
+                <svg class="panneau-plus w-4 h-4 text-violet-400 transition-transform duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" style="transform: rotate(45deg);">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+              </div>
+            </button>
+
+            <!-- Contenu expandable -->
+            <div class="panneau-contenu overflow-hidden" id="panneau-academique"
+              style="max-height: 2000px; transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);">
+              <div class="px-6 pb-8 grid grid-cols-1 sm:grid-cols-2 gap-4"
+                style="border-top: 1px solid rgba(255,255,255,0.04); padding-top: 2rem;">
+
+                <!-- Carte A1 : Neuro-archéologie VR -->
+                <a href="/projets/neuro-archeologie" class="projet-carte group block rounded-2xl overflow-hidden transition-all duration-300"
+                  style="border: 1px solid rgba(120,80,220,0.2); background: linear-gradient(160deg, rgba(18,12,30,0.9) 0%, rgba(12,12,18,0.95) 100%);">
+                  <div class="h-36 flex items-center justify-center text-violet-400/30 text-xs font-mono uppercase tracking-widest relative overflow-hidden"
+                    style="background: linear-gradient(135deg, rgba(120,80,220,0.1) 0%, rgba(10,8,18,0.9) 100%); border-bottom: 1px solid rgba(120,80,220,0.15);">
+                    <span class="absolute inset-0" style="background: radial-gradient(ellipse at 50% -20%, rgba(120,80,220,0.25), transparent 65%);"></span>
+                    <span class="z-10 select-none">[ Image à venir ]</span>
+                    <div class="absolute top-3 right-3 w-7 h-7 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      style="background: rgba(120,80,220,0.3); border: 1px solid rgba(167,139,250,0.3);">
+                      <svg class="w-3 h-3 text-violet-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="p-5">
+                    <div class="flex items-center gap-2 mb-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-violet-400"></span>
+                      <span class="text-xs font-mono tracking-widest" style="color: rgba(167,139,250,0.7);">Été 2026 · Stage IRISA</span>
+                    </div>
+                    <h4 class="font-semibold text-sm text-white group-hover:text-violet-200 transition-colors">Neuro-archéologie VR</h4>
+                    <p class="text-xs text-zinc-500 mt-1.5 font-light leading-relaxed">Eye-tracking 3D sur un temple gallo-romain reconstitué en VR.</p>
+                    <div class="flex gap-1.5 mt-4">
+                      <span class="text-xs px-2 py-0.5 rounded font-mono" style="background: rgba(120,80,220,0.15); color: rgba(167,139,250,0.8);">OpenXR</span>
+                      <span class="text-xs px-2 py-0.5 rounded font-mono" style="background: rgba(120,80,220,0.15); color: rgba(167,139,250,0.8);">C++</span>
+                    </div>
+                  </div>
+                </a>
+
+                <!-- Carte A2 : Globe Historique -->
+                <a href="/projets/globe-historique" class="projet-carte group block rounded-2xl overflow-hidden transition-all duration-300"
+                  style="border: 1px solid rgba(16,185,129,0.2); background: linear-gradient(160deg, rgba(10,20,18,0.9) 0%, rgba(12,12,18,0.95) 100%);">
+                  <div class="h-36 flex items-center justify-center text-emerald-400/30 text-xs font-mono uppercase tracking-widest relative overflow-hidden"
+                    style="background: linear-gradient(135deg, rgba(16,185,129,0.08) 0%, rgba(10,12,18,0.9) 100%); border-bottom: 1px solid rgba(16,185,129,0.15);">
+                    <span class="absolute inset-0" style="background: radial-gradient(ellipse at 50% -20%, rgba(16,185,129,0.2), transparent 65%);"></span>
+                    <span class="z-10 select-none">[ Image à venir ]</span>
+                    <div class="absolute top-3 right-3 w-7 h-7 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      style="background: rgba(16,185,129,0.25); border: 1px solid rgba(110,231,183,0.3);">
+                      <svg class="w-3 h-3 text-emerald-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="p-5">
+                    <div class="flex items-center gap-2 mb-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                      <span class="text-xs font-mono tracking-widest text-emerald-400/70">Projet universitaire</span>
+                    </div>
+                    <h4 class="font-semibold text-sm text-white group-hover:text-emerald-200 transition-colors">Globe Historique Mobile</h4>
+                    <p class="text-xs text-zinc-500 mt-1.5 font-light leading-relaxed">App Kotlin avec Jetpack Compose, Room SQLite et rendu 3D MapLibre.</p>
+                    <div class="flex gap-1.5 mt-4">
+                      <span class="text-xs px-2 py-0.5 rounded font-mono" style="background: rgba(16,185,129,0.12); color: rgba(110,231,183,0.8);">Kotlin</span>
+                      <span class="text-xs px-2 py-0.5 rounded font-mono" style="background: rgba(16,185,129,0.12); color: rgba(110,231,183,0.8);">MapLibre</span>
+                    </div>
+                  </div>
+                </a>
+
+                <!-- Carte A3 : Placeholder -->
+                <div class="projet-carte block rounded-2xl overflow-hidden opacity-30"
+                  style="border: 1px dashed rgba(255,255,255,0.08); background: rgba(255,255,255,0.01);">
+                  <div class="h-36 flex items-center justify-center text-zinc-700 text-xs font-mono uppercase tracking-widest"
+                    style="border-bottom: 1px dashed rgba(255,255,255,0.06);">[ À venir ]</div>
+                  <div class="p-5">
+                    <h4 class="font-medium text-sm text-zinc-600">Projet à définir</h4>
+                    <p class="text-xs text-zinc-700 mt-1.5 font-light">Placeholder — à remplir</p>
+                  </div>
+                </div>
+
+                <!-- Carte A4 : Placeholder -->
+                <div class="projet-carte block rounded-2xl overflow-hidden opacity-30"
+                  style="border: 1px dashed rgba(255,255,255,0.08); background: rgba(255,255,255,0.01);">
+                  <div class="h-36 flex items-center justify-center text-zinc-700 text-xs font-mono uppercase tracking-widest"
+                    style="border-bottom: 1px dashed rgba(255,255,255,0.06);">[ À venir ]</div>
+                  <div class="p-5">
+                    <h4 class="font-medium text-sm text-zinc-600">Projet à définir</h4>
+                    <p class="text-xs text-zinc-700 mt-1.5 font-light">Placeholder — à remplir</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- ══════════════════════════════════════════ -->
+          <!-- SOUS-PANNEAU DROIT : Expériences Perso.   -->
+          <!-- ══════════════════════════════════════════ -->
+          <div class="panneau transition-all duration-500">
+
+            <!-- Header cliquable -->
+            <button class="panneau-header w-full p-8 flex items-center justify-between text-left group"
+              data-cible="panneau-perso" aria-expanded="true">
+              <div>
+                <span class="text-xs font-mono uppercase tracking-widest mb-2 block" style="color: rgba(147,197,253,0.7);">Catégorie 02</span>
+                <h3 class="text-xl font-medium text-white group-hover:text-blue-200 transition-colors">Expériences Perso.</h3>
+                <p class="text-sm text-zinc-500 mt-1 font-light">Projets personnels &amp; explorations · 2 projets</p>
+              </div>
+              <div class="panneau-icone flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 ml-4"
+                style="border: 1px solid rgba(59,130,246,0.25); background: rgba(59,130,246,0.08);">
+                <svg class="panneau-plus w-4 h-4 text-blue-400 transition-transform duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" style="transform: rotate(45deg);">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+              </div>
+            </button>
+
+            <!-- Contenu expandable -->
+            <div class="panneau-contenu overflow-hidden" id="panneau-perso"
+              style="max-height: 2000px; transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);">
+              <div class="px-6 pb-8 grid grid-cols-1 sm:grid-cols-2 gap-4"
+                style="border-top: 1px solid rgba(255,255,255,0.04); padding-top: 2rem;">
+
+                <!-- Carte P1 : Tracker Golf -->
+                <a href="/projets/tracker-golf" class="projet-carte group block rounded-2xl overflow-hidden transition-all duration-300"
+                  style="border: 1px solid rgba(59,130,246,0.2); background: linear-gradient(160deg, rgba(10,14,24,0.9) 0%, rgba(12,12,18,0.95) 100%);">
+                  <div class="h-36 flex items-center justify-center text-blue-400/30 text-xs font-mono uppercase tracking-widest relative overflow-hidden"
+                    style="background: linear-gradient(135deg, rgba(59,130,246,0.08) 0%, rgba(10,10,18,0.9) 100%); border-bottom: 1px solid rgba(59,130,246,0.15);">
+                    <span class="absolute inset-0" style="background: radial-gradient(ellipse at 50% -20%, rgba(59,130,246,0.2), transparent 65%);"></span>
+                    <span class="z-10 select-none">[ Image à venir ]</span>
+                    <div class="absolute top-3 right-3 w-7 h-7 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      style="background: rgba(59,130,246,0.25); border: 1px solid rgba(147,197,253,0.3);">
+                      <svg class="w-3 h-3 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="p-5">
+                    <div class="flex items-center gap-2 mb-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                      <span class="text-xs font-mono tracking-widest text-blue-400/70">Embarqué · Amazfit</span>
+                    </div>
+                    <h4 class="font-semibold text-sm text-white group-hover:text-blue-200 transition-colors">Tracker de Golf</h4>
+                    <p class="text-xs text-zinc-500 mt-1.5 font-light leading-relaxed">Suivi de performances sportives embarqué sur montre connectée.</p>
+                    <div class="flex gap-1.5 mt-4">
+                      <span class="text-xs px-2 py-0.5 rounded font-mono" style="background: rgba(59,130,246,0.12); color: rgba(147,197,253,0.8);">Python</span>
+                      <span class="text-xs px-2 py-0.5 rounded font-mono" style="background: rgba(59,130,246,0.12); color: rgba(147,197,253,0.8);">BLE</span>
+                    </div>
+                  </div>
+                </a>
+
+                <!-- Carte P2 : Déploiement Quest 3 -->
+                <a href="/projets/quest3" class="projet-carte group block rounded-2xl overflow-hidden transition-all duration-300"
+                  style="border: 1px solid rgba(244,114,182,0.2); background: linear-gradient(160deg, rgba(20,10,18,0.9) 0%, rgba(12,12,18,0.95) 100%);">
+                  <div class="h-36 flex items-center justify-center text-pink-400/30 text-xs font-mono uppercase tracking-widest relative overflow-hidden"
+                    style="background: linear-gradient(135deg, rgba(244,114,182,0.07) 0%, rgba(10,8,18,0.9) 100%); border-bottom: 1px solid rgba(244,114,182,0.15);">
+                    <span class="absolute inset-0" style="background: radial-gradient(ellipse at 50% -20%, rgba(244,114,182,0.2), transparent 65%);"></span>
+                    <span class="z-10 select-none">[ Image à venir ]</span>
+                    <div class="absolute top-3 right-3 w-7 h-7 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      style="background: rgba(244,114,182,0.2); border: 1px solid rgba(249,168,212,0.3);">
+                      <svg class="w-3 h-3 text-pink-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="p-5">
+                    <div class="flex items-center gap-2 mb-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-pink-400"></span>
+                      <span class="text-xs font-mono tracking-widest text-pink-400/70">Linux Native · XR</span>
+                    </div>
+                    <h4 class="font-semibold text-sm text-white group-hover:text-pink-200 transition-colors">Déploiement Quest 3</h4>
+                    <p class="text-xs text-zinc-500 mt-1.5 font-light leading-relaxed">Développement et optimisation sous Linux via OpenXR, Unity et C#.</p>
+                    <div class="flex gap-1.5 mt-4">
+                      <span class="text-xs px-2 py-0.5 rounded font-mono" style="background: rgba(244,114,182,0.12); color: rgba(249,168,212,0.8);">Unity</span>
+                      <span class="text-xs px-2 py-0.5 rounded font-mono" style="background: rgba(244,114,182,0.12); color: rgba(249,168,212,0.8);">C#</span>
+                    </div>
+                  </div>
+                </a>
+
+                <!-- Carte P3 : Placeholder -->
+                <div class="projet-carte block rounded-2xl overflow-hidden opacity-30"
+                  style="border: 1px dashed rgba(255,255,255,0.08); background: rgba(255,255,255,0.01);">
+                  <div class="h-36 flex items-center justify-center text-zinc-700 text-xs font-mono uppercase tracking-widest"
+                    style="border-bottom: 1px dashed rgba(255,255,255,0.06);">[ À venir ]</div>
+                  <div class="p-5">
+                    <h4 class="font-medium text-sm text-zinc-600">Projet à définir</h4>
+                    <p class="text-xs text-zinc-700 mt-1.5 font-light">Placeholder — à remplir</p>
+                  </div>
+                </div>
+
+                <!-- Carte P4 : Placeholder -->
+                <div class="projet-carte block rounded-2xl overflow-hidden opacity-30"
+                  style="border: 1px dashed rgba(255,255,255,0.08); background: rgba(255,255,255,0.01);">
+                  <div class="h-36 flex items-center justify-center text-zinc-700 text-xs font-mono uppercase tracking-widest"
+                    style="border-bottom: 1px dashed rgba(255,255,255,0.06);">[ À venir ]</div>
+                  <div class="p-5">
+                    <h4 class="font-medium text-sm text-zinc-600">Projet à définir</h4>
+                    <p class="text-xs text-zinc-700 mt-1.5 font-light">Placeholder — à remplir</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   </section>
-  
+
 </Layout>
+
+
 
 <script>
   import { gsap } from "gsap";
@@ -194,7 +445,6 @@ import Layout from '../layouts/Layout.astro';
   gsap.registerPlugin(ScrollTrigger);
 
   // 1. TRANSITION HERO -> PRÉSENTATION
-  // Sortie du Hero
   gsap.to("#hero-content", {
     scrollTrigger: {
       trigger: "#hero-section",
@@ -219,7 +469,6 @@ import Layout from '../layouts/Layout.astro';
     y: 60,
   });
 
-  // 2. TRANSITION PRÉSENTATION -> PROJETS (Effet de profondeur)
   // Entrée du Titre des Projets
   gsap.from("#projets-titre", {
     scrollTrigger: {
@@ -232,19 +481,37 @@ import Layout from '../layouts/Layout.astro';
     scale: 0.9,
   });
 
-  // Entrée des cartes depuis l'arrière-plan (Zoom out vers In)
-  gsap.from(".projet-carte", {
+  // Entrée des panneaux
+  gsap.from("#projets-panneaux", {
     scrollTrigger: {
-      trigger: "#projets-grille",
+      trigger: "#projets-panneaux",
       start: "top 85%",
-      end: "top 40%",
+      end: "top 50%",
       scrub: 1.5,
     },
     opacity: 0,
-    scale: 0.85, // C'est ici que l'effet "venir de l'arrière" se crée
-    y: 20,       // Léger mouvement vertical pour accompagner le zoom
-    transformOrigin: "center center",
-    stagger: 0.1, // Décalage fluide entre chaque carte
-    ease: "power2.out",
+    y: 30,
+  });
+
+  // ─── Toggle des panneaux expandables ───────────────────────────
+  document.querySelectorAll(".panneau-header").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const cibleId = (btn as HTMLElement).dataset.cible!;
+      const contenu = document.getElementById(cibleId)!;
+      const icone   = btn.querySelector(".panneau-plus") as HTMLElement;
+      const isOpen  = btn.getAttribute("aria-expanded") === "true";
+
+      if (isOpen) {
+        // Fermer
+        contenu.style.maxHeight = "0";
+        icone.style.transform   = "rotate(0deg)";
+        btn.setAttribute("aria-expanded", "false");
+      } else {
+        // Ouvrir
+        contenu.style.maxHeight = contenu.scrollHeight + 200 + "px";
+        icone.style.transform   = "rotate(45deg)";
+        btn.setAttribute("aria-expanded", "true");
+      }
+    });
   });
 </script>

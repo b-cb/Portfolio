@@ -7,11 +7,13 @@ import { Image } from 'astro:assets';
 
 // 2. On importe ton fichier physique sous forme de variable
 import monLogo from '../Images/bcb.svg'; 
+import History from '../Images/History.png';
 
 interface Props {
   title: string;
+  backHref?: string;
 }
-const { title } = Astro.props;
+const { title, backHref } = Astro.props;
 ---
 <!doctype html>
 <html lang="fr" class="bg-black text-white overflow-x-hidden">
@@ -25,10 +27,19 @@ const { title } = Astro.props;
   <body class="font-sans antialiased">
     <!-- Barre de navigation fixée en haut -->
     <nav class="fixed top-0 w-full z-50 p-6 flex justify-between mix-blend-difference text-white">
-      <a href="/" class="flex items-center">
-        <!-- On utilise la variable {monLogo} et non pas des guillemets -->
-        <Image src={monLogo} alt="Logo Portfolio Batiste" class="h-8 w-auto object-contain" />
-      </a>
+      <div class="flex flex-col">
+        <a href="/" class="flex items-center">
+          <Image src={monLogo} alt="Logo Portfolio Batiste" class="h-8 w-auto object-contain" />
+        </a>
+        {backHref && (
+          <a href={backHref} class="flex items-center gap-1.5 mt-2 text-xs font-mono opacity-70 hover:opacity-100 transition-opacity group">
+            <svg class="w-3 h-3 group-hover:-translate-x-0.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+            </svg>
+            Retour aux projets
+          </a>
+        )}
+      </div>
       
       <div class="flex gap-6 text-sm font-medium">
         <a href="/" class="hover:text-gray-400 transition-colors">Accueil</a>
