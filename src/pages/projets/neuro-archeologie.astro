@@ -1,6 +1,9 @@
 ---
 // src/pages/projets/neuro-archeologie.astro
+import { Image } from 'astro:assets';
+
 import Layout from '../../layouts/Layout.astro';
+import Artefacts from '../../Images/Stage2A.png'
 ---
 
 <Layout title="Neuro-archéologie VR | Batiste COMET-BARTHE" backHref="/#niveau-1">
@@ -25,24 +28,27 @@ import Layout from '../../layouts/Layout.astro';
 
       <!-- Sous-titre / accroche -->
       <p class="text-zinc-400 text-lg mt-6 max-w-2xl font-light leading-relaxed">
-        [ Description courte du projet — à remplir. Ex : Visualisation d'eye-tracking 3D sur un temple gallo-romain reconstitué en réalité virtuelle. ]
+        Réalisation de visuels et de heatmaps pour analyser et illustrer les relevés d'exploration en VR d'artefacts et d'un temple gallo-romain.
       </p>
 
       <!-- Tags technos -->
       <div class="flex flex-wrap gap-3 mt-8">
         <span class="px-3 py-1 text-xs font-mono rounded-full" style="background: rgba(120,80,220,0.15); border: 1px solid rgba(120,80,220,0.3); color: rgba(167,139,250,0.9);">OpenXR</span>
         <span class="px-3 py-1 text-xs font-mono rounded-full" style="background: rgba(120,80,220,0.15); border: 1px solid rgba(120,80,220,0.3); color: rgba(167,139,250,0.9);">C++</span>
-        <span class="px-3 py-1 text-xs font-mono rounded-full" style="background: rgba(120,80,220,0.15); border: 1px solid rgba(120,80,220,0.3); color: rgba(167,139,250,0.9);">[ Tag 3 ]</span>
-        <span class="px-3 py-1 text-xs font-mono rounded-full" style="background: rgba(120,80,220,0.15); border: 1px solid rgba(120,80,220,0.3); color: rgba(167,139,250,0.9);">[ Tag 4 ]</span>
+        <span class="px-3 py-1 text-xs font-mono rounded-full" style="background: rgba(120,80,220,0.15); border: 1px solid rgba(120,80,220,0.3); color: rgba(167,139,250,0.9);">HTML</span>
+        <span class="px-3 py-1 text-xs font-mono rounded-full" style="background: rgba(120,80,220,0.15); border: 1px solid rgba(120,80,220,0.3); color: rgba(167,139,250,0.9);">Python</span>
+        <span class="px-3 py-1 text-xs font-mono rounded-full" style="background: rgba(120,80,220,0.15); border: 1px solid rgba(120,80,220,0.3); color: rgba(167,139,250,0.9);">Unity</span>
+
       </div>
 
       <!-- Image hero placeholder -->
       <div class="mt-14 w-full rounded-2xl overflow-hidden flex items-center justify-center"
         style="height: 360px; background: linear-gradient(135deg, rgba(120,80,220,0.08), rgba(9,9,11,0.9)); border: 1px solid rgba(120,80,220,0.2);">
-        <div class="text-center">
-          <p class="text-zinc-600 text-sm font-mono uppercase tracking-widest">[ Image / Capture du projet ]</p>
-          <p class="text-zinc-700 text-xs mt-2 font-light">Déposer une image dans <code class="text-violet-800">public/</code> et remplacer ce bloc</p>
-        </div>
+        <Image 
+              src={Artefacts},
+              alt = 'Artefact',
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+        />
       </div>
 
     </div>
@@ -62,7 +68,7 @@ import Layout from '../../layouts/Layout.astro';
         </div>
         <div class="md:col-span-2">
           <p class="text-zinc-400 leading-relaxed font-light">
-            [ À remplir — Décrivez le contexte du stage ou du projet : laboratoire d'accueil, problématique de départ, équipe, durée... ]
+              Intégré à l'équipe de recherche Seamless (IRISA) spécialisée en réalité étendue pour mon stage de M1, j'ai développé un pipeline de visualisation de données spatiales. Afin d'illustrer la thèse de Maxime Dumonteil, j'ai conçu des outils de rendu de heatmaps 3D sur-mesure, destinés à analyser et représenter visuellement des parcours d'exploration complexes en VR.
           </p>
         </div>
       </div>
@@ -75,20 +81,17 @@ import Layout from '../../layouts/Layout.astro';
           <h2 class="text-xs font-mono uppercase tracking-widest mb-4" style="color: rgba(167,139,250,0.7);">02 — Objectifs</h2>
         </div>
         <div class="md:col-span-2 space-y-3">
-          <p class="text-zinc-400 leading-relaxed font-light">[ À remplir — Quels étaient les objectifs du projet ? ]</p>
+          <p class="text-zinc-400 leading-relaxed font-light">Permettre d'analyser visuellement des relevés</p>
           <ul class="space-y-2 mt-4">
             <li class="flex items-start gap-3 text-zinc-500 text-sm font-light">
               <span class="mt-1.5 w-1 h-1 rounded-full bg-violet-500 flex-shrink-0"></span>
-              [ Objectif 1 ]
+              Faire une interface simple pour analyser 15 artefacts avec 60 participants de 3 pays différents.
             </li>
             <li class="flex items-start gap-3 text-zinc-500 text-sm font-light">
               <span class="mt-1.5 w-1 h-1 rounded-full bg-violet-500 flex-shrink-0"></span>
-              [ Objectif 2 ]
+              Faire un moteur de rendu pour analyser les résultats de relevés de 40 participants sur la visite d'un temple de Mars.
             </li>
-            <li class="flex items-start gap-3 text-zinc-500 text-sm font-light">
-              <span class="mt-1.5 w-1 h-1 rounded-full bg-violet-500 flex-shrink-0"></span>
-              [ Objectif 3 ]
-            </li>
+            
           </ul>
         </div>
       </div>
@@ -101,11 +104,11 @@ import Layout from '../../layouts/Layout.astro';
           <h2 class="text-xs font-mono uppercase tracking-widest mb-4" style="color: rgba(167,139,250,0.7);">03 — Technologies</h2>
         </div>
         <div class="md:col-span-2">
-          <p class="text-zinc-400 leading-relaxed font-light mb-6">[ À remplir — Stack technique utilisée. ]</p>
+          <p class="text-zinc-400 leading-relaxed font-light mb-6">2 technologies différentes, une pour les artefacts et une pour le temple</p>
           <div class="flex flex-wrap gap-2">
-            <span class="px-3 py-1.5 text-xs font-mono rounded" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: #a1a1aa;">[ Techno 1 ]</span>
-            <span class="px-3 py-1.5 text-xs font-mono rounded" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: #a1a1aa;">[ Techno 2 ]</span>
-            <span class="px-3 py-1.5 text-xs font-mono rounded" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: #a1a1aa;">[ Techno 3 ]</span>
+            <span class="px-3 py-1.5 text-xs font-mono rounded" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: #a1a1aa;">Unity pourles relevés</span>
+            <span class="px-3 py-1.5 text-xs font-mono rounded" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: #a1a1aa;">HTML et javascript pour les artefacts</span>
+            <span class="px-3 py-1.5 text-xs font-mono rounded" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: #a1a1aa;">C++ pour le temple</span>
           </div>
         </div>
       </div>

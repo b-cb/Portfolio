@@ -1,0 +1,166 @@
+---
+// src/components/ProjectCard.astro
+import { Image } from 'astro:assets';
+import type { Project } from '../data/projects';
+
+interface Props {
+  project?: Project;
+  placeholder?: boolean;
+}
+
+const { project, placeholder = false } = Astro.props;
+
+// Thèmes de couleurs
+const themeStyles = {
+  violet: {
+    borderColor: "rgba(120,80,220,0.2)",
+    bgGradStart: "rgba(18,12,30,0.9)",
+    headerBgStart: "rgba(120,80,220,0.1)",
+    headerBgEnd: "rgba(10,8,18,0.9)",
+    headerBorder: "rgba(120,80,220,0.15)",
+    glowColor: "rgba(120,80,220,0.25)",
+    iconBg: "rgba(120,80,220,0.3)",
+    iconBorder: "rgba(167,139,250,0.3)",
+    iconColor: "text-violet-300",
+    dotColor: "bg-violet-400",
+    categoryTextColor: "rgba(167,139,250,0.7)",
+    titleHoverColor: "group-hover:text-violet-200",
+    tagBgColor: "rgba(120,80,220,0.15)",
+    tagTextColor: "rgba(167,139,250,0.8)"
+  },
+  amber: {
+    borderColor: "rgba(245, 158, 11, 0.2)",
+    bgGradStart: "rgba(30,20,10,0.9)",
+    headerBgStart: "rgba(245, 158, 11, 0.1)",
+    headerBgEnd: "rgba(15, 10, 8, 0.9)",
+    headerBorder: "rgba(245, 158, 11, 0.15)",
+    glowColor: "rgba(245, 158, 11, 0.25)",
+    iconBg: "rgba(245, 158, 11, 0.3)",
+    iconBorder: "rgba(252, 211, 77, 0.3)",
+    iconColor: "text-amber-300",
+    dotColor: "bg-amber-400",
+    categoryTextColor: "rgba(252, 211, 77, 0.7)",
+    titleHoverColor: "group-hover:text-amber-200",
+    tagBgColor: "rgba(245, 158, 11, 0.15)",
+    tagTextColor: "rgba(252, 211, 77, 0.8)"
+  },
+  teal: {
+    borderColor: "rgba(20, 184, 166, 0.2)",
+    bgGradStart: "rgba(10,25,25,0.9)",
+    headerBgStart: "rgba(20, 184, 166, 0.1)",
+    headerBgEnd: "rgba(8, 15, 14, 0.9)",
+    headerBorder: "rgba(20, 184, 166, 0.15)",
+    glowColor: "rgba(20, 184, 166, 0.25)",
+    iconBg: "rgba(20, 184, 166, 0.3)",
+    iconBorder: "rgba(94, 234, 212, 0.3)",
+    iconColor: "text-teal-300",
+    dotColor: "bg-teal-400",
+    categoryTextColor: "rgba(94, 234, 212, 0.7)",
+    titleHoverColor: "group-hover:text-teal-200",
+    tagBgColor: "rgba(20, 184, 166, 0.15)",
+    tagTextColor: "rgba(94, 234, 212, 0.8)"
+  },
+  emerald: {
+    borderColor: "rgba(16,185,129,0.2)",
+    bgGradStart: "rgba(10,20,18,0.9)",
+    headerBgStart: "rgba(16,185,129,0.08)",
+    headerBgEnd: "rgba(10,12,18,0.9)",
+    headerBorder: "rgba(16,185,129,0.15)",
+    glowColor: "rgba(16,185,129,0.2)",
+    iconBg: "rgba(16,185,129,0.25)",
+    iconBorder: "rgba(110,231,183,0.3)",
+    iconColor: "text-emerald-300",
+    dotColor: "bg-emerald-400",
+    categoryTextColor: "rgba(52, 211, 153, 0.7)",
+    titleHoverColor: "group-hover:text-emerald-200",
+    tagBgColor: "rgba(16,185,129,0.12)",
+    tagTextColor: "rgba(110,231,183,0.8)"
+  },
+  blue: {
+    borderColor: "rgba(59,130,246,0.2)",
+    bgGradStart: "rgba(10,14,24,0.9)",
+    headerBgStart: "rgba(59,130,246,0.08)",
+    headerBgEnd: "rgba(10,10,18,0.9)",
+    headerBorder: "rgba(59,130,246,0.15)",
+    glowColor: "rgba(59,130,246,0.2)",
+    iconBg: "rgba(59,130,246,0.25)",
+    iconBorder: "rgba(147,197,253,0.3)",
+    iconColor: "text-blue-300",
+    dotColor: "bg-blue-400",
+    categoryTextColor: "rgba(96, 165, 250, 0.7)",
+    titleHoverColor: "group-hover:text-blue-200",
+    tagBgColor: "rgba(59,130,246,0.12)",
+    tagTextColor: "rgba(147,197,253,0.8)"
+  },
+  pink: {
+    borderColor: "rgba(244,114,182,0.2)",
+    bgGradStart: "rgba(20,10,18,0.9)",
+    headerBgStart: "rgba(244,114,182,0.07)",
+    headerBgEnd: "rgba(10,8,18,0.9)",
+    headerBorder: "rgba(244,114,182,0.15)",
+    glowColor: "rgba(244,114,182,0.2)",
+    iconBg: "rgba(244,114,182,0.2)",
+    iconBorder: "rgba(249,168,212,0.3)",
+    iconColor: "text-pink-300",
+    dotColor: "bg-pink-400",
+    categoryTextColor: "rgba(244, 114, 182, 0.7)",
+    titleHoverColor: "group-hover:text-pink-200",
+    tagBgColor: "rgba(244,114,182,0.12)",
+    tagTextColor: "rgba(249,168,212,0.8)"
+  }
+};
+
+const theme = project ? themeStyles[project.theme] : null;
+---
+
+{placeholder || !project || !theme ? (
+  <div class="projet-carte block rounded-2xl overflow-hidden opacity-30 h-full"
+    style="border: 1px dashed rgba(255,255,255,0.08); background: rgba(255,255,255,0.01);">
+    <div class="h-36 flex items-center justify-center text-zinc-700 text-xs font-mono uppercase tracking-widest"
+      style="border-bottom: 1px dashed rgba(255,255,255,0.06);">[ À venir ]</div>
+    <div class="p-5 flex-grow flex flex-col">
+      <h4 class="font-medium text-sm text-zinc-600">Projet à définir</h4>
+      <p class="text-xs text-zinc-700 mt-1.5 font-light flex-grow">Placeholder — à remplir</p>
+    </div>
+  </div>
+) : (
+  <a href={project.href} class="projet-carte group block rounded-2xl overflow-hidden transition-all duration-300 h-full flex flex-col"
+    style={`border: 1px solid ${theme.borderColor}; background: linear-gradient(160deg, ${theme.bgGradStart} 0%, rgba(12,12,18,0.95) 100%);`}>
+    
+    <div class="h-36 flex items-center justify-center relative overflow-hidden shrink-0"
+      style={`background: linear-gradient(135deg, ${theme.headerBgStart} 0%, ${theme.headerBgEnd} 100%); border-bottom: 1px solid ${theme.headerBorder};`}>
+      <span class="absolute inset-0" style={`background: radial-gradient(ellipse at 50% -20%, ${theme.glowColor}, transparent 65%);`}></span>
+      
+      {project.image ? (
+        <Image 
+          src={project.image} 
+          alt={project.title} 
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+        />
+      ) : (
+        <span class="z-10 select-none text-xs font-mono uppercase tracking-widest opacity-50" style={`color: ${theme.categoryTextColor};`}>[ Image à venir ]</span>
+      )}
+
+      <div class="absolute top-3 right-3 w-7 h-7 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        style={`background: ${theme.iconBg}; border: 1px solid ${theme.iconBorder};`}>
+        <svg class={`w-3 h-3 ${theme.iconColor}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+        </svg>
+      </div>
+    </div>
+    
+    <div class="p-5 flex-grow flex flex-col">
+      <div class="flex items-center gap-2 mb-2 shrink-0">
+        <span class={`w-1.5 h-1.5 rounded-full ${theme.dotColor}`}></span>
+        <span class="text-xs font-mono tracking-widest" style={`color: ${theme.categoryTextColor};`}>{project.categoryText}</span>
+      </div>
+      <h4 class={`font-semibold text-sm text-white transition-colors ${theme.titleHoverColor} shrink-0`}>{project.title}</h4>
+      <p class="text-xs text-zinc-500 mt-1.5 font-light leading-relaxed flex-grow">{project.description}</p>
+      <div class="flex flex-wrap gap-1.5 mt-4 shrink-0">
+        {project.tags.map(tag => (
+          <span class="text-xs px-2 py-0.5 rounded font-mono" style={`background: ${theme.tagBgColor}; color: ${theme.tagTextColor};`}>{tag}</span>
+        ))}
+      </div>
+    </div>
+  </a>
+)}
