@@ -1,0 +1,26 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  image?: any;
+  video?: string;
+  alt?: string;
+  poster?: any;
+  className?: string;
+}
+
+const { image, video, alt = '', poster, className = '' } = Astro.props;
+---
+
+{video ? (
+  <div class={`project-media ${className}`.trim()}>
+    {poster ? <Image src={poster} alt={alt} class="project-media__poster" /> : null}
+    <video class="project-media__video" muted loop autoplay playsinline preload="metadata" poster={poster ? poster.src || '' : ''}>
+      <source src={video} type="video/mp4" />
+    </video>
+  </div>
+) : image ? (
+  <div class={`project-media ${className}`.trim()}>
+    <Image src={image} alt={alt} class="project-media__image" />
+  </div>
+) : null}

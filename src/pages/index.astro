@@ -13,6 +13,7 @@ import VR from '../Images/VR.png';
 
 import { projects } from '../data/projects';
 import ProjectCard from '../components/ProjectCard.astro';
+import AnimatedBackground from '../components/AnimatedBackground.astro';
 
 const academiques = projects.filter(p => p.group === 'academique');
 const persos = projects.filter(p => p.group === 'perso');
@@ -23,21 +24,13 @@ const countPerso = persos.length;
 ---
 
 <Layout title="Batiste COMET-BARTHE | Portfolio">
-  
-  <!-- HERO SECTION : Fond sombre avec accent violet/indigo -->
-  <section class="h-screen flex flex-col items-center justify-center relative overflow-hidden" id="hero-section"
-    style="background: #09090b;">
-    
-    <!-- Orbe décoratif flou en arrière-plan -->
-    <!-- Grille de points subtile -->
-    <div class="absolute inset-0 pointer-events-none opacity-[0.04]"
-      style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 40px 40px;">
-    </div>
+  <section class="h-screen flex flex-col items-center justify-center relative overflow-hidden hero-shell" id="hero-section" aria-label="Hero portfolio">
+    <div class="ambient-glow" aria-hidden="true"></div>
+    <div class="absolute inset-0 pointer-events-none opacity-[0.04] grid-pattern" aria-hidden="true"></div>
+    <AnimatedBackground />
 
     <div class="text-center px-4 will-change-transform z-10 relative" id="hero-content">
-      <!-- Badge accrocheur -->
-      <div class="inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-full border text-xs font-mono tracking-widest uppercase"
-        class="border-b border-[var(--accent)] text-[var(--accent)]">
+      <div class="inline-flex items-center gap-2 mb-8 px-4 py-2 text-xs font-mono tracking-widest uppercase border border-white/10 bg-black/20 text-[var(--accent)] backdrop-blur-sm">
         <span class="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse"></span>
         Disponible — Stage terminé · IRISA / Inria
       </div>

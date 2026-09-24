@@ -1,0 +1,104 @@
+---
+---
+
+<div class="ambient-layer" aria-hidden="true">
+  <canvas class="ambient-canvas"></canvas>
+</div>
+
+<script is:inline>
+  (() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const canvasList = document.querySelectorAll('.ambient-canvas');
+
+    if (prefersReducedMotion || !canvasList.length) return;
+
+    const initAmbient = () => {
+      canvasList.forEach((canvas) => {
+        const parent = canvas.closest('.ambient-layer');
+        if (!parent || !canvas.getContext) return;
+
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
+        const updateCanvas = () => {
+          const rect = parent.getBoundingClientRect();
+          const width = Math.max(1, rect.width);
+          const height = Math.max(1, rect.height);
+          const ratio = Math.min(window.devicePixelRatio || 1, 2);
+
+          canvas.width = Math.round(width * ratio);
+          canvas.height = Math.round(height * ratio);
+          ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+        };
+
+        const pointer = { x: 0, y: 0 };
+        const particles = Array.from({ length: 26 }, () => ({
+          x: Math.random(),
+          y: Math.random(),
+          vx: (Math.random() - 0.5) * 0.18,
+          vy: (Math.random() - 0.5) * 0.18,
+          radius: Math.random() * 2.2 + 0.8,
+        }));
+
+        const draw = () => {
+          const rect = parent.getBoundingClientRect();
+          const width = rect.width;
+          const height = rect.height;
+
+          ctx.clearRect(0, 0, width, height);
+
+          for (let i = 0; i < particles.length; i += 1) {
+            const p = particles[i];
+            p.x += p.vx + (pointer.x - width * 0.5) * 0.00012;
+            p.y += p.vy + (pointer.y - height * 0.5) * 0.00012;
+
+            if (p.x < 0 || p.x > 1) p.vx *= -1;
+            if (p.y < 0 || p.y > 1) p.vy *= -1;
+
+            const px = p.x * width;
+            const py = p.y * height;
+
+            ctx.beginPath();
+            ctx.fillStyle = 'rgba(157, 227, 208, 0.72)';
+            ctx.arc(px, py, p.radius, 0, Math.PI * 2);
+            ctx.fill();
+
+            for (let j = i + 1; j < particles.length; j += 1) {
+              const q = particles[j];
+              const dx = (p.x - q.x) * width;
+              const dy = (p.y - q.y) * height;
+              const dist = Math.hypot(dx, dy);
+
+              if (dist < 140) {
+                ctx.beginPath();
+                ctx.strokeStyle = `rgba(157, 227, 208, ${0.12 * (1 - dist / 140)})`;
+                ctx.lineWidth = 1;
+                ctx.moveTo(px, py);
+                ctx.lineTo(q.x * width, q.y * height);
+                ctx.stroke();
+              }
+            }
+          }
+
+          if (typeof requestAnimationFrame === 'function') {
+            requestAnimationFrame(draw);
+          }
+        };
+
+        const handlePointer = (event) => {
+          const rect = parent.getBoundingClientRect();
+          pointer.x = event.clientX - rect.left;
+          pointer.y = event.clientY - rect.top;
+        };
+
+        updateCanvas();
+        draw();
+        window.addEventListener('resize', updateCanvas, { passive: true });
+        window.addEventListener('pointermove', handlePointer, { passive: true });
+      });
+    };
+
+    document.addEventListener('astro:page-load', initAmbient, { once: true });
+    initAmbient();
+  })();
+</script>

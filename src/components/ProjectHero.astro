@@ -1,5 +1,6 @@
 ---
-import ProjectImage from './ProjectImage.astro';
+import AnimatedBackground from './AnimatedBackground.astro';
+import ProjectMedia from './ProjectMedia.astro';
 
 interface Props {
   category: string;
@@ -8,14 +9,17 @@ interface Props {
   description: string;
   tags: string[];
   image?: ImageMetadata;
+  video?: string;
+  poster?: ImageMetadata;
   imageAlt?: string;
   imageFit?: 'cover' | 'contain';
 }
 
-const { category, title, accent, description, tags, image, imageAlt = title, imageFit = 'cover' } = Astro.props;
+const { category, title, accent, description, tags, image, video, poster, imageAlt = title, imageFit = 'cover' } = Astro.props;
 ---
 
-<section class="project-hero reveal">
+<section class="project-hero reveal" data-ambient>
+  <AnimatedBackground />
   <div class="project-hero__inner">
     <p class="eyebrow">{category}</p>
     <h1>{title}<br /><span>{accent}</span></h1>
@@ -23,6 +27,6 @@ const { category, title, accent, description, tags, image, imageAlt = title, ima
     <div class="project-tags" aria-label="Technologies utilisées">
       {tags.map((tag) => <span>{tag}</span>)}
     </div>
-    <ProjectImage src={image} alt={imageAlt} height="large" fit={imageFit} />
+    <ProjectMedia image={image} video={video} poster={poster} alt={imageAlt} className={`project-media project-media--hero project-media--${imageFit}`} />
   </div>
 </section>
