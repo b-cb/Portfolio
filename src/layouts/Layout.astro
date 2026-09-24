@@ -24,7 +24,7 @@ const { title, backHref } = Astro.props;
     <title>{title}</title>
   </head>
   <body class="font-sans antialiased site-shell">
-    <div class="cursor-fx" aria-hidden="true"><span></span></div>
+    <div class="cursor-fx" aria-hidden="true"></div>
 
     <nav class="fixed top-0 w-full z-50 p-6 flex justify-between mix-blend-difference text-white" aria-label="Navigation principale">
       <div class="flex flex-col">
@@ -61,13 +61,23 @@ const { title, backHref } = Astro.props;
           return;
         }
 
-        const position = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-        cursor.style.transform = `translate(${position.x}px, ${position.y}px)`;
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let currentX = mouseX;
+        let currentY = mouseY;
+
+        const moveCursor = () => {
+          currentX += (mouseX - currentX) * 0.18;
+          currentY += (mouseY - currentY) * 0.18;
+          cursor.style.transform = `translate(${currentX}px, ${currentY}px)`;
+          requestAnimationFrame(moveCursor);
+        };
+
+        requestAnimationFrame(moveCursor);
 
         document.addEventListener('pointermove', (event) => {
-          position.x = event.clientX;
-          position.y = event.clientY;
-          cursor.style.transform = `translate(${position.x}px, ${position.y}px)`;
+          mouseX = event.clientX;
+          mouseY = event.clientY;
         }, { passive: true });
 
         document.querySelectorAll('.nav-link, a, button, .project-card').forEach((element) => {

@@ -220,23 +220,15 @@ const countPerso = persos.length;
           <div class="panneau transition-all duration-500"
             style="border-right: 1px solid rgba(255,255,255,0.06);">
 
-            <!-- Header cliquable -->
-            <button class="panneau-header w-full p-8 flex items-center justify-between text-left group"
+            <div class="panneau-header w-full p-8 flex items-center justify-between text-left group"
               data-cible="panneau-academique" aria-expanded="true">
               <div>
                 <span class="text-xs font-mono uppercase tracking-widest mb-2 block" style="color: rgba(167,139,250,0.7);">Catégorie 01</span>
                 <h3 class="text-xl font-medium text-white group-hover:text-violet-200 transition-colors">Académiques</h3>
                 <p class="text-sm text-zinc-500 mt-1 font-light">Projets scolaires &amp; universitaires · {countAca} projets</p>
               </div>
-              <div class="panneau-icone flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 ml-4"
-                style="border: 1px solid rgba(167,139,250,0.25); background: rgba(120,80,220,0.08);">
-                <svg class="panneau-plus w-4 h-4 text-violet-400 transition-transform duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" style="transform: rotate(45deg);">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-              </div>
-            </button>
+            </div>
 
-            <!-- Contenu expandable -->
             <div class="panneau-contenu overflow-hidden" id="panneau-academique"
               style="max-height: 2000px; transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);">
               <div class="px-6 pb-8 grid grid-cols-1 sm:grid-cols-2 gap-4"
@@ -259,23 +251,15 @@ const countPerso = persos.length;
           <!-- ══════════════════════════════════════════ -->
           <div class="panneau transition-all duration-500">
 
-            <!-- Header cliquable -->
-            <button class="panneau-header w-full p-8 flex items-center justify-between text-left group"
+            <div class="panneau-header w-full p-8 flex items-center justify-between text-left group"
               data-cible="panneau-perso" aria-expanded="true">
               <div>
                 <span class="text-xs font-mono uppercase tracking-widest mb-2 block" style="color: rgba(147,197,253,0.7);">Catégorie 02</span>
                 <h3 class="text-xl font-medium text-white group-hover:text-blue-200 transition-colors">Expériences Perso.</h3>
                 <p class="text-sm text-zinc-500 mt-1 font-light">Projets personnels &amp; explorations · {countPerso} projets</p>
               </div>
-              <div class="panneau-icone flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 ml-4"
-                style="border: 1px solid rgba(59,130,246,0.25); background: rgba(59,130,246,0.08);">
-                <svg class="panneau-plus w-4 h-4 text-blue-400 transition-transform duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" style="transform: rotate(45deg);">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-              </div>
-            </button>
+            </div>
 
-            <!-- Contenu expandable -->
             <div class="panneau-contenu overflow-hidden" id="panneau-perso"
               style="max-height: 2000px; transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);">
               <div class="px-6 pb-8 grid grid-cols-1 sm:grid-cols-2 gap-4"
@@ -357,23 +341,17 @@ const countPerso = persos.length;
     y: 30,
   });
 
-  // ─── Toggle des panneaux expandables ───────────────────────────
   document.querySelectorAll(".panneau-header").forEach((btn) => {
     btn.addEventListener("click", () => {
       const cibleId = (btn as HTMLElement).dataset.cible!;
       const contenu = document.getElementById(cibleId)!;
-      const icone   = btn.querySelector(".panneau-plus") as HTMLElement;
-      const isOpen  = btn.getAttribute("aria-expanded") === "true";
+      const isOpen = btn.getAttribute("aria-expanded") === "true";
 
       if (isOpen) {
-        // Fermer
         contenu.style.maxHeight = "0";
-        icone.style.transform   = "rotate(0deg)";
         btn.setAttribute("aria-expanded", "false");
       } else {
-        // Ouvrir
         contenu.style.maxHeight = contenu.scrollHeight + 200 + "px";
-        icone.style.transform   = "rotate(45deg)";
         btn.setAttribute("aria-expanded", "true");
       }
     });

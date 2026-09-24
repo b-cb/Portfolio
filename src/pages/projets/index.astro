@@ -11,128 +11,80 @@ const countPerso = persos.length;
 ---
 
 <Layout title="Projets & Découvertes | Batiste COMET-BARTHE" backHref="/#niveau-1">
-
-  <!-- HERO PAGE PROJETS -->
-  <section class="pt-32 pb-16 px-6 bg-zinc-950">
+  <section class="projects-page__hero">
     <div class="max-w-6xl mx-auto">
-      <span class="text-xs font-mono uppercase tracking-widest" style="color: rgba(167,139,250,0.7);">Portfolio</span>
-      <h1 class="text-4xl md:text-6xl font-medium text-white mt-4 leading-tight">
+      <span class="eyebrow">Portfolio</span>
+      <h1 class="page-title">
         Projets &amp;<br/>
-        <span class="text-[var(--accent)]">Découvertes</span>
+        <span>Découvertes</span>
       </h1>
-      <p class="text-zinc-400 text-lg mt-6 max-w-2xl font-light leading-relaxed">
+      <p class="project-hero__description">
         Découvrez l'ensemble de mes travaux académiques et personnels.
       </p>
     </div>
   </section>
 
-  <!-- CONTENU PRINCIPAL AVEC LES PANNEAUX -->
-  <section class="px-6 pb-32" style="background: #09090b;">
-    <div class="max-w-7xl mx-auto w-full">
-
-      <!-- Deux panneaux expandables -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start" id="projets-panneaux">
-
-        <!-- ═══════════════════════════════════════════ -->
-        <!-- PANNEAU GAUCHE : Académiques / Scolaires   -->
-        <!-- ═══════════════════════════════════════════ -->
-        <div class="panneau rounded-3xl overflow-hidden transition-all duration-500"
-          class="border-b border-white/15">
-
-          <!-- Header cliquable -->
-          <button class="panneau-header w-full p-8 flex items-center justify-between text-left group"
-            data-cible="panneau-academique" aria-expanded="true">
-            <div>
-              <span class="text-xs font-mono uppercase tracking-widest mb-2 block" style="color: rgba(167,139,250,0.7);">Catégorie 01</span>
-              <h3 class="text-2xl font-medium text-white group-hover:text-violet-200 transition-colors">Académiques</h3>
-              <p class="text-sm text-zinc-500 mt-1 font-light">Projets scolaires &amp; universitaires · {countAca} projets</p>
-            </div>
-            <div class="panneau-icone flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-500 ml-4"
-              class="border border-white/15">
-              <svg class="panneau-plus w-5 h-5 text-violet-400 transition-transform duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" style="transform: rotate(45deg);">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-              </svg>
-            </div>
-          </button>
-
-          <!-- Contenu expandable -->
-          <div class="panneau-contenu overflow-hidden" id="panneau-academique"
-            style="max-height: 2000px; transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);">
-            <div class="px-6 pb-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-
-              {academiques.map(project => (
-                <ProjectCard project={project} />
-              ))}
-
-              {countAca % 2 !== 0 && (
-                <ProjectCard placeholder />
-              )}
-
-            </div>
+  <section class="projects-page__content">
+    <div class="projects-page__grid">
+      <div class="project-panel" style="--panel-accent: rgba(167,139,250,0.7);">
+        <div class="project-panel__header">
+          <div>
+            <span class="eyebrow">Catégorie 01</span>
+            <h3>Académiques</h3>
+            <p>Projets scolaires &amp; universitaires · {countAca} projets</p>
           </div>
         </div>
 
-        <!-- ════════════════════════════════════════════ -->
-        <!-- PANNEAU DROIT : Expériences Personnelles    -->
-        <!-- ════════════════════════════════════════════ -->
-        <div class="panneau rounded-3xl overflow-hidden transition-all duration-500"
-          style="border: 1px solid rgba(59,130,246,0.15); background: rgba(59,130,246,0.03);">
+        <div class="project-panel__body" id="panneau-academique">
+          <div class="projects-grid">
+            {academiques.map(project => (
+              <ProjectCard project={project} />
+            ))}
 
-          <!-- Header cliquable -->
-          <button class="panneau-header w-full p-8 flex items-center justify-between text-left group"
-            data-cible="panneau-perso" aria-expanded="true">
-            <div>
-              <span class="text-xs font-mono uppercase tracking-widest mb-2 block" style="color: rgba(147,197,253,0.7);">Catégorie 02</span>
-              <h3 class="text-2xl font-medium text-white group-hover:text-blue-200 transition-colors">Expériences Perso.</h3>
-              <p class="text-sm text-zinc-500 mt-1 font-light">Projets personnels &amp; explorations · {countPerso} projets</p>
-            </div>
-            <div class="panneau-icone flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-500 ml-4"
-              style="border: 1px solid rgba(59,130,246,0.25); background: rgba(59,130,246,0.08);">
-              <svg class="panneau-plus w-5 h-5 text-blue-400 transition-transform duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" style="transform: rotate(45deg);">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-              </svg>
-            </div>
-          </button>
+            {countAca % 2 !== 0 && (
+              <ProjectCard placeholder />
+            )}
+          </div>
+        </div>
+      </div>
 
-          <!-- Contenu expandable -->
-          <div class="panneau-contenu overflow-hidden" id="panneau-perso"
-            style="max-height: 2000px; transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);">
-            <div class="px-6 pb-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-
-              {persos.map(project => (
-                <ProjectCard project={project} />
-              ))}
-
-              {countPerso % 2 !== 0 && (
-                <ProjectCard placeholder />
-              )}
-
-            </div>
+      <div class="project-panel" style="--panel-accent: rgba(147,197,253,0.7);">
+        <div class="project-panel__header">
+          <div>
+            <span class="eyebrow">Catégorie 02</span>
+            <h3>Expériences Perso.</h3>
+            <p>Projets personnels &amp; explorations · {countPerso} projets</p>
           </div>
         </div>
 
+        <div class="project-panel__body" id="panneau-perso">
+          <div class="projects-grid">
+            {persos.map(project => (
+              <ProjectCard project={project} />
+            ))}
+
+            {countPerso % 2 !== 0 && (
+              <ProjectCard placeholder />
+            )}
+          </div>
+        </div>
       </div>
     </div>
   </section>
-
 </Layout>
 
 <script>
-  // Logique du toggle des sous-panneaux
   document.querySelectorAll(".panneau-header").forEach((btn) => {
     btn.addEventListener("click", () => {
       const cibleId = (btn as HTMLElement).dataset.cible!;
       const contenu = document.getElementById(cibleId)!;
-      const icone   = btn.querySelector(".panneau-plus") as HTMLElement;
-      const isOpen  = btn.getAttribute("aria-expanded") === "true";
+      const isOpen = btn.getAttribute("aria-expanded") === "true";
 
       if (isOpen) {
         contenu.style.maxHeight = "0";
-        icone.style.transform   = "rotate(0deg)";
         btn.setAttribute("aria-expanded", "false");
       } else {
         contenu.style.maxHeight = contenu.scrollHeight + 200 + "px";
-        icone.style.transform   = "rotate(45deg)";
         btn.setAttribute("aria-expanded", "true");
       }
     });
