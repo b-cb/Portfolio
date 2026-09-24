@@ -3,6 +3,8 @@
 import { Image } from 'astro:assets';
  
 import Layout from '../../layouts/Layout.astro';
+import ProjectHero from '../../components/ProjectHero.astro';
+import ProjectSection from '../../components/ProjectSection.astro';
 import Artefacts from '../../Images/Stage2A.png'
 import Temple from '../../Images/Stage2ATemple.png'
  
@@ -11,53 +13,11 @@ import Temple from '../../Images/Stage2ATemple.png'
 <Layout title="Neuro-archéologie VR | Batiste COMET-BARTHE" backHref="/#niveau-1">
  
  
-  <!-- HERO PROJET -->
-  <section class="pt-32 pb-20 px-6" style="background: linear-gradient(180deg, #09090b 0%, #0d0a18 100%);">
-    <div class="max-w-4xl mx-auto">
- 
-      <!-- Badge catégorie -->
-      <div class="inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded-full text-xs font-mono uppercase tracking-widest"
-        style="background: rgba(120,80,220,0.12); border: 1px solid rgba(120,80,220,0.3); color: rgba(167,139,250,0.9);">
-        <span class="w-1.5 h-1.5 rounded-full bg-violet-400"></span>
-        Stage IRISA / Inria · Rennes · Été 2026
-      </div>
- 
-      <!-- Titre -->
-      <h1 class="text-4xl md:text-6xl font-medium text-white leading-tight mt-4">
-        Neuro-archéologie<br/>
-        <span style="background: linear-gradient(135deg, #a78bfa, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">VR</span>
-      </h1>
- 
-      <!-- Sous-titre / accroche -->
-      <p class="text-zinc-400 text-lg mt-6 max-w-2xl font-light leading-relaxed">
-        Conception d'outils de visualisation et de heatmaps 3D pour analyser des relevés d'exploration en réalité virtuelle, appliqués à l'étude d'artefacts et d'un temple gallo-romain.
-      </p>
- 
-      <!-- Tags technos -->
-      <div class="flex flex-wrap gap-3 mt-8">
-        <span class="px-3 py-1 text-xs font-mono rounded-full" style="background: rgba(120,80,220,0.15); border: 1px solid rgba(120,80,220,0.3); color: rgba(167,139,250,0.9);">OpenXR</span>
-        <span class="px-3 py-1 text-xs font-mono rounded-full" style="background: rgba(120,80,220,0.15); border: 1px solid rgba(120,80,220,0.3); color: rgba(167,139,250,0.9);">C++</span>
-        <span class="px-3 py-1 text-xs font-mono rounded-full" style="background: rgba(120,80,220,0.15); border: 1px solid rgba(120,80,220,0.3); color: rgba(167,139,250,0.9);">HTML</span>
-        <span class="px-3 py-1 text-xs font-mono rounded-full" style="background: rgba(120,80,220,0.15); border: 1px solid rgba(120,80,220,0.3); color: rgba(167,139,250,0.9);">Python</span>
-        <span class="px-3 py-1 text-xs font-mono rounded-full" style="background: rgba(120,80,220,0.15); border: 1px solid rgba(120,80,220,0.3); color: rgba(167,139,250,0.9);">Unity</span>
- 
-      </div>
- 
-      <!-- Image hero placeholder -->
-      <div class="mt-14 w-full rounded-2xl overflow-hidden flex items-center justify-center"
-        style="height: 360px; background: linear-gradient(135deg, rgba(120,80,220,0.08), rgba(9,9,11,0.9)); border: 1px solid rgba(120,80,220,0.2);">
-        <Image 
-              src={Artefacts},
-              alt = 'Artefact',
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-        />
-      </div>
- 
-    </div>
-  </section>
+  <ProjectHero category="Stage IRISA / Inria · Rennes · Été 2026" title="Neuro-archéologie" accent="VR" description="Conception d'outils de visualisation et de heatmaps 3D pour analyser des relevés d'exploration en réalité virtuelle, appliqués à l'étude d'artefacts et d'un temple gallo-romain." tags={['OpenXR', 'C++', 'HTML', 'Python', 'Unity']} image={Artefacts} imageAlt="Artefact" />
  
   <!-- CORPS DU PROJET -->
   <section class="px-6 pb-32" style="background: #09090b;">
+    <ProjectSection variant="wide">
     <div class="max-w-4xl mx-auto space-y-16">
  
       <!-- Séparateur -->
@@ -146,6 +106,7 @@ import Temple from '../../Images/Stage2ATemple.png'
       <div class="w-full h-px bg-white/5"></div>
  
     </div>
+    </ProjectSection>
   </section>
  
   <!-- FIN DE PAGE -->

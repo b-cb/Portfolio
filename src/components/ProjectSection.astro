@@ -1,0 +1,24 @@
+---
+import ProjectDivider from './ProjectDivider.astro';
+
+interface Props {
+  number?: string;
+  title?: string;
+  variant?: 'split' | 'wide';
+}
+
+const { number, title, variant = 'split' } = Astro.props;
+---
+
+<section class={`project-section project-section--${variant} reveal`}>
+  {number && title && (
+    <div class="project-section__label">
+      <p class="eyebrow">{number}</p>
+      <h2>{title}</h2>
+    </div>
+  )}
+  <div class="project-section__content">
+    <slot />
+  </div>
+</section>
+<ProjectDivider />

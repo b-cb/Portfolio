@@ -1,49 +1,18 @@
 ---
 // src/pages/projets/globe-historique.astro
 import Layout from '../../layouts/Layout.astro';
+import ProjectHero from '../../components/ProjectHero.astro';
+import ProjectSection from '../../components/ProjectSection.astro';
 ---
 
 <Layout title="Globe Historique Mobile | Batiste COMET-BARTHE" backHref="/#niveau-1">
 
 
-  <!-- HERO PROJET -->
-  <section class="pt-32 pb-20 px-6" style="background: linear-gradient(180deg, #09090b 0%, #0a140e 100%);">
-    <div class="max-w-4xl mx-auto">
-
-      <div class="inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded-full text-xs font-mono uppercase tracking-widest"
-        style="background: rgba(16,185,129,0.10); border: 1px solid rgba(16,185,129,0.3); color: rgba(110,231,183,0.9);">
-        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-        Projet Universitaire · ENSEEIHT
-      </div>
-
-      <h1 class="text-4xl md:text-6xl font-medium text-white leading-tight mt-4">
-        Globe Historique<br/>
-        <span style="background: linear-gradient(135deg, #6ee7b7, #34d399); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Mobile</span>
-      </h1>
-
-      <p class="text-zinc-400 text-lg mt-6 max-w-2xl font-light leading-relaxed">
-        [ Description courte du projet — à remplir. Ex : Application Android de visualisation historique avec rendu 3D d'un globe interactif. ]
-      </p>
-
-      <div class="flex flex-wrap gap-3 mt-8">
-        <span class="px-3 py-1 text-xs font-mono rounded-full" style="background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3); color: rgba(110,231,183,0.9);">Kotlin</span>
-        <span class="px-3 py-1 text-xs font-mono rounded-full" style="background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3); color: rgba(110,231,183,0.9);">Jetpack Compose</span>
-        <span class="px-3 py-1 text-xs font-mono rounded-full" style="background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3); color: rgba(110,231,183,0.9);">MapLibre</span>
-        <span class="px-3 py-1 text-xs font-mono rounded-full" style="background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3); color: rgba(110,231,183,0.9);">Room SQLite</span>
-      </div>
-
-      <div class="mt-14 w-full rounded-2xl overflow-hidden flex items-center justify-center"
-        style="height: 360px; background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(9,9,11,0.9)); border: 1px solid rgba(16,185,129,0.2);">
-        <div class="text-center">
-          <p class="text-zinc-600 text-sm font-mono uppercase tracking-widest">[ Image / Capture du projet ]</p>
-          <p class="text-zinc-700 text-xs mt-2 font-light">Déposer une image dans <code class="text-emerald-900">public/</code> et remplacer ce bloc</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <ProjectHero category="Projet Universitaire · ENSEEIHT" title="Globe Historique" accent="Mobile" description="[ Description courte du projet — à remplir. Ex : Application Android de visualisation historique avec rendu 3D d'un globe interactif. ]" tags={['Kotlin', 'Jetpack Compose', 'MapLibre', 'Room SQLite']} />
 
   <!-- CORPS DU PROJET -->
   <section class="px-6 pb-32" style="background: #09090b;">
+    <ProjectSection variant="wide">
     <div class="max-w-4xl mx-auto space-y-16">
 
       <div class="w-full h-px" style="background: linear-gradient(90deg, transparent, rgba(16,185,129,0.3), transparent);"></div>
@@ -136,6 +105,7 @@ import Layout from '../../layouts/Layout.astro';
       </div>
 
     </div>
+    </ProjectSection>
   </section>
 
 </Layout>

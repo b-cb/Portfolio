@@ -26,12 +26,9 @@ const countPerso = persos.length;
   
   <!-- HERO SECTION : Fond sombre avec accent violet/indigo -->
   <section class="h-screen flex flex-col items-center justify-center relative overflow-hidden" id="hero-section"
-    style="background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(99,60,180,0.25) 0%, transparent 70%), radial-gradient(ellipse 60% 40% at 80% 80%, rgba(59,130,246,0.12) 0%, transparent 60%), #09090b;">
+    style="background: #09090b;">
     
     <!-- Orbe décoratif flou en arrière-plan -->
-    <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] rounded-full pointer-events-none"
-      style="background: radial-gradient(ellipse, rgba(120,80,220,0.18) 0%, transparent 70%); filter: blur(40px);">
-    </div>
     <!-- Grille de points subtile -->
     <div class="absolute inset-0 pointer-events-none opacity-[0.04]"
       style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 40px 40px;">
@@ -40,14 +37,14 @@ const countPerso = persos.length;
     <div class="text-center px-4 will-change-transform z-10 relative" id="hero-content">
       <!-- Badge accrocheur -->
       <div class="inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-full border text-xs font-mono tracking-widest uppercase"
-        style="background: rgba(120,80,220,0.12); border-color: rgba(120,80,220,0.3); color: rgba(180,150,255,0.9);">
+        class="border-b border-[var(--accent)] text-[var(--accent)]">
         <span class="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse"></span>
         Disponible — Stage terminé · IRISA / Inria
       </div>
 
       <h1 class="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-white leading-[1.05]">
         Ingénieur<br/>
-        <span class="font-semibold" style="background: linear-gradient(135deg, #a78bfa 0%, #818cf8 40%, #60a5fa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+        <span class="font-semibold text-[var(--accent)]">
           Image &amp; Multimédia
         </span>
       </h1>
@@ -70,7 +67,7 @@ const countPerso = persos.length;
 
   <!-- SECTION : PRÉSENTATION PERSONNELLE & ACADÉMIQUE -->
   <section class="min-h-screen py-32 text-white px-6 flex flex-col justify-center will-change-transform" id="a-propos"
-    style="background: linear-gradient(180deg, #09090b 0%, #0f0f14 50%, #0d0d12 100%);">  
+    style="background: #0f0f12;">
     <div class="max-w-6xl mx-auto w-full" id="about-content">
       
       <!-- En-tête de section -->
@@ -181,7 +178,7 @@ const countPerso = persos.length;
   </section>
   <!-- PROJETS & DÉCOUVERTES -->
   <section class="py-32 flex flex-col justify-center px-6 overflow-hidden" id="niveau-1"
-    style="background: linear-gradient(180deg, #0d0d12 0%, #0a0a10 100%);">
+    style="background: #0d0d12;">
 
     <div class="max-w-7xl mx-auto w-full">
 

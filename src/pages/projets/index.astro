@@ -13,12 +13,12 @@ const countPerso = persos.length;
 <Layout title="Projets & Découvertes | Batiste COMET-BARTHE" backHref="/#niveau-1">
 
   <!-- HERO PAGE PROJETS -->
-  <section class="pt-32 pb-16 px-6" style="background: linear-gradient(180deg, #09090b 0%, #0d0a18 100%);">
+  <section class="pt-32 pb-16 px-6 bg-zinc-950">
     <div class="max-w-6xl mx-auto">
       <span class="text-xs font-mono uppercase tracking-widest" style="color: rgba(167,139,250,0.7);">Portfolio</span>
       <h1 class="text-4xl md:text-6xl font-medium text-white mt-4 leading-tight">
         Projets &amp;<br/>
-        <span style="background: linear-gradient(135deg, #a78bfa, #60a5fa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Découvertes</span>
+        <span class="text-[var(--accent)]">Découvertes</span>
       </h1>
       <p class="text-zinc-400 text-lg mt-6 max-w-2xl font-light leading-relaxed">
         Découvrez l'ensemble de mes travaux académiques et personnels.
@@ -37,7 +37,7 @@ const countPerso = persos.length;
         <!-- PANNEAU GAUCHE : Académiques / Scolaires   -->
         <!-- ═══════════════════════════════════════════ -->
         <div class="panneau rounded-3xl overflow-hidden transition-all duration-500"
-          style="border: 1px solid rgba(167,139,250,0.15); background: rgba(120,80,220,0.04);">
+          class="border-b border-white/15">
 
           <!-- Header cliquable -->
           <button class="panneau-header w-full p-8 flex items-center justify-between text-left group"
@@ -48,7 +48,7 @@ const countPerso = persos.length;
               <p class="text-sm text-zinc-500 mt-1 font-light">Projets scolaires &amp; universitaires · {countAca} projets</p>
             </div>
             <div class="panneau-icone flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-500 ml-4"
-              style="border: 1px solid rgba(167,139,250,0.25); background: rgba(120,80,220,0.08);">
+              class="border border-white/15">
               <svg class="panneau-plus w-5 h-5 text-violet-400 transition-transform duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" style="transform: rotate(45deg);">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
               </svg>

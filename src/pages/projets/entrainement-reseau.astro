@@ -3,6 +3,8 @@
 import { Image } from 'astro:assets';
 
 import Layout from '../../layouts/Layout.astro';
+import ProjectHero from '../../components/ProjectHero.astro';
+import ProjectSection from '../../components/ProjectSection.astro';
 import Apprentissage from '../../Images/Apprentissage.jpg'
 import TrainBatch from '../../Images/TrainBatch.png'
 
@@ -12,49 +14,11 @@ import TrainBatch from '../../Images/TrainBatch.png'
 
 <Layout title="Entrainement réseau de neurones | Batiste COMET-BARTHE" backHref="/#niveau-1">
 
-  <!-- HERO PROJET -->
-  <section class="pt-32 pb-20 px-6" style="background: linear-gradient(180deg, #09090b 0%, #0d0a18 100%);">
-    <div class="max-w-4xl mx-auto">
-
-      <!-- Badge catégorie -->
-      <div class="inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded-full text-xs font-mono uppercase tracking-widest"
-        style="background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.3); color: rgba(252, 211, 77, 0.9);">
-        <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-        Projet libre · Apprentissage Profond · 2nd semestre M1
-      </div>
-
-      <!-- Titre -->
-      <h1 class="text-4xl md:text-6xl font-medium text-white leading-tight mt-4">
-        Entrainement réseau<br/>
-        <span style="background: linear-gradient(135deg, #fbbf24, #f59e0b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">de neurones</span>
-      </h1>
-
-      <!-- Sous-titre / accroche -->
-      <p class="text-zinc-400 text-lg mt-6 max-w-2xl font-light leading-relaxed">
-        Constitution d'une base de données et entraînement d'un modèle YOLO pour la reconnaissance de mudras, du recueil des images jusqu'à l'analyse des performances.
-      </p>
-
-      <!-- Tags technos -->
-      <div class="flex flex-wrap gap-3 mt-8">
-        <span class="px-3 py-1 text-xs font-mono rounded-full" style="background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.3); color: rgba(252, 211, 77, 0.9);">Yolo</span>
-        <span class="px-3 py-1 text-xs font-mono rounded-full" style="background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.3); color: rgba(252, 211, 77, 0.9);">Python</span>
-      </div>
-
-      <!-- Image hero -->
-      <div class="mt-14 w-full rounded-2xl overflow-hidden flex items-center justify-center p-4"
-        style="height: 360px; background: linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(9,9,11,0.9)); border: 1px solid rgba(245, 158, 11, 0.2);">
-        <Image 
-              src={Apprentissage}
-              alt="Détections de mudras par le modèle YOLO"
-              class="max-w-full max-h-full w-auto h-auto object-contain group-hover:scale-105 transition-transform duration-500" 
-        />
-      </div>
-
-    </div>
-  </section>
+  <ProjectHero category="Projet libre · Apprentissage Profond · 2nd semestre M1" title="Entraînement réseau" accent="de neurones" description="Constitution d'une base de données et entraînement d'un modèle YOLO pour la reconnaissance de mudras, du recueil des images jusqu'à l'analyse des performances." tags={['Yolo', 'Python']} image={Apprentissage} imageAlt="Détections de mudras par le modèle YOLO" imageFit="contain" />
 
   <!-- CORPS DU PROJET -->
   <section class="px-6 pb-32" style="background: #09090b;">
+    <ProjectSection variant="wide">
     <div class="max-w-4xl mx-auto space-y-16">
       
       <div class="w-full h-px" style="background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.3), transparent);"></div>
@@ -83,7 +47,7 @@ import TrainBatch from '../../Images/TrainBatch.png'
           <ul class="space-y-2 mt-4">
             <li class="flex items-start gap-3 text-zinc-500 text-sm font-light">
               <span class="mt-1.5 w-1 h-1 rounded-full bg-amber-500 flex-shrink-0"></span>
-              Atteindre le MAP et la precision les meilleurs possibles pour avoir de très grandes chances de bonne détction et catégorisation.
+              Atteindre le MAP et la précision les meilleurs possibles pour avoir de très grandes chances de bonne détection et catégorisation.
             </li>
             <li class="flex items-start gap-3 text-zinc-500 text-sm font-light">
               <span class="mt-1.5 w-1 h-1 rounded-full bg-amber-500 flex-shrink-0"></span>
@@ -102,7 +66,7 @@ import TrainBatch from '../../Images/TrainBatch.png'
         </div>
         <div class="md:col-span-2">
           <p class="text-zinc-400 leading-relaxed font-light">
-            Pour réaliser la bdd, nous avons pris des photos de nous mêmes dans différentes orientation/positions, fait de même avec nos proches et cherché des images sur internet. Une fois arrivés a 450 images, nous avons utilisé l'outil d'annotation CVAT pour que les fichiers soient cohérents entre nous.
+            Pour réaliser la bdd, nous avons pris des photos de nous-mêmes dans différentes orientations/positions, fait de même avec nos proches et cherché des images sur internet. Une fois arrivés à 450 images, nous avons utilisé l'outil d'annotation CVAT pour que les fichiers soient cohérents entre nous.
           </p>
         </div>
       </div>
@@ -174,5 +138,6 @@ import TrainBatch from '../../Images/TrainBatch.png'
       </div>
 
     </div>
+    </ProjectSection>
   </section>
 </Layout>

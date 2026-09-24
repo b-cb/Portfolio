@@ -1,0 +1,28 @@
+---
+import ProjectImage from './ProjectImage.astro';
+
+interface Props {
+  category: string;
+  title: string;
+  accent: string;
+  description: string;
+  tags: string[];
+  image?: ImageMetadata;
+  imageAlt?: string;
+  imageFit?: 'cover' | 'contain';
+}
+
+const { category, title, accent, description, tags, image, imageAlt = title, imageFit = 'cover' } = Astro.props;
+---
+
+<section class="project-hero reveal">
+  <div class="project-hero__inner">
+    <p class="eyebrow">{category}</p>
+    <h1>{title}<br /><span>{accent}</span></h1>
+    <p class="project-hero__description">{description}</p>
+    <div class="project-tags" aria-label="Technologies utilisées">
+      {tags.map((tag) => <span>{tag}</span>)}
+    </div>
+    <ProjectImage src={image} alt={imageAlt} height="large" fit={imageFit} />
+  </div>
+</section>
