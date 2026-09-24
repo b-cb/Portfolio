@@ -1,36 +1,38 @@
 ---
 // src/pages/projets/neuro-archeologie.astro
 import { Image } from 'astro:assets';
-
+ 
 import Layout from '../../layouts/Layout.astro';
 import Artefacts from '../../Images/Stage2A.png'
+import Temple from '../../Images/Stage2ATemple.png'
+ 
 ---
-
+ 
 <Layout title="Neuro-archéologie VR | Batiste COMET-BARTHE" backHref="/#niveau-1">
-
-
+ 
+ 
   <!-- HERO PROJET -->
   <section class="pt-32 pb-20 px-6" style="background: linear-gradient(180deg, #09090b 0%, #0d0a18 100%);">
     <div class="max-w-4xl mx-auto">
-
+ 
       <!-- Badge catégorie -->
       <div class="inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded-full text-xs font-mono uppercase tracking-widest"
         style="background: rgba(120,80,220,0.12); border: 1px solid rgba(120,80,220,0.3); color: rgba(167,139,250,0.9);">
         <span class="w-1.5 h-1.5 rounded-full bg-violet-400"></span>
         Stage IRISA / Inria · Rennes · Été 2026
       </div>
-
+ 
       <!-- Titre -->
       <h1 class="text-4xl md:text-6xl font-medium text-white leading-tight mt-4">
         Neuro-archéologie<br/>
         <span style="background: linear-gradient(135deg, #a78bfa, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">VR</span>
       </h1>
-
+ 
       <!-- Sous-titre / accroche -->
       <p class="text-zinc-400 text-lg mt-6 max-w-2xl font-light leading-relaxed">
-        Réalisation de visuels et de heatmaps pour analyser et illustrer les relevés d'exploration en VR d'artefacts et d'un temple gallo-romain.
+        Conception d'outils de visualisation et de heatmaps 3D pour analyser des relevés d'exploration en réalité virtuelle, appliqués à l'étude d'artefacts et d'un temple gallo-romain.
       </p>
-
+ 
       <!-- Tags technos -->
       <div class="flex flex-wrap gap-3 mt-8">
         <span class="px-3 py-1 text-xs font-mono rounded-full" style="background: rgba(120,80,220,0.15); border: 1px solid rgba(120,80,220,0.3); color: rgba(167,139,250,0.9);">OpenXR</span>
@@ -38,9 +40,9 @@ import Artefacts from '../../Images/Stage2A.png'
         <span class="px-3 py-1 text-xs font-mono rounded-full" style="background: rgba(120,80,220,0.15); border: 1px solid rgba(120,80,220,0.3); color: rgba(167,139,250,0.9);">HTML</span>
         <span class="px-3 py-1 text-xs font-mono rounded-full" style="background: rgba(120,80,220,0.15); border: 1px solid rgba(120,80,220,0.3); color: rgba(167,139,250,0.9);">Python</span>
         <span class="px-3 py-1 text-xs font-mono rounded-full" style="background: rgba(120,80,220,0.15); border: 1px solid rgba(120,80,220,0.3); color: rgba(167,139,250,0.9);">Unity</span>
-
+ 
       </div>
-
+ 
       <!-- Image hero placeholder -->
       <div class="mt-14 w-full rounded-2xl overflow-hidden flex items-center justify-center"
         style="height: 360px; background: linear-gradient(135deg, rgba(120,80,220,0.08), rgba(9,9,11,0.9)); border: 1px solid rgba(120,80,220,0.2);">
@@ -50,17 +52,17 @@ import Artefacts from '../../Images/Stage2A.png'
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
         />
       </div>
-
+ 
     </div>
   </section>
-
+ 
   <!-- CORPS DU PROJET -->
   <section class="px-6 pb-32" style="background: #09090b;">
     <div class="max-w-4xl mx-auto space-y-16">
-
+ 
       <!-- Séparateur -->
       <div class="w-full h-px" style="background: linear-gradient(90deg, transparent, rgba(120,80,220,0.3), transparent);"></div>
-
+ 
       <!-- Contexte -->
       <div class="grid md:grid-cols-3 gap-8">
         <div>
@@ -68,61 +70,67 @@ import Artefacts from '../../Images/Stage2A.png'
         </div>
         <div class="md:col-span-2">
           <p class="text-zinc-400 leading-relaxed font-light">
-              Intégré à l'équipe de recherche Seamless (IRISA) spécialisée en réalité étendue pour mon stage de M1, j'ai développé un pipeline de visualisation de données spatiales. Afin d'illustrer la thèse de Maxime Dumonteil, j'ai conçu des outils de rendu de heatmaps 3D sur-mesure, destinés à analyser et représenter visuellement des parcours d'exploration complexes en VR.
+              Accueilli au sein de l'équipe de recherche Seamless (IRISA), spécialisée en réalité étendue, j'ai effectué mon stage de M1 autour du développement d'un pipeline de visualisation de données spatiales. Dans le cadre de la thèse de Maxime Dumonteil, j'ai conçu des outils de rendu de heatmaps 3D sur mesure, permettant d'analyser et de représenter visuellement des parcours d'exploration complexes en réalité virtuelle.
           </p>
         </div>
       </div>
-
+ 
       <div class="w-full h-px bg-white/5"></div>
-
+ 
       <!-- Objectifs -->
       <div class="grid md:grid-cols-3 gap-8">
         <div>
           <h2 class="text-xs font-mono uppercase tracking-widest mb-4" style="color: rgba(167,139,250,0.7);">02 — Objectifs</h2>
         </div>
         <div class="md:col-span-2 space-y-3">
-          <p class="text-zinc-400 leading-relaxed font-light">Permettre d'analyser visuellement des relevés</p>
+          <p class="text-zinc-400 leading-relaxed font-light">Permettre une analyse visuelle fine des relevés d'exploration recueillis en VR, à deux échelles différentes :</p>
           <ul class="space-y-2 mt-4">
             <li class="flex items-start gap-3 text-zinc-500 text-sm font-light">
               <span class="mt-1.5 w-1 h-1 rounded-full bg-violet-500 flex-shrink-0"></span>
-              Faire une interface simple pour analyser 15 artefacts avec 60 participants de 3 pays différents.
+              Concevoir une interface web permettant d'analyser les parcours de 60 participants, issus de 3 pays différents, autour de 15 artefacts.
             </li>
             <li class="flex items-start gap-3 text-zinc-500 text-sm font-light">
               <span class="mt-1.5 w-1 h-1 rounded-full bg-violet-500 flex-shrink-0"></span>
-              Faire un moteur de rendu pour analyser les résultats de relevés de 40 participants sur la visite d'un temple de Mars.
+              Développer un moteur de rendu dédié à l'analyse des relevés de 40 participants lors de la visite virtuelle d'un temple gallo-romain dédié à Mars.
             </li>
             
           </ul>
         </div>
       </div>
-
+ 
       <div class="w-full h-px bg-white/5"></div>
-
+ 
       <!-- Technologies -->
       <div class="grid md:grid-cols-3 gap-8">
         <div>
           <h2 class="text-xs font-mono uppercase tracking-widest mb-4" style="color: rgba(167,139,250,0.7);">03 — Technologies</h2>
         </div>
         <div class="md:col-span-2">
-          <p class="text-zinc-400 leading-relaxed font-light mb-6">2 technologies différentes, une pour les artefacts et une pour le temple</p>
+          <p class="text-zinc-400 leading-relaxed font-light mb-6">Une page HTML/JavaScript légère pour la visualisation des heatmaps sur les artefacts, privilégiant fluidité et accessibilité.</p>
+          <p class="text-zinc-400 leading-relaxed font-light mb-6">Un moteur de rendu développé en C++ pour le temple, la taille de la zone à traiter nécessitant des performances plus poussées.</p>
+ 
           <div class="flex flex-wrap gap-2">
-            <span class="px-3 py-1.5 text-xs font-mono rounded" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: #a1a1aa;">Unity pourles relevés</span>
-            <span class="px-3 py-1.5 text-xs font-mono rounded" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: #a1a1aa;">HTML et javascript pour les artefacts</span>
-            <span class="px-3 py-1.5 text-xs font-mono rounded" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: #a1a1aa;">C++ pour le temple</span>
+            <span class="px-3 py-1.5 text-xs font-mono rounded" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: #a1a1aa;">Unity</span>
+            <span class="px-3 py-1.5 text-xs font-mono rounded" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: #a1a1aa;">HTML et JavaScript</span>
+            <span class="px-3 py-1.5 text-xs font-mono rounded" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: #a1a1aa;">C++</span>
           </div>
         </div>
       </div>
-
+ 
       <div class="w-full h-px bg-white/5"></div>
-
+ 
       <!-- Image secondaire placeholder -->
       <div class="w-full rounded-2xl overflow-hidden flex items-center justify-center"
-        style="height: 260px; background: rgba(255,255,255,0.02); border: 1px dashed rgba(255,255,255,0.08);">
-        <p class="text-zinc-700 text-xs font-mono uppercase tracking-widest">[ Image secondaire — optionnel ]</p>
+        style="height: 400px; background: rgba(255,255,255,0.02); border: 1px dashed rgba(255,255,255,0.08);">
+        <Image 
+              src={Temple},
+              alt = 'Temple',
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+        />
       </div>
-
+ 
       <div class="w-full h-px bg-white/5"></div>
-
+ 
       <!-- Résultats & Apprentissages -->
       <div class="grid md:grid-cols-3 gap-8">
         <div>
@@ -130,33 +138,33 @@ import Artefacts from '../../Images/Stage2A.png'
         </div>
         <div class="md:col-span-2">
           <p class="text-zinc-400 leading-relaxed font-light">
-            [ À remplir — Quels résultats avez-vous obtenus ? Qu'avez-vous appris ? Quelles difficultés avez-vous rencontrées ? ]
+              Les résultats ont dépassé les attentes initiales : les pages consacrées aux artefacts restent fluides même en affichant simultanément les relevés des 15 artefacts et des 60 participants. Le moteur de rendu C++ tourne quant à lui à 90 FPS constants, avec un temps de recalcul inférieur à 3 secondes lors des changements de shader — l'un des principaux défis techniques du projet.
           </p>
         </div>
       </div>
-
+ 
       <div class="w-full h-px bg-white/5"></div>
-
-      <!-- Liens externes (optionnel) -->
-      <div class="grid md:grid-cols-3 gap-8">
-        <div>
-          <h2 class="text-xs font-mono uppercase tracking-widest mb-4" style="color: rgba(167,139,250,0.7);">05 — Liens</h2>
-        </div>
-        <div class="md:col-span-2 flex gap-4">
-          <a href="#" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-mono text-zinc-400 hover:text-white transition-colors"
-            style="border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.02);">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-            [ GitHub — à remplir ]
-          </a>
-          <a href="#" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-mono text-zinc-400 hover:text-white transition-colors"
-            style="border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.02);">
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
-            [ Rapport / Demo — à remplir ]
-          </a>
-        </div>
-      </div>
-
+ 
     </div>
   </section>
-
+ 
+  <!-- FIN DE PAGE -->
+  <section class="px-6 pb-24" style="background: #09090b;">
+    <div class="max-w-4xl mx-auto flex flex-col items-center text-center gap-6 pt-4">
+ 
+      <div class="w-12 h-px" style="background: rgba(167,139,250,0.4);"></div>
+ 
+      <p class="text-zinc-500 text-sm font-light max-w-md">
+        Ce projet fait partie de mon parcours de recherche en réalité étendue et visualisation de données.
+      </p>
+ 
+      <a href="/#niveau-1"
+        class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-mono uppercase tracking-widest transition-colors duration-300"
+        style="background: rgba(120,80,220,0.12); border: 1px solid rgba(120,80,220,0.3); color: rgba(167,139,250,0.9);">
+        ← Retour au portfolio
+      </a>
+ 
+    </div>
+  </section>
+ 
 </Layout>

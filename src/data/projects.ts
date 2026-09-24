@@ -42,7 +42,7 @@ export const projects: Project[] = [
     description: "Création de la base de données et entrainement d'un modèle de reconnaissance de mudras.",
     tags: ["Yolo", "Python"],
     theme: "amber",
-    href: "/projets/neuro-archeologie",
+    href: "/projets/entrainement-reseau",
     image: Apprentissage,
     group: "academique"
   },
@@ -53,7 +53,7 @@ export const projects: Project[] = [
     description: "Pipeline de décomposition spatiale pour le contrôle indépendant des détails et de l'éclairage.",
     tags: ["C++", "OpenCV", "Eigen3"],
     theme: "teal",
-    href: "/projets/neuro-archeologie",
+    href: "/projets/edge-preserving",
     image: ProjetImage,
     group: "academique"
   },
@@ -64,7 +64,7 @@ export const projects: Project[] = [
     description: "Application web permettant de jouer au tarot ou a la coinche seul ou en réseau local",
     tags: ["Java", "Vite", "H2 database", "SpringBoot 3"],
     theme: "teal",
-    href: "/projets/neuro-archeologie",
+    href: "/projets/appli-tarot",
     image: Appliweb,
     group: "academique"
   },

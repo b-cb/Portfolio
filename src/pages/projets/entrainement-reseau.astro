@@ -1,0 +1,178 @@
+---
+// src/pages/projets/entrainement-reseau.astro
+import { Image } from 'astro:assets';
+
+import Layout from '../../layouts/Layout.astro';
+import Apprentissage from '../../Images/Apprentissage.jpg'
+import TrainBatch from '../../Images/TrainBatch.png'
+
+
+
+---
+
+<Layout title="Entrainement réseau de neurones | Batiste COMET-BARTHE" backHref="/#niveau-1">
+
+  <!-- HERO PROJET -->
+  <section class="pt-32 pb-20 px-6" style="background: linear-gradient(180deg, #09090b 0%, #0d0a18 100%);">
+    <div class="max-w-4xl mx-auto">
+
+      <!-- Badge catégorie -->
+      <div class="inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded-full text-xs font-mono uppercase tracking-widest"
+        style="background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.3); color: rgba(252, 211, 77, 0.9);">
+        <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+        Projet libre · Apprentissage Profond · 2nd semestre M1
+      </div>
+
+      <!-- Titre -->
+      <h1 class="text-4xl md:text-6xl font-medium text-white leading-tight mt-4">
+        Entrainement réseau<br/>
+        <span style="background: linear-gradient(135deg, #fbbf24, #f59e0b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">de neurones</span>
+      </h1>
+
+      <!-- Sous-titre / accroche -->
+      <p class="text-zinc-400 text-lg mt-6 max-w-2xl font-light leading-relaxed">
+        Constitution d'une base de données et entraînement d'un modèle YOLO pour la reconnaissance de mudras, du recueil des images jusqu'à l'analyse des performances.
+      </p>
+
+      <!-- Tags technos -->
+      <div class="flex flex-wrap gap-3 mt-8">
+        <span class="px-3 py-1 text-xs font-mono rounded-full" style="background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.3); color: rgba(252, 211, 77, 0.9);">Yolo</span>
+        <span class="px-3 py-1 text-xs font-mono rounded-full" style="background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.3); color: rgba(252, 211, 77, 0.9);">Python</span>
+      </div>
+
+      <!-- Image hero -->
+      <div class="mt-14 w-full rounded-2xl overflow-hidden flex items-center justify-center p-4"
+        style="height: 360px; background: linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(9,9,11,0.9)); border: 1px solid rgba(245, 158, 11, 0.2);">
+        <Image 
+              src={Apprentissage}
+              alt="Détections de mudras par le modèle YOLO"
+              class="max-w-full max-h-full w-auto h-auto object-contain group-hover:scale-105 transition-transform duration-500" 
+        />
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CORPS DU PROJET -->
+  <section class="px-6 pb-32" style="background: #09090b;">
+    <div class="max-w-4xl mx-auto space-y-16">
+      
+      <div class="w-full h-px" style="background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.3), transparent);"></div>
+
+      <!-- Contexte -->
+      <div class="grid md:grid-cols-3 gap-8">
+        <div>
+          <h2 class="text-xs font-mono uppercase tracking-widest mb-4" style="color: rgba(252, 211, 77, 0.7);">01 — Contexte</h2>
+        </div>
+        <div class="md:col-span-2">
+          <p class="text-zinc-400 leading-relaxed font-light">
+            Réalisé dans le cadre de l'UE d'Apprentissage Profond du M1, ce projet libre nous demandait de mettre en œuvre, en groupe de 4 à 5 personnes, l'intégralité d'un pipeline de détection d'objets : de la constitution de la base de données d'entraînement jusqu'à l'analyse détaillée des résultats. Avec mon groupe, nous avons choisi de travailler sur la reconnaissance de mudras — des gestes symboliques de la main — à partir d'images, en nous appuyant sur l'architecture YOLO.
+          </p>
+        </div>
+      </div>
+
+      <div class="w-full h-px bg-white/5"></div>
+
+      <!-- Objectifs -->
+      <div class="grid md:grid-cols-3 gap-8">
+        <div>
+          <h2 class="text-xs font-mono uppercase tracking-widest mb-4" style="color: rgba(252, 211, 77, 0.7);">02 — Objectifs</h2>
+        </div>
+        <div class="md:col-span-2 space-y-3">
+          <p class="text-zinc-400 leading-relaxed font-light">Développer un modèle de détection capable de reconnaître les mudras en conditions réelles :</p>
+          <ul class="space-y-2 mt-4">
+            <li class="flex items-start gap-3 text-zinc-500 text-sm font-light">
+              <span class="mt-1.5 w-1 h-1 rounded-full bg-amber-500 flex-shrink-0"></span>
+              Atteindre le MAP et la precision les meilleurs possibles pour avoir de très grandes chances de bonne détction et catégorisation.
+            </li>
+            <li class="flex items-start gap-3 text-zinc-500 text-sm font-light">
+              <span class="mt-1.5 w-1 h-1 rounded-full bg-amber-500 flex-shrink-0"></span>
+              Obtenir une détection robuste malgré les variations de lumière, d'arrière-plan ou de morphologie des mains.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="w-full h-px bg-white/5"></div>
+
+      <!-- Constitution de la base de données -->
+      <div class="grid md:grid-cols-3 gap-8">
+        <div>
+          <h2 class="text-xs font-mono uppercase tracking-widest mb-4" style="color: rgba(252, 211, 77, 0.7);">03 — Base de données</h2>
+        </div>
+        <div class="md:col-span-2">
+          <p class="text-zinc-400 leading-relaxed font-light">
+            Pour réaliser la bdd, nous avons pris des photos de nous mêmes dans différentes orientation/positions, fait de même avec nos proches et cherché des images sur internet. Une fois arrivés a 450 images, nous avons utilisé l'outil d'annotation CVAT pour que les fichiers soient cohérents entre nous.
+          </p>
+        </div>
+      </div>
+
+      <!-- Image placeholder — base de données -->
+      <Image 
+            src={TrainBatch},
+            alt = 'TrainBatch',
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+      />
+        
+      
+
+      <div class="w-full h-px bg-white/5"></div>
+
+      <!-- Architecture et entraînement -->
+      <div class="grid md:grid-cols-3 gap-8">
+        <div>
+          <h2 class="text-xs font-mono uppercase tracking-widest mb-4" style="color: rgba(252, 211, 77, 0.7);">04 — Architecture & entraînement</h2>
+        </div>
+        <div class="md:col-span-2">
+          <p class="text-zinc-400 leading-relaxed font-light">
+            Pour réaliser la bdd, nous avons pris des photos de nous mêmes dans différentes orientation/positions, fait de même avec nos proches et cherché des images sur internet. Une fois arrivés a 450 images, nous avons utilisé l'outil d'annotation CVAT pour que les fichiers soient cohérents entre nous.
+          </p>
+        </div>
+      </div>
+
+      <!-- Image placeholder — architecture / courbes d'entraînement -->
+      <div class="w-full rounded-2xl overflow-hidden flex items-center justify-center"
+        style="height: 320px; background: rgba(255,255,255,0.02); border: 1px dashed rgba(245, 158, 11, 0.25);">
+        <p class="text-zinc-600 text-sm font-mono">[ Image — schéma d'architecture ou courbes de perte / précision ]</p>
+      </div>
+
+      <div class="w-full h-px bg-white/5"></div>
+
+      <!-- Résultats & Apprentissages -->
+      <div class="grid md:grid-cols-3 gap-8">
+        <div>
+          <h2 class="text-xs font-mono uppercase tracking-widest mb-4" style="color: rgba(252, 211, 77, 0.7);">05 — Résultats</h2>
+        </div>
+        <div class="md:col-span-2 space-y-4">
+          <p class="text-zinc-400 leading-relaxed font-light">
+            [ À remplir — Analyse quantitative : précision, rappel, F1-score, mAP obtenus sur le jeu de test. ]
+          </p>
+          <p class="text-zinc-400 leading-relaxed font-light">
+            [ À remplir — Analyse qualitative : exemples de détections réussies et d'échecs, analyse des limites du modèle et pistes d'amélioration envisagées. ]
+          </p>
+        </div>
+      </div>
+
+      <!-- Image placeholder — résultats qualitatifs -->
+      <div class="w-full rounded-2xl overflow-hidden flex items-center justify-center"
+        style="height: 320px; background: rgba(255,255,255,0.02); border: 1px dashed rgba(245, 158, 11, 0.25);">
+        <p class="text-zinc-600 text-sm font-mono">[ Image — exemples de détections (réussites et erreurs) ]</p>
+      </div>
+
+      <div class="w-full h-px bg-white/5"></div>
+
+      <!-- Bilan -->
+      <div class="grid md:grid-cols-3 gap-8">
+        <div>
+          <h2 class="text-xs font-mono uppercase tracking-widest mb-4" style="color: rgba(252, 211, 77, 0.7);">06 — Bilan</h2>
+        </div>
+        <div class="md:col-span-2">
+          <p class="text-zinc-400 leading-relaxed font-light">
+            [ À remplir — Qu'avez-vous appris de ce projet, en équipe comme sur le plan technique ? Quelles difficultés avez-vous rencontrées (annotation, déséquilibre des classes, temps d'entraînement...) et comment les avez-vous résolues ? ]
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</Layout>
