@@ -7,6 +7,13 @@ import ProjectHero from '../../components/ProjectHero.astro';
 import ProjectSection from '../../components/ProjectSection.astro';
 import Apprentissage from '../../Images/Apprentissage.jpg'
 import TrainBatch from '../../Images/TrainBatch.png'
+import YOLOresults from '../../Images/YOLOresults.png'
+import YOLOtrain from '../../Images/YOLOtrain.jpg'
+
+
+
+      
+
 
 
 
@@ -89,16 +96,15 @@ import TrainBatch from '../../Images/TrainBatch.png'
         </div>
         <div class="md:col-span-2">
           <p class="text-zinc-400 leading-relaxed font-light">
-            Pour réaliser la bdd, nous avons pris des photos de nous mêmes dans différentes orientation/positions, fait de même avec nos proches et cherché des images sur internet. Une fois arrivés a 450 images, nous avons utilisé l'outil d'annotation CVAT pour que les fichiers soient cohérents entre nous.
+          Pour le modele, nous sommes partis de YOLOv11m pour ses capacité, sa rapidité et la facilité d'entrainement. Nous avons d'abord fait des benchmarks pour savoir quels paramètres étaient les plus adaptés a notre projet puis nous avon lancé un apprentissage de 500 epochs avec les paramètres optimaux trouvés.
           </p>
         </div>
       </div>
 
+
+
       <!-- Image placeholder — architecture / courbes d'entraînement -->
-      <div class="w-full rounded-2xl overflow-hidden flex items-center justify-center"
-        style="height: 320px; background: rgba(255,255,255,0.02); border: 1px dashed rgba(245, 158, 11, 0.25);">
-        <p class="text-zinc-600 text-sm font-mono">[ Image — schéma d'architecture ou courbes de perte / précision ]</p>
-      </div>
+      
 
       <div class="w-full h-px bg-white/5"></div>
 
@@ -109,19 +115,18 @@ import TrainBatch from '../../Images/TrainBatch.png'
         </div>
         <div class="md:col-span-2 space-y-4">
           <p class="text-zinc-400 leading-relaxed font-light">
-            [ À remplir — Analyse quantitative : précision, rappel, F1-score, mAP obtenus sur le jeu de test. ]
-          </p>
-          <p class="text-zinc-400 leading-relaxed font-light">
-            [ À remplir — Analyse qualitative : exemples de détections réussies et d'échecs, analyse des limites du modèle et pistes d'amélioration envisagées. ]
+           Le modèle obtient d'excellentes performances globales sur le jeu de test. Nous enregistrons une précision de 98,25 % et un rappel de 98,18 %, ce qui se traduit par un F1-score de 98,21 %. La qualité et la robustesse des détections sont confirmées par un mAP@50 de 99,50 % et un mAP@50-95 de 91,69 %, témoignant d'une très grande précision dans le positionnement spatial des boîtes englobantes.
           </p>
         </div>
       </div>
 
+      
       <!-- Image placeholder — résultats qualitatifs -->
-      <div class="w-full rounded-2xl overflow-hidden flex items-center justify-center"
-        style="height: 320px; background: rgba(255,255,255,0.02); border: 1px dashed rgba(245, 158, 11, 0.25);">
-        <p class="text-zinc-600 text-sm font-mono">[ Image — exemples de détections (réussites et erreurs) ]</p>
-      </div>
+      <Image 
+            src={YOLOtrain},
+            alt = 'YOLOtrain.jpg',
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+      />
 
       <div class="w-full h-px bg-white/5"></div>
 
@@ -132,7 +137,9 @@ import TrainBatch from '../../Images/TrainBatch.png'
         </div>
         <div class="md:col-span-2">
           <p class="text-zinc-400 leading-relaxed font-light">
-            [ À remplir — Qu'avez-vous appris de ce projet, en équipe comme sur le plan technique ? Quelles difficultés avez-vous rencontrées (annotation, déséquilibre des classes, temps d'entraînement...) et comment les avez-vous résolues ? ]
+            Ce projet a été très formateur. Techniquement, il nous a permis de gérer un projet de vision par ordinateur de A à Z et de réaliser concrètement qu'un bon jeu de données compte autant qu'un bon modèle.
+
+Côté organisation, l'annotation en équipe sur CVAT a demandé de la rigueur : il a fallu fixer des règles strictes pour que tout le monde détoure les mains de la même façon. Notre plus grand défi a été d'obtenir un résultat robuste avec seulement 450 images, ce qui nous a poussés à cibler très intelligemment nos prises de vue (lumière, arrière-plans). Enfin, face aux longs temps d'entraînement, on a vite appris à bien tester nos réglages avant de lancer les calculs définitifs sur 500 époques.
           </p>
         </div>
       </div>
