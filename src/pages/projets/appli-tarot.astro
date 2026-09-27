@@ -1,75 +1,191 @@
 ---
-// src/pages/projets/appli-tarot.astro
-import { Image } from 'astro:assets';
-
 import Layout from '../../layouts/Layout.astro';
-import Appliweb from '../../Images/Appliweb.png'
+import Appliweb from '../../Images/Appliweb.png';
 import ProjectHero from '../../components/ProjectHero.astro';
 import ProjectSection from '../../components/ProjectSection.astro';
 ---
 
 <Layout title="Application web Tarot/Coinche | Batiste COMET-BARTHE" backHref="/#niveau-1">
-
-  <ProjectHero category="2nd semestre M1" title="Application web" accent="Tarot/Coinche"
+  <ProjectHero
+    category="2nd semestre M1"
+    title="Application web"
+    accent="Tarot/Coinche"
     description="Application web permettant de jouer au tarot ou à la coinche seul ou en réseau local"
-    tags={['Java', 'Vite', 'H2 database', 'SpringBoot 3']} image={Appliweb} imageAlt="Application web Tarot et Coinche" />
+    tags={['Java', 'Vite', 'H2 database', 'SpringBoot 3']}
+    image={Appliweb}
+    imageAlt="Interface de l'application web Tarot et Coinche"
+  />
 
-  <!-- CORPS DU PROJET (Placholder Template) -->
   <section class="px-6 pb-32" style="background: #09090b;">
     <ProjectSection variant="wide">
-    <div class="max-w-4xl mx-auto space-y-16">
-      
-      <div class="w-full h-px" style="background: linear-gradient(90deg, transparent, rgba(20, 184, 166, 0.3), transparent);"></div>
-
-      <!-- Contexte -->
-      <div class="grid md:grid-cols-3 gap-8">
-        <div>
-          <h2 class="text-xs font-mono uppercase tracking-widest mb-4" style="color: rgba(94, 234, 212, 0.7);">01 — Contexte</h2>
+      <div class="appli-project-content">
+        <div class="appli-project-row">
+          <div class="appli-project-row__title">
+            <h2 class="text-xs font-mono uppercase tracking-widest" style="color: var(--accent);">01 — Contexte</h2>
+          </div>
+          <div class="appli-project-row__body">
+            <p class="text-zinc-400 leading-relaxed font-light">
+              Réalisé en équipe de trois au second semestre de M1, ce projet consiste à concevoir une application web de jeux de cartes multijoueurs. Elle réunit deux jeux, la Coinche et le Tarot, et permet de créer ou de rejoindre des parties depuis un lobby.
+            </p>
+          </div>
         </div>
-        <div class="md:col-span-2">
-          <p class="text-zinc-400 leading-relaxed font-light">
-              [ À remplir — Contexte et description détaillée de ce projet. ]
-          </p>
+
+        <div class="appli-project-row">
+          <div class="appli-project-row__title">
+            <h2 class="text-xs font-mono uppercase tracking-widest" style="color: var(--accent);">02 — Fonctionnalités</h2>
+          </div>
+          <div class="appli-project-row__body">
+            <p class="text-zinc-400 leading-relaxed font-light">
+              Le parcours couvre l'identification des joueurs, la création et le suivi des parties, puis les échanges pendant le jeu. Les parties peuvent accueillir des joueurs invités ou être complétées par des bots.
+            </p>
+            <ul class="appli-project-list text-zinc-400 leading-relaxed font-light">
+              <li>Créer ou rejoindre une partie de Coinche ou de Tarot, avec plusieurs configurations de joueurs.</li>
+              <li>Inviter d'autres joueurs et consulter les parties disponibles depuis le lobby.</li>
+              <li>Jouer en temps réel avec mises à jour de l'état de la partie et un chat intégré.</li>
+              <li>Gérer les enchères et les actions propres à chaque jeu, dont le chien et l'appel du Roi au Tarot.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="appli-project-row">
+          <div class="appli-project-row__title">
+            <h2 class="text-xs font-mono uppercase tracking-widest" style="color: var(--accent);">03 — Interface</h2>
+          </div>
+          <div class="appli-project-row__body">
+            <p class="text-zinc-400 leading-relaxed font-light">
+              Le frontend est développé avec React et Vite. Il sépare les écrans d'authentification, de lobby et de partie, avec des composants dédiés aux cartes, aux enchères, aux joueurs et au chat. Les écrans de jeu s'adaptent aux règles de la Coinche ou du Tarot.
+            </p>
+            <div class="appli-project-tech">
+              <span>React</span>
+              <span>Vite</span>
+              <span>STOMP.js</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="appli-project-row">
+          <div class="appli-project-row__title">
+            <h2 class="text-xs font-mono uppercase tracking-widest" style="color: var(--accent);">04 — Architecture</h2>
+          </div>
+          <div class="appli-project-row__body">
+            <p class="text-zinc-400 leading-relaxed font-light">
+              Le backend repose sur Spring Boot et suit une organisation MVC, avec des contrôleurs, des services métier et des repositories. Le frontend communique avec l'API en REST ; l'authentification s'appuie sur des jetons JWT transmis avec les requêtes.
+            </p>
+            <p class="text-zinc-400 leading-relaxed font-light">
+              Les échanges de jeu en direct passent par WebSocket et STOMP. Les événements communs — comme l'arrivée d'un joueur ou un message — sont diffusés dans la partie, tandis que l'état contenant la main est envoyé sur un canal propre au joueur.
+            </p>
+            <div class="appli-project-tech">
+              <span>Spring Boot 3</span>
+              <span>REST</span>
+              <span>JWT</span>
+              <span>WebSocket</span>
+              <span>STOMP</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="appli-project-row">
+          <div class="appli-project-row__title">
+            <h2 class="text-xs font-mono uppercase tracking-widest" style="color: var(--accent);">05 — Données</h2>
+          </div>
+          <div class="appli-project-row__body">
+            <p class="text-zinc-400 leading-relaxed font-light">
+              La persistance utilise Spring Data JPA et Hibernate. Le modèle représente notamment les utilisateurs, les parties, les joueurs, les cartes, les enchères, les plis, les invitations et les messages du chat. H2 est prévu pour le développement et PostgreSQL pour la production.
+            </p>
+            <div class="appli-project-tech">
+              <span>Spring Data JPA</span>
+              <span>Hibernate</span>
+              <span>H2</span>
+              <span>PostgreSQL</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="appli-project-row">
+          <div class="appli-project-row__title">
+            <h2 class="text-xs font-mono uppercase tracking-widest" style="color: var(--accent);">06 — Travail en équipe</h2>
+          </div>
+          <div class="appli-project-row__body">
+            <p class="text-zinc-400 leading-relaxed font-light">
+              Le projet a été mené à trois. Son organisation distingue le frontend, le backend et les échanges entre les deux, autour d'un modèle de données partagé pour les différentes étapes d'une partie.
+            </p>
+          </div>
         </div>
       </div>
-
-      <div class="w-full h-px bg-white/5"></div>
-
-      <!-- Objectifs -->
-      <div class="grid md:grid-cols-3 gap-8">
-        <div>
-          <h2 class="text-xs font-mono uppercase tracking-widest mb-4" style="color: rgba(94, 234, 212, 0.7);">02 — Objectifs</h2>
-        </div>
-        <div class="md:col-span-2 space-y-3">
-          <p class="text-zinc-400 leading-relaxed font-light">[ À remplir — Objectifs principaux du projet ]</p>
-          <ul class="space-y-2 mt-4">
-            <li class="flex items-start gap-3 text-zinc-500 text-sm font-light">
-              <span class="mt-1.5 w-1 h-1 rounded-full bg-teal-500 flex-shrink-0"></span>
-              Objectif 1
-            </li>
-            <li class="flex items-start gap-3 text-zinc-500 text-sm font-light">
-              <span class="mt-1.5 w-1 h-1 rounded-full bg-teal-500 flex-shrink-0"></span>
-              Objectif 2
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="w-full h-px bg-white/5"></div>
-
-      <!-- Résultats & Apprentissages -->
-      <div class="grid md:grid-cols-3 gap-8">
-        <div>
-          <h2 class="text-xs font-mono uppercase tracking-widest mb-4" style="color: rgba(94, 234, 212, 0.7);">03 — Résultats</h2>
-        </div>
-        <div class="md:col-span-2">
-          <p class="text-zinc-400 leading-relaxed font-light">
-            [ À remplir — Quels résultats avez-vous obtenus ? Qu'avez-vous appris ? Quelles difficultés avez-vous rencontrées ? ]
-          </p>
-        </div>
-      </div>
-
-    </div>
     </ProjectSection>
   </section>
 </Layout>
+
+<style>
+  .appli-project-content {
+    width: min(100%, 74rem);
+    margin-inline: auto;
+    display: grid;
+    gap: clamp(3.5rem, 6vw, 5.5rem);
+  }
+
+  .appli-project-row {
+    display: grid;
+    grid-template-columns: minmax(13rem, 0.8fr) minmax(0, 2.2fr);
+    gap: clamp(3rem, 7vw, 7rem);
+    align-items: start;
+    padding-bottom: clamp(2.5rem, 4vw, 4rem);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .appli-project-row__title h2 {
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .appli-project-row__body {
+    display: grid;
+    gap: 1.25rem;
+    min-width: 0;
+  }
+
+  .appli-project-row__body p {
+    max-width: 58rem;
+    margin: 0;
+  }
+
+  .appli-project-list {
+    display: grid;
+    gap: 0.9rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .appli-project-list li {
+    position: relative;
+    padding-left: 1.1rem;
+  }
+
+  .appli-project-list li::before {
+    position: absolute;
+    top: 0.8em;
+    left: 0;
+    width: 0.3rem;
+    height: 0.3rem;
+    border-radius: 50%;
+    background: var(--accent);
+    content: "";
+  }
+
+  .appli-project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    padding-top: 0.35rem;
+    color: #a1a1aa;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.75rem;
+  }
+
+  @media (max-width: 760px) {
+    .appli-project-row {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+  }
+</style>
