@@ -24,7 +24,7 @@ const skillCategories = [
     <CalibrationGrid />
 
     <div class="text-center px-4 will-change-transform z-10 relative" id="hero-content">
-      <div class="inline-flex items-center gap-2 mb-8 px-4 py-2 text-xs font-mono tracking-widest uppercase border border-white/10 bg-black/20 text-[var(--accent)] backdrop-blur-sm">
+      <div class="hero-status inline-flex items-center gap-2 mb-8 px-4 py-2 text-xs font-mono tracking-widest uppercase">
         <span class="w-1.5 h-1.5 rounded-full bg-zinc-400"></span>
         Disponible — Stage terminé · IRISA / Inria
       </div>
@@ -53,8 +53,7 @@ const skillCategories = [
   </section>
 
   <!-- SECTION : PRÉSENTATION PERSONNELLE & ACADÉMIQUE -->
-  <section class="min-h-screen py-32 text-white px-6 flex flex-col justify-center will-change-transform" id="a-propos"
-    style="background: #0f0f12;">
+  <section class="min-h-screen py-32 px-6 flex flex-col justify-center will-change-transform" id="a-propos">
     <div class="max-w-6xl mx-auto w-full" id="about-content">
       
       <!-- En-tête de section -->
@@ -85,22 +84,22 @@ const skillCategories = [
       <div class="w-full mt-12">
 
         <!-- A. Version BUREAU (Horizontale fidèle au croquis) -->
-        <div class="hidden md:block relative w-full mt-10 h-64">
+        <div class="hidden md:block relative w-full mt-10 h-64 timeline">
           
           <!-- Ligne de fond globale -->
           <div class="absolute top-1/2 left-0 w-full h-px bg-zinc-800/80"></div>
           
           <!-- Segments de ligne colorés -->
           <!-- Prépa (environ 35% de la durée) -->
-          <div class="absolute top-1/2 -translate-y-[0.5px] left-0 w-[35%] h-[2px] bg-zinc-500"></div>
+          <div class="absolute top-1/2 -translate-y-[0.5px] left-0 w-[35%] h-[2px] timeline-line timeline-line--prepa"></div>
           <!-- ENSEEIHT (environ 65% de la durée) -->
-          <div class="absolute top-1/2 -translate-y-[0.5px] left-[35%] w-[65%] h-[2px] bg-zinc-500"></div>
+          <div class="absolute top-1/2 -translate-y-[0.5px] left-[35%] w-[65%] h-[2px] timeline-line timeline-line--enseeiht"></div>
           
           <!-- Séparateur vertical discret -->
           <div class="absolute top-1/2 left-[35%] h-8 w-px bg-zinc-600 -translate-y-1/2"></div>
 
           <!-- Étape 1 : CPGE (Au-dessus, à gauche) -->
-          <div class="absolute top-0 left-0 w-[35%] h-1/2 flex flex-col justify-end pb-6 pl-4 group cursor-default">
+          <div class="absolute top-0 left-0 w-[35%] h-1/2 flex flex-col justify-end pb-6 pl-4 group cursor-default timeline-step timeline-step--prepa">
             <div class="border-l border-transparent group-hover:border-zinc-500 transition-colors pl-2">
               <span class="text-xs font-mono text-zinc-400 tracking-widest">2022 — 2024</span>
               <h4 class="text-lg font-medium text-zinc-200 mt-2">CPGE (PT*)</h4>
@@ -109,7 +108,7 @@ const skillCategories = [
           </div>
 
           <!-- Étape 2 : ENSEEIHT (Au-dessus, à droite) -->
-          <div class="absolute top-0 left-[35%] w-[65%] h-1/2 flex flex-col justify-end pb-6 pl-8 group cursor-default">
+          <div class="absolute top-0 left-[35%] w-[65%] h-1/2 flex flex-col justify-end pb-6 pl-8 group cursor-default timeline-step timeline-step--enseeiht">
             <div class="border-l border-transparent group-hover:border-zinc-500 transition-colors pl-2">
               <span class="text-xs font-mono text-zinc-400 tracking-widest">2024 — 2027</span>
               <h4 class="text-lg font-medium text-zinc-200 mt-2">Ingénierie Image &amp; Multimédia</h4>
@@ -118,7 +117,7 @@ const skillCategories = [
           </div>
 
           <!-- Étape 3 : Stage (En-dessous, accroché à la ligne ENSEEIHT) -->
-          <div class="absolute top-1/2 left-[70%] w-[30%] h-1/2 flex flex-col justify-start pt-6 pl-0 group cursor-default">
+          <div class="absolute top-1/2 left-[70%] w-[30%] h-1/2 flex flex-col justify-start pt-6 pl-0 group cursor-default timeline-step timeline-step--stage">
             <!-- Le point sur la ligne -->
             <div class="absolute top-0 left-0 w-3 h-3 bg-zinc-400 rounded-full -translate-y-[6px] -translate-x-[6px] ring-4 ring-black group-hover:scale-110 transition-transform z-10"></div>
             <!-- Petit trait de liaison vertical vers le texte -->
@@ -137,14 +136,14 @@ const skillCategories = [
         <div class="md:hidden mt-8 max-w-sm mx-auto">
           
           <!-- Période 1 : CPGE -->
-          <div class="border-l-2 border-zinc-500 pl-6 pb-8">
+          <div class="timeline-mobile-step timeline-mobile-step--prepa border-l-2 pl-6 pb-8">
             <span class="text-xs font-mono text-zinc-400 tracking-widest">2022 — 2024</span>
             <h4 class="text-lg font-medium text-zinc-200 mt-1">CPGE (PT*)</h4>
             <p class="text-sm text-zinc-500 font-light mt-1">Lycée Déodat de Séverac</p>
           </div>
 
           <!-- Période 2 : ENSEEIHT -->
-          <div class="border-l-2 border-zinc-500 pl-6 pb-4 relative">
+          <div class="timeline-mobile-step timeline-mobile-step--enseeiht border-l-2 pl-6 pb-4 relative">
             <span class="text-xs font-mono text-zinc-400 tracking-widest">2024 — 2027</span>
             <h4 class="text-lg font-medium text-zinc-200 mt-1">Ingénierie Image &amp; Multimédia</h4>
             <p class="text-sm text-zinc-500 font-light mt-1 mb-8">ENSEEIHT (Toulouse INP)</p>
@@ -165,7 +164,7 @@ const skillCategories = [
   </section>
 
   <!-- BANDEAU COMPÉTENCES -->
-  <section class="overflow-hidden border-y border-white/5 bg-black py-5" aria-label="Compétences techniques">
+  <section class="skills-marquee-shell overflow-hidden border-y py-5" aria-label="Compétences techniques">
     <div class="skills-marquee flex w-max hover:[animation-play-state:paused]">
       {[false, true].map((isDuplicate) => (
         <ul
@@ -191,8 +190,7 @@ const skillCategories = [
   </section>
 
   <!-- PROJETS & DÉCOUVERTES -->
-  <section class="py-32 flex flex-col justify-center px-6 overflow-hidden" id="niveau-1"
-    style="background: #0d0d12;">
+  <section class="py-32 flex flex-col justify-center px-6 overflow-hidden" id="niveau-1">
 
     <div class="max-w-7xl mx-auto w-full">
 
@@ -209,27 +207,49 @@ const skillCategories = [
           <span class="font-mono text-xs">Ouvrir ↗</span>
         </a>
 
-        <section class="home-project-group" aria-labelledby="home-academic-title">
-          <header class="home-project-group__header">
-            <span class="eyebrow">Catégorie 01</span>
-            <h3 id="home-academic-title">Académiques</h3>
-            <p>Projets scolaires &amp; universitaires · {countAca} projets</p>
-          </header>
-          <div class="projects-grid">
-            {academiques.map(project => <ProjectCard project={project} />)}
-          </div>
-        </section>
+        <div class="home-project-groups">
+          <section class="home-project-group" aria-labelledby="home-academic-title">
+            <header class="home-project-group__header">
+              <span class="eyebrow">Catégorie 01</span>
+              <h3 id="home-academic-title">Académiques</h3>
+              <p>Projets scolaires &amp; universitaires · {countAca} projets</p>
+            </header>
+            <div class="projects-grid">
+              {academiques.map(project => <ProjectCard project={project} />)}
+            </div>
+          </section>
 
-        <section class="home-project-group" aria-labelledby="home-personal-title">
-          <header class="home-project-group__header">
-            <span class="eyebrow">Catégorie 02</span>
-            <h3 id="home-personal-title">Expériences Perso.</h3>
-            <p>Projets personnels &amp; explorations · {countPerso} projets</p>
-          </header>
-          <div class="projects-grid">
-            {persos.map(project => <ProjectCard project={project} />)}
-          </div>
-        </section>
+          <section class="home-project-group" aria-labelledby="home-personal-title">
+            <header class="home-project-group__header">
+              <span class="eyebrow">Catégorie 02</span>
+              <h3 id="home-personal-title">Expériences Perso.</h3>
+              <p>Projets personnels &amp; explorations · {countPerso} projets</p>
+            </header>
+            <div class="projects-grid">
+              {persos.map(project => <ProjectCard project={project} />)}
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="skills-detail-section px-6 py-24" aria-labelledby="skills-detail-title">
+    <div class="skills-detail-inner">
+      <header class="skills-detail-header">
+        <span class="eyebrow">Savoir-faire</span>
+        <h2 id="skills-detail-title">Compétences</h2>
+      </header>
+      <div class="skills-detail-grid">
+        {skillCategories.map((category, index) => (
+          <article class="skills-detail-card">
+            <p class="skills-detail-index">CAT. 0{index + 1}</p>
+            <h3>{category.name}</h3>
+            <ul>
+              {category.skills.map((skill) => <li>{skill}</li>)}
+            </ul>
+          </article>
+        ))}
       </div>
     </div>
   </section>
@@ -238,14 +258,15 @@ const skillCategories = [
 
 <style>
   .about-skill {
-    border: 1px solid rgb(255 255 255 / 12%);
+    border: 1px solid rgb(138 85 42 / 28%);
+    background: rgb(138 85 42 / 5%);
     padding: 0.375rem 1rem;
-    color: #a1a1aa;
+    color: #614326;
     font: 0.75rem/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
   }
 
   .home-projects {
-    border-top: 1px solid rgb(255 255 255 / 12%);
+    border-top: 1px solid rgb(138 85 42 / 30%);
   }
 
   .home-projects__all {
@@ -253,35 +274,110 @@ const skillCategories = [
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    border-bottom: 1px solid rgb(255 255 255 / 10%);
+    border-bottom: 1px solid rgb(138 85 42 / 22%);
     padding: 1.25rem 0;
-    color: #e4e4e7;
+    color: #302b25;
     font-size: 0.9rem;
   }
 
-  .home-projects__all:hover { color: white; }
+  .home-projects__all:hover { color: #8a552a; }
   .home-projects__count {
     display: block;
     margin-top: 0.25rem;
-    color: #71717a;
+    color: #62594f;
     font: 0.7rem/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
   }
 
   .home-project-group {
     padding-block: clamp(2rem, 5vw, 4rem);
-    border-bottom: 1px solid rgb(255 255 255 / 10%);
+    border-bottom: 1px solid rgb(138 85 42 / 22%);
   }
 
   .home-project-group__header { margin-bottom: 1.5rem; }
   .home-project-group__header h3 {
     margin-top: 0.5rem;
-    color: #e4e4e7;
+    color: #302b25;
     font-size: 1.25rem;
     font-weight: 500;
   }
   .home-project-group__header p {
     margin-top: 0.35rem;
-    color: #71717a;
+    color: #62594f;
+  }
+
+  .timeline-line { height: 2px; }
+  .timeline-line--prepa { background: #9b6840; }
+  .timeline-line--enseeiht { background: #bd8b4e; }
+  .timeline-step--prepa:hover > div:first-child { border-color: #9b6840; }
+  .timeline-step--prepa > div > span { color: #89552f; }
+  .timeline-step--prepa h4,
+  .timeline-step--enseeiht h4,
+  .timeline-step--stage h4 { color: #302b25; }
+  .timeline-step--prepa p,
+  .timeline-step--enseeiht p,
+  .timeline-step--stage p { color: #62594f; }
+  .timeline-step--enseeiht:hover > div:first-child { border-color: #bd8b4e; }
+  .timeline-step--enseeiht > div > span { color: #805923; }
+  .timeline-step--stage > div:first-child {
+    background: #a66e45;
+    box-shadow: 0 0 0 4px #f4f0e8;
+  }
+  .timeline-step--stage > div:nth-child(2) { background: #a66e45; }
+  .timeline-step--stage:hover > div:last-child { border-color: #a66e45; }
+  .timeline-step--stage > div > span { color: #89552f; }
+  .timeline-mobile-step--prepa { border-color: #9b6840; }
+  .timeline-mobile-step--enseeiht { border-color: #bd8b4e; }
+  .timeline-mobile-step > span { color: #89552f; }
+  .timeline-mobile-step h4 { color: #302b25; }
+  .timeline-mobile-step p { color: #62594f; }
+  .timeline-mobile-step--enseeiht .relative > span:first-child { background: #a66e45; }
+
+  .skills-detail-section {
+    background: #eee8dc;
+    border-top: 1px solid rgb(138 85 42 / 24%);
+  }
+  .skills-detail-inner { width: min(100%, 80rem); margin-inline: auto; }
+  .skills-detail-header { margin-bottom: 2rem; }
+  .skills-detail-header h2 {
+    margin-top: 0.6rem;
+    color: #302b25;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 500;
+    letter-spacing: -0.04em;
+  }
+  .skills-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+  .skills-detail-card {
+    border: 1px solid rgb(102 70 42 / 20%);
+    background: rgb(255 255 255 / 48%);
+    padding: clamp(1.25rem, 2.5vw, 2rem);
+  }
+  .skills-detail-index {
+    color: #62513f;
+    font: 0.65rem/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
+    letter-spacing: 0.12em;
+  }
+  .skills-detail-card h3 {
+    margin-top: 0.75rem;
+    color: #754a2b;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+  .skills-detail-card ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1.25rem;
+  }
+  .skills-detail-card li {
+    border: 1px solid rgb(138 85 42 / 22%);
+    background: #f8f5ef;
+    padding: 0.45rem 0.65rem;
+    color: #3f3932;
+    font: 0.72rem/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
     font-size: 0.8rem;
   }
 
@@ -305,6 +401,7 @@ const skillCategories = [
 
   @media (max-width: 760px) {
     .home-projects .projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .skills-detail-grid { grid-template-columns: 1fr; }
   }
 
   @media (max-width: 540px) {
