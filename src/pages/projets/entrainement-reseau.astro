@@ -5,6 +5,7 @@ import { Image } from 'astro:assets';
 import Layout from '../../layouts/Layout.astro';
 import ProjectHero from '../../components/ProjectHero.astro';
 import ProjectSection from '../../components/ProjectSection.astro';
+import MetricDisplay from '../../components/MetricDisplay.astro';
 import Apprentissage from '../../Images/Apprentissage.jpg'
 import TrainBatch from '../../Images/TrainBatch.png'
 import YOLOresults from '../../Images/YOLOresults.png'
@@ -19,7 +20,7 @@ import YOLOtrain from '../../Images/YOLOtrain.jpg'
 
 ---
 
-<Layout title="Entrainement réseau de neurones | Batiste COMET-BARTHE" backHref="/#niveau-1">
+<Layout title="Entraînement réseau de neurones | Batiste COMET-BARTHE" backHref="/#niveau-1">
 
   <ProjectHero category="Projet libre · Apprentissage Profond · 2nd semestre M1" title="Entraînement réseau" accent="de neurones" description="Constitution d'une base de données et entraînement d'un modèle YOLO pour la reconnaissance de mudras, du recueil des images jusqu'à l'analyse des performances." tags={['Yolo', 'Python']} image={Apprentissage} imageAlt="Détections de mudras par le modèle YOLO" imageFit="contain" />
 
@@ -28,12 +29,12 @@ import YOLOtrain from '../../Images/YOLOtrain.jpg'
     <ProjectSection variant="wide">
     <div class="max-w-4xl mx-auto space-y-16">
       
-      <div class="w-full h-px" style="background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.3), transparent);"></div>
+      <div class="w-full h-px bg-white/10"></div>
 
       <!-- Contexte -->
       <div class="grid md:grid-cols-3 gap-8">
         <div>
-          <h2 class="text-xs font-mono uppercase tracking-widest mb-4" style="color: rgba(252, 211, 77, 0.7);">01 — Contexte</h2>
+          <h2 class="text-xs font-mono uppercase tracking-widest mb-4 text-zinc-400">01 — Contexte</h2>
         </div>
         <div class="md:col-span-2">
           <p class="text-zinc-400 leading-relaxed font-light">
@@ -47,17 +48,17 @@ import YOLOtrain from '../../Images/YOLOtrain.jpg'
       <!-- Objectifs -->
       <div class="grid md:grid-cols-3 gap-8">
         <div>
-          <h2 class="text-xs font-mono uppercase tracking-widest mb-4" style="color: rgba(252, 211, 77, 0.7);">02 — Objectifs</h2>
+          <h2 class="text-xs font-mono uppercase tracking-widest mb-4 text-zinc-400">02 — Objectifs</h2>
         </div>
         <div class="md:col-span-2 space-y-3">
           <p class="text-zinc-400 leading-relaxed font-light">Développer un modèle de détection capable de reconnaître les mudras en conditions réelles :</p>
           <ul class="space-y-2 mt-4">
             <li class="flex items-start gap-3 text-zinc-500 text-sm font-light">
-              <span class="mt-1.5 w-1 h-1 rounded-full bg-amber-500 flex-shrink-0"></span>
+              <span class="mt-1.5 w-1 h-1 rounded-full bg-zinc-500 flex-shrink-0"></span>
               Atteindre le MAP et la précision les meilleurs possibles pour avoir de très grandes chances de bonne détection et catégorisation.
             </li>
             <li class="flex items-start gap-3 text-zinc-500 text-sm font-light">
-              <span class="mt-1.5 w-1 h-1 rounded-full bg-amber-500 flex-shrink-0"></span>
+              <span class="mt-1.5 w-1 h-1 rounded-full bg-zinc-500 flex-shrink-0"></span>
               Obtenir une détection robuste malgré les variations de lumière, d'arrière-plan ou de morphologie des mains.
             </li>
           </ul>
@@ -69,7 +70,7 @@ import YOLOtrain from '../../Images/YOLOtrain.jpg'
       <!-- Constitution de la base de données -->
       <div class="grid md:grid-cols-3 gap-8">
         <div>
-          <h2 class="text-xs font-mono uppercase tracking-widest mb-4" style="color: rgba(252, 211, 77, 0.7);">03 — Base de données</h2>
+          <h2 class="text-xs font-mono uppercase tracking-widest mb-4 text-zinc-400">03 — Base de données</h2>
         </div>
         <div class="md:col-span-2">
           <p class="text-zinc-400 leading-relaxed font-light">
@@ -92,11 +93,11 @@ import YOLOtrain from '../../Images/YOLOtrain.jpg'
       <!-- Architecture et entraînement -->
       <div class="grid md:grid-cols-3 gap-8">
         <div>
-          <h2 class="text-xs font-mono uppercase tracking-widest mb-4" style="color: rgba(252, 211, 77, 0.7);">04 — Architecture & entraînement</h2>
+          <h2 class="text-xs font-mono uppercase tracking-widest mb-4 text-zinc-400">04 — Architecture & entraînement</h2>
         </div>
         <div class="md:col-span-2">
           <p class="text-zinc-400 leading-relaxed font-light">
-          Pour le modele, nous sommes partis de YOLOv11m pour ses capacité, sa rapidité et la facilité d'entrainement. Nous avons d'abord fait des benchmarks pour savoir quels paramètres étaient les plus adaptés a notre projet puis nous avon lancé un apprentissage de 500 epochs avec les paramètres optimaux trouvés.
+          Pour le modele, nous sommes partis de YOLOv11m pour ses capacités, sa rapidité et la facilité d'entraînement. Nous avons d'abord fait des benchmarks pour savoir quels paramètres étaient les plus adaptés à notre projet puis nous avons lancé un apprentissage de 500 epochs avec les paramètres optimaux trouvés.
           </p>
         </div>
       </div>
@@ -111,12 +112,21 @@ import YOLOtrain from '../../Images/YOLOtrain.jpg'
       <!-- Résultats & Apprentissages -->
       <div class="grid md:grid-cols-3 gap-8">
         <div>
-          <h2 class="text-xs font-mono uppercase tracking-widest mb-4" style="color: rgba(252, 211, 77, 0.7);">05 — Résultats</h2>
+          <h2 class="text-xs font-mono uppercase tracking-widest mb-4 text-zinc-400">05 — Résultats</h2>
         </div>
         <div class="md:col-span-2 space-y-4">
           <p class="text-zinc-400 leading-relaxed font-light">
            Le modèle obtient d'excellentes performances globales sur le jeu de test. Nous enregistrons une précision de 98,25 % et un rappel de 98,18 %, ce qui se traduit par un F1-score de 98,21 %. La qualité et la robustesse des détections sont confirmées par un mAP@50 de 99,50 % et un mAP@50-95 de 91,69 %, témoignant d'une très grande précision dans le positionnement spatial des boîtes englobantes.
           </p>
+          <MetricDisplay metrics={[
+            { value: '98,25 %', label: 'Précision' },
+            { value: '98,18 %', label: 'Rappel' },
+            { value: '98,21 %', label: 'F1-score' },
+            { value: '99,50 %', label: 'mAP@50' },
+            { value: '91,69 %', label: 'mAP@50–95' },
+            { value: '450', label: 'Images annotées' },
+            { value: '500', label: 'Époques' },
+          ]} />
         </div>
       </div>
 
@@ -133,7 +143,7 @@ import YOLOtrain from '../../Images/YOLOtrain.jpg'
       <!-- Bilan -->
       <div class="grid md:grid-cols-3 gap-8">
         <div>
-          <h2 class="text-xs font-mono uppercase tracking-widest mb-4" style="color: rgba(252, 211, 77, 0.7);">06 — Bilan</h2>
+          <h2 class="text-xs font-mono uppercase tracking-widest mb-4 text-zinc-400">06 — Bilan</h2>
         </div>
         <div class="md:col-span-2">
           <p class="text-zinc-400 leading-relaxed font-light">

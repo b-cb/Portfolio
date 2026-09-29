@@ -2,19 +2,21 @@
 import Layout from '../../layouts/Layout.astro';
 import ProjectHero from '../../components/ProjectHero.astro';
 import ProjectSection from '../../components/ProjectSection.astro';
+import MetricDisplay from '../../components/MetricDisplay.astro';
+import { quest3Project } from '../../data/projects';
 import { Image } from 'astro:assets';
 import jumeauQuestImage from '../../Images/jumeauquest.png';
 import jumeauQuestVideo from '../../Videos/jumeauquest.mp4';
 import pythonJumeauVideo from '../../Videos/pythonJumeau.mp4';
 ---
 
-<Layout title="Jumeau numérique Tisséo | Batiste COMET-BARTHE" backHref="/#niveau-1">
+<Layout title={`${quest3Project.title} ${quest3Project.accent} | Batiste COMET-BARTHE`} backHref="/#niveau-1">
   <ProjectHero
-    category="Projet personnel · Toulouse · Réalité virtuelle"
-    title="Jumeau numérique Tisséo"
-    accent="sur Quest 3"
-    description="Rendu immersif du réseau de transport toulousain sur Quest 3, alimenté par les données GTFS et GTFS-RT de Tisséo."
-    tags={['Quest 3', 'Unity', 'Cesium', 'Java', 'Spring Boot', 'Python', 'Pygame']}
+    category={quest3Project.categoryText}
+    title={quest3Project.title}
+    accent={quest3Project.accent}
+    description={quest3Project.description}
+    tags={quest3Project.tags}
   />
 
   <section class="twin-project-visuals" aria-label="Rendu Quest 3 et médias du projet">
@@ -83,6 +85,7 @@ import pythonJumeauVideo from '../../Videos/pythonJumeau.mp4';
             <p class="text-zinc-400 leading-relaxed font-light">
               Au démarrage, le serveur importe les fichiers GTFS — arrêts, lignes, trajets, horaires et tracés — dans une base H2. Il interroge ensuite le flux GTFS-RT de Tisséo toutes les 30 secondes et publie un état des véhicules via une API REST.
             </p>
+            <MetricDisplay metrics={[{ value: '30 s', label: 'Intervalle d’interrogation GTFS-RT' }]} />
             <p class="text-zinc-400 leading-relaxed font-light">
               Les positions de bus proviennent du flux temps réel lorsqu’elles sont disponibles. Les positions des métros A et B, absentes de ce flux, sont estimées à partir des horaires théoriques et des tracés GTFS.
             </p>

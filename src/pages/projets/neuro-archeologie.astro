@@ -5,6 +5,7 @@ import { Image } from 'astro:assets';
 import Layout from '../../layouts/Layout.astro';
 import ProjectHero from '../../components/ProjectHero.astro';
 import ProjectSection from '../../components/ProjectSection.astro';
+import MetricDisplay from '../../components/MetricDisplay.astro';
 import Artefacts from '../../Images/Stage2A.png'
 import Temple from '../../Images/Stage2ATemple.png'
  
@@ -21,12 +22,12 @@ import Temple from '../../Images/Stage2ATemple.png'
     <div class="max-w-4xl mx-auto space-y-16">
  
       <!-- Séparateur -->
-      <div class="w-full h-px" style="background: linear-gradient(90deg, transparent, rgba(120,80,220,0.3), transparent);"></div>
+      <div class="w-full h-px bg-white/10"></div>
  
       <!-- Contexte -->
       <div class="grid md:grid-cols-3 gap-8">
         <div>
-          <h2 class="text-xs font-mono uppercase tracking-widest mb-4" style="color: rgba(167,139,250,0.7);">01 — Contexte</h2>
+          <h2 class="text-xs font-mono uppercase tracking-widest mb-4 text-zinc-400">01 — Contexte</h2>
         </div>
         <div class="md:col-span-2">
           <p class="text-zinc-400 leading-relaxed font-light">
@@ -40,17 +41,17 @@ import Temple from '../../Images/Stage2ATemple.png'
       <!-- Objectifs -->
       <div class="grid md:grid-cols-3 gap-8">
         <div>
-          <h2 class="text-xs font-mono uppercase tracking-widest mb-4" style="color: rgba(167,139,250,0.7);">02 — Objectifs</h2>
+          <h2 class="text-xs font-mono uppercase tracking-widest mb-4 text-zinc-400">02 — Objectifs</h2>
         </div>
         <div class="md:col-span-2 space-y-3">
           <p class="text-zinc-400 leading-relaxed font-light">Permettre une analyse visuelle fine des relevés d'exploration recueillis en VR, à deux échelles différentes :</p>
           <ul class="space-y-2 mt-4">
             <li class="flex items-start gap-3 text-zinc-500 text-sm font-light">
-              <span class="mt-1.5 w-1 h-1 rounded-full bg-violet-500 flex-shrink-0"></span>
+              <span class="mt-1.5 w-1 h-1 rounded-full bg-zinc-500 flex-shrink-0"></span>
               Concevoir une interface web permettant d'analyser les parcours de 60 participants, issus de 3 pays différents, autour de 15 artefacts.
             </li>
             <li class="flex items-start gap-3 text-zinc-500 text-sm font-light">
-              <span class="mt-1.5 w-1 h-1 rounded-full bg-violet-500 flex-shrink-0"></span>
+              <span class="mt-1.5 w-1 h-1 rounded-full bg-zinc-500 flex-shrink-0"></span>
               Développer un moteur de rendu dédié à l'analyse des relevés de 40 participants lors de la visite virtuelle d'un temple gallo-romain dédié à Mars.
             </li>
             
@@ -63,7 +64,7 @@ import Temple from '../../Images/Stage2ATemple.png'
       <!-- Technologies -->
       <div class="grid md:grid-cols-3 gap-8">
         <div>
-          <h2 class="text-xs font-mono uppercase tracking-widest mb-4" style="color: rgba(167,139,250,0.7);">03 — Technologies</h2>
+          <h2 class="text-xs font-mono uppercase tracking-widest mb-4 text-zinc-400">03 — Technologies</h2>
         </div>
         <div class="md:col-span-2">
           <p class="text-zinc-400 leading-relaxed font-light mb-6">Une page HTML/JavaScript légère pour la visualisation des heatmaps sur les artefacts, privilégiant fluidité et accessibilité.</p>
@@ -94,12 +95,20 @@ import Temple from '../../Images/Stage2ATemple.png'
       <!-- Résultats & Apprentissages -->
       <div class="grid md:grid-cols-3 gap-8">
         <div>
-          <h2 class="text-xs font-mono uppercase tracking-widest mb-4" style="color: rgba(167,139,250,0.7);">04 — Résultats</h2>
+          <h2 class="text-xs font-mono uppercase tracking-widest mb-4 text-zinc-400">04 — Résultats</h2>
         </div>
         <div class="md:col-span-2">
           <p class="text-zinc-400 leading-relaxed font-light">
               Les résultats ont dépassé les attentes initiales : les pages consacrées aux artefacts restent fluides même en affichant simultanément les relevés des 15 artefacts et des 60 participants. Le moteur de rendu C++ tourne quant à lui à 90 FPS constants, avec un temps de recalcul inférieur à 3 secondes lors des changements de shader — l'un des principaux défis techniques du projet.
           </p>
+          <MetricDisplay metrics={[
+            { value: '15', label: 'Artefacts affichés' },
+            { value: '60', label: 'Participants · Web' },
+            { value: '3', label: 'Pays · Web' },
+            { value: '40', label: 'Participants · Temple VR' },
+            { value: '90 FPS', label: 'Rendu C++' },
+            { value: '< 3 s', label: 'Recalcul shader' },
+          ]} />
         </div>
       </div>
  
@@ -113,7 +122,7 @@ import Temple from '../../Images/Stage2ATemple.png'
   <section class="px-6 pb-24" style="background: #09090b;">
     <div class="max-w-4xl mx-auto flex flex-col items-center text-center gap-6 pt-4">
  
-      <div class="w-12 h-px" style="background: rgba(167,139,250,0.4);"></div>
+      <div class="w-12 h-px bg-white/20"></div>
  
       <p class="text-zinc-500 text-sm font-light max-w-md">
         Ce projet fait partie de mon parcours de recherche en réalité étendue et visualisation de données.
@@ -121,7 +130,7 @@ import Temple from '../../Images/Stage2ATemple.png'
  
       <a href="/#niveau-1"
         class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-mono uppercase tracking-widest transition-colors duration-300"
-        style="background: rgba(120,80,220,0.12); border: 1px solid rgba(120,80,220,0.3); color: rgba(167,139,250,0.9);">
+        style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.12); color: #d4d4d8;">
         ← Retour au portfolio
       </a>
  

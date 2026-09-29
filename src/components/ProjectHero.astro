@@ -1,5 +1,5 @@
 ---
-import AnimatedBackground from './AnimatedBackground.astro';
+import CalibrationGrid from './CalibrationGrid.astro';
 import ProjectMedia from './ProjectMedia.astro';
 
 interface Props {
@@ -18,8 +18,9 @@ interface Props {
 const { category, title, accent, description, tags, image, video, poster, imageAlt = title, imageFit = 'cover' } = Astro.props;
 ---
 
-<section class="project-hero reveal" data-ambient>
-  <AnimatedBackground />
+<section class="project-hero reveal">
+  <CalibrationGrid />
+  <p class="project-hero__coordinate" aria-hidden="true">CAM_01 / WORLD SPACE</p>
   <div class="project-hero__inner">
     <p class="eyebrow">{category}</p>
     <h1>{title}<br /><span>{accent}</span></h1>

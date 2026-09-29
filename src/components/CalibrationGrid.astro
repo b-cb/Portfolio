@@ -1,0 +1,12 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div class:list={['calibration-grid', className]} aria-hidden="true">
+  <span class="calibration-grid__coordinate calibration-grid__coordinate--top">X: 0000&nbsp; Y: 0000</span>
+  <span class="calibration-grid__coordinate calibration-grid__coordinate--bottom">CAMERA / CALIBRATION</span>
+</div>

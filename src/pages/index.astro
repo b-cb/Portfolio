@@ -1,19 +1,9 @@
 ---
 // src/pages/index.astro
 import Layout from '../layouts/Layout.astro';
-
-import { Image } from 'astro:assets'; 
-import History from '../Images/History.png';
-import Apprentissage from '../Images/Apprentissage.jpg';
-import Stage2A from '../Images/Stage2A.png';
-import ProjetImage from '../Images/ProjetImage.png';
-import Appliweb from '../Images/Appliweb.png';
-import Golf from '../Images/golf.png';
-import VR from '../Images/VR.png';
-
+import CalibrationGrid from '../components/CalibrationGrid.astro';
 import { projects } from '../data/projects';
 import ProjectCard from '../components/ProjectCard.astro';
-import AnimatedBackground from '../components/AnimatedBackground.astro';
 
 const academiques = projects.filter(p => p.group === 'academique');
 const persos = projects.filter(p => p.group === 'perso');
@@ -31,13 +21,11 @@ const skillCategories = [
 
 <Layout title="Batiste COMET-BARTHE | Portfolio">
   <section class="h-screen flex flex-col items-center justify-center relative overflow-hidden hero-shell" id="hero-section" aria-label="Hero portfolio">
-    <div class="ambient-glow" aria-hidden="true"></div>
-    <div class="absolute inset-0 pointer-events-none opacity-[0.04] grid-pattern" aria-hidden="true"></div>
-    <AnimatedBackground />
+    <CalibrationGrid />
 
     <div class="text-center px-4 will-change-transform z-10 relative" id="hero-content">
       <div class="inline-flex items-center gap-2 mb-8 px-4 py-2 text-xs font-mono tracking-widest uppercase border border-white/10 bg-black/20 text-[var(--accent)] backdrop-blur-sm">
-        <span class="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse"></span>
+        <span class="w-1.5 h-1.5 rounded-full bg-zinc-400"></span>
         Disponible — Stage terminé · IRISA / Inria
       </div>
 
@@ -56,7 +44,7 @@ const skillCategories = [
       <div class="mt-14 flex flex-col items-center gap-3">
         <a href="#a-propos" class="group flex flex-col items-center gap-2 text-zinc-500 hover:text-zinc-300 transition-colors duration-300 cursor-pointer">
           <span class="text-xs font-mono uppercase tracking-[0.3em]">Découvrir</span>
-          <svg class="w-4 h-4 animate-bounce opacity-60 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <svg class="w-4 h-4 opacity-60 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
           </svg>
         </a>
@@ -71,7 +59,7 @@ const skillCategories = [
       
       <!-- En-tête de section -->
       <div class="mb-16 flex flex-col items-center text-center">
-        <span class="text-xs font-mono uppercase tracking-widest mb-3" style="color: rgba(167,139,250,0.7);">À propos</span>
+        <span class="text-xs font-mono uppercase tracking-widest mb-3 text-zinc-500">À propos</span>
         <h2 class="text-3xl md:text-5xl font-medium tracking-tight">Profil &amp; Parcours</h2>
       </div>
 
@@ -86,10 +74,10 @@ const skillCategories = [
 
         <!-- Puces de compétences centrées -->
         <div class="pt-4 flex flex-wrap justify-center gap-3">
-          <span class="px-4 py-1.5 text-xs rounded-full font-mono cursor-default transition-colors" style="background: rgba(99,60,180,0.15); border: 1px solid rgba(99,60,180,0.35); color: rgba(180,150,255,0.9);">VR / XR</span>
-          <span class="px-4 py-1.5 text-xs rounded-full font-mono cursor-default transition-colors" style="background: rgba(99,60,180,0.15); border: 1px solid rgba(99,60,180,0.35); color: rgba(180,150,255,0.9);">Computer Graphics</span>
-          <span class="px-4 py-1.5 text-xs rounded-full font-mono cursor-default transition-colors" style="background: rgba(99,60,180,0.15); border: 1px solid rgba(99,60,180,0.35); color: rgba(180,150,255,0.9);">Linux Native</span>
-          <span class="px-4 py-1.5 text-xs rounded-full font-mono cursor-default transition-colors" style="background: rgba(99,60,180,0.15); border: 1px solid rgba(99,60,180,0.35); color: rgba(180,150,255,0.9);">Anglais C1</span>
+          <span class="about-skill">VR / XR</span>
+          <span class="about-skill">Computer Graphics</span>
+          <span class="about-skill">Linux Native</span>
+          <span class="about-skill">Anglais C1</span>
         </div>
       </div>
 
@@ -106,7 +94,7 @@ const skillCategories = [
           <!-- Prépa (environ 35% de la durée) -->
           <div class="absolute top-1/2 -translate-y-[0.5px] left-0 w-[35%] h-[2px] bg-zinc-500"></div>
           <!-- ENSEEIHT (environ 65% de la durée) -->
-          <div class="absolute top-1/2 -translate-y-[0.5px] left-[35%] w-[65%] h-[2px] bg-emerald-500"></div>
+          <div class="absolute top-1/2 -translate-y-[0.5px] left-[35%] w-[65%] h-[2px] bg-zinc-500"></div>
           
           <!-- Séparateur vertical discret -->
           <div class="absolute top-1/2 left-[35%] h-8 w-px bg-zinc-600 -translate-y-1/2"></div>
@@ -122,8 +110,8 @@ const skillCategories = [
 
           <!-- Étape 2 : ENSEEIHT (Au-dessus, à droite) -->
           <div class="absolute top-0 left-[35%] w-[65%] h-1/2 flex flex-col justify-end pb-6 pl-8 group cursor-default">
-            <div class="border-l border-transparent group-hover:border-emerald-500 transition-colors pl-2">
-              <span class="text-xs font-mono text-emerald-400/80 tracking-widest">2024 — 2027</span>
+            <div class="border-l border-transparent group-hover:border-zinc-500 transition-colors pl-2">
+              <span class="text-xs font-mono text-zinc-400 tracking-widest">2024 — 2027</span>
               <h4 class="text-lg font-medium text-zinc-200 mt-2">Ingénierie Image &amp; Multimédia</h4>
               <p class="text-sm text-zinc-500 mt-1 font-light">ENSEEIHT (Toulouse INP)</p>
             </div>
@@ -132,12 +120,12 @@ const skillCategories = [
           <!-- Étape 3 : Stage (En-dessous, accroché à la ligne ENSEEIHT) -->
           <div class="absolute top-1/2 left-[70%] w-[30%] h-1/2 flex flex-col justify-start pt-6 pl-0 group cursor-default">
             <!-- Le point sur la ligne -->
-            <div class="absolute top-0 left-0 w-3 h-3 bg-blue-500 rounded-full -translate-y-[6px] -translate-x-[6px] ring-4 ring-black shadow-[0_0_12px_rgba(59,130,246,0.5)] group-hover:scale-125 transition-transform z-10"></div>
+            <div class="absolute top-0 left-0 w-3 h-3 bg-zinc-400 rounded-full -translate-y-[6px] -translate-x-[6px] ring-4 ring-black group-hover:scale-110 transition-transform z-10"></div>
             <!-- Petit trait de liaison vertical vers le texte -->
-            <div class="absolute top-0 left-0 w-px h-6 bg-blue-500/50 -translate-x-[0.5px]"></div>
+            <div class="absolute top-0 left-0 w-px h-6 bg-zinc-500 -translate-x-[0.5px]"></div>
             <!-- Contenu du stage -->
-            <div class="pl-4 mt-2 border-l border-transparent group-hover:border-blue-900 transition-colors">
-              <span class="text-xs font-mono text-blue-400/80 tracking-widest">ÉTÉ 2026</span>
+            <div class="pl-4 mt-2 border-l border-transparent group-hover:border-zinc-500 transition-colors">
+              <span class="text-xs font-mono text-zinc-400 tracking-widest">ÉTÉ 2026</span>
               <h4 class="text-lg font-medium text-zinc-200 mt-1">Stage : Neuro-archéologie VR</h4>
               <p class="text-sm text-zinc-500 mt-1 font-light">IRISA / Inria (Rennes)</p>
             </div>
@@ -156,15 +144,15 @@ const skillCategories = [
           </div>
 
           <!-- Période 2 : ENSEEIHT -->
-          <div class="border-l-2 border-emerald-500 pl-6 pb-4 relative">
-            <span class="text-xs font-mono text-emerald-400/80 tracking-widest">2024 — 2027</span>
+          <div class="border-l-2 border-zinc-500 pl-6 pb-4 relative">
+            <span class="text-xs font-mono text-zinc-400 tracking-widest">2024 — 2027</span>
             <h4 class="text-lg font-medium text-zinc-200 mt-1">Ingénierie Image &amp; Multimédia</h4>
             <p class="text-sm text-zinc-500 font-light mt-1 mb-8">ENSEEIHT (Toulouse INP)</p>
 
             <!-- Événement 3 : Stage -->
             <div class="relative mt-6">
-              <span class="absolute -left-[31px] top-1 h-3 w-3 rounded-full bg-blue-500 ring-4 ring-black shadow-[0_0_10px_rgba(44,16,221,0.8)]"></span>
-              <span class="text-xs font-mono text-blue-400/80 tracking-widest">ÉTÉ 2026</span>
+              <span class="absolute -left-[31px] top-1 h-3 w-3 rounded-full bg-zinc-400 ring-4 ring-black"></span>
+              <span class="text-xs font-mono text-zinc-400 tracking-widest">ÉTÉ 2026</span>
               <h4 class="text-lg font-medium text-zinc-200 mt-1">Stage : Neuro-archéologie VR</h4>
               <p class="text-sm text-zinc-500 font-light mt-1">IRISA / Inria (Rennes)</p>
             </div>
@@ -177,7 +165,7 @@ const skillCategories = [
   </section>
 
   <!-- BANDEAU COMPÉTENCES -->
-  <section class="overflow-hidden border-y border-white/5 bg-black/50 py-5 backdrop-blur-md" aria-label="Compétences techniques">
+  <section class="overflow-hidden border-y border-white/5 bg-black py-5" aria-label="Compétences techniques">
     <div class="skills-marquee flex w-max hover:[animation-play-state:paused]">
       {[false, true].map((isDuplicate) => (
         <ul
@@ -210,107 +198,38 @@ const skillCategories = [
 
       <!-- Titre de section -->
       <div class="mb-10 flex flex-col items-center text-center will-change-transform" id="projets-titre">
-        <span class="text-xs font-mono uppercase tracking-widest mb-3" style="color: rgba(167,139,250,0.7);">Portfolio</span>
+        <span class="text-xs font-mono uppercase tracking-widest mb-3 text-zinc-500">Portfolio</span>
         <h2 class="text-3xl md:text-5xl font-medium tracking-tight text-white">Projets &amp; Découvertes</h2>
         <p class="mt-4 text-zinc-500 text-sm font-light max-w-lg">Découvrez mes travaux académiques et personnels.</p>
       </div>
 
-      <!-- ═══════════════════════════════════════════════════ -->
-      <!-- GRAND PANNEAU PROJETS (enveloppe les sous-panneaux) -->
-      <!-- ═══════════════════════════════════════════════════ -->
-      <div class="rounded-3xl overflow-hidden" id="projets-panneaux"
-        style="border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.02);">
-
-        <!-- Header du grand panneau → lien vers /projets -->
-        <a href="/projets" class="group flex items-center justify-between px-8 py-6 transition-colors duration-300 hover:bg-white/[0.03]"
-          style="border-bottom: 1px solid rgba(255,255,255,0.06);">
-          <div class="flex items-center gap-4">
-            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-              style="background: rgba(167,139,250,0.12); border: 1px solid rgba(167,139,250,0.2);">
-              <svg class="w-5 h-5 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
-              </svg>
-            </div>
-            <div>
-              <p class="text-white font-medium group-hover:text-violet-200 transition-colors">Tous les projets</p>
-              <p class="text-zinc-600 text-xs font-mono mt-0.5">{total} projets · Voir la page complète</p>
-            </div>
-          </div>
-          <div class="flex items-center gap-2 text-zinc-600 group-hover:text-violet-400 transition-colors">
-            <span class="text-xs font-mono hidden sm:block">Ouvrir</span>
-            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-            </svg>
-          </div>
+      <div class="home-projects" id="projets-panneaux">
+        <a href="/projets" class="home-projects__all">
+          <span>Tous les projets <span class="home-projects__count">{total} projets · Voir la page complète</span></span>
+          <span class="font-mono text-xs">Ouvrir ↗</span>
         </a>
 
-        <!-- Corps : les deux sous-panneaux -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 items-start">
-
-          <!-- ══════════════════════════════════════════ -->
-          <!-- SOUS-PANNEAU GAUCHE : Académiques          -->
-          <!-- ══════════════════════════════════════════ -->
-          <div class="panneau transition-all duration-500"
-            style="border-right: 1px solid rgba(255,255,255,0.06);">
-
-            <div class="panneau-header w-full p-8 flex items-center justify-between text-left group"
-              data-cible="panneau-academique" aria-expanded="true">
-              <div>
-                <span class="text-xs font-mono uppercase tracking-widest mb-2 block" style="color: rgba(167,139,250,0.7);">Catégorie 01</span>
-                <h3 class="text-xl font-medium text-white group-hover:text-violet-200 transition-colors">Académiques</h3>
-                <p class="text-sm text-zinc-500 mt-1 font-light">Projets scolaires &amp; universitaires · {countAca} projets</p>
-              </div>
-            </div>
-
-            <div class="panneau-contenu overflow-hidden" id="panneau-academique"
-              style="max-height: 2000px; transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);">
-              <div class="px-6 pb-8 grid grid-cols-1 sm:grid-cols-2 gap-4"
-                style="border-top: 1px solid rgba(255,255,255,0.04); padding-top: 2rem;">
-
-                {academiques.map(project => (
-                  <ProjectCard project={project} />
-                ))}
-                
-                {countAca % 2 !== 0 && (
-                  <ProjectCard placeholder />
-                )}
-
-              </div>
-            </div>
+        <section class="home-project-group" aria-labelledby="home-academic-title">
+          <header class="home-project-group__header">
+            <span class="eyebrow">Catégorie 01</span>
+            <h3 id="home-academic-title">Académiques</h3>
+            <p>Projets scolaires &amp; universitaires · {countAca} projets</p>
+          </header>
+          <div class="projects-grid">
+            {academiques.map(project => <ProjectCard project={project} />)}
           </div>
+        </section>
 
-          <!-- ══════════════════════════════════════════ -->
-          <!-- SOUS-PANNEAU DROIT : Expériences Perso.   -->
-          <!-- ══════════════════════════════════════════ -->
-          <div class="panneau transition-all duration-500">
-
-            <div class="panneau-header w-full p-8 flex items-center justify-between text-left group"
-              data-cible="panneau-perso" aria-expanded="true">
-              <div>
-                <span class="text-xs font-mono uppercase tracking-widest mb-2 block" style="color: rgba(147,197,253,0.7);">Catégorie 02</span>
-                <h3 class="text-xl font-medium text-white group-hover:text-blue-200 transition-colors">Expériences Perso.</h3>
-                <p class="text-sm text-zinc-500 mt-1 font-light">Projets personnels &amp; explorations · {countPerso} projets</p>
-              </div>
-            </div>
-
-            <div class="panneau-contenu overflow-hidden" id="panneau-perso"
-              style="max-height: 2000px; transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);">
-              <div class="px-6 pb-8 grid grid-cols-1 sm:grid-cols-2 gap-4"
-                style="border-top: 1px solid rgba(255,255,255,0.04); padding-top: 2rem;">
-
-                {persos.map(project => (
-                  <ProjectCard project={project} />
-                ))}
-
-                {countPerso % 2 !== 0 && (
-                  <ProjectCard placeholder />
-                )}
-
-              </div>
-            </div>
+        <section class="home-project-group" aria-labelledby="home-personal-title">
+          <header class="home-project-group__header">
+            <span class="eyebrow">Catégorie 02</span>
+            <h3 id="home-personal-title">Expériences Perso.</h3>
+            <p>Projets personnels &amp; explorations · {countPerso} projets</p>
+          </header>
+          <div class="projects-grid">
+            {persos.map(project => <ProjectCard project={project} />)}
           </div>
-
-        </div>
+        </section>
       </div>
     </div>
   </section>
@@ -318,6 +237,54 @@ const skillCategories = [
 </Layout>
 
 <style>
+  .about-skill {
+    border: 1px solid rgb(255 255 255 / 12%);
+    padding: 0.375rem 1rem;
+    color: #a1a1aa;
+    font: 0.75rem/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+
+  .home-projects {
+    border-top: 1px solid rgb(255 255 255 / 12%);
+  }
+
+  .home-projects__all {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 1px solid rgb(255 255 255 / 10%);
+    padding: 1.25rem 0;
+    color: #e4e4e7;
+    font-size: 0.9rem;
+  }
+
+  .home-projects__all:hover { color: white; }
+  .home-projects__count {
+    display: block;
+    margin-top: 0.25rem;
+    color: #71717a;
+    font: 0.7rem/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+
+  .home-project-group {
+    padding-block: clamp(2rem, 5vw, 4rem);
+    border-bottom: 1px solid rgb(255 255 255 / 10%);
+  }
+
+  .home-project-group__header { margin-bottom: 1.5rem; }
+  .home-project-group__header h3 {
+    margin-top: 0.5rem;
+    color: #e4e4e7;
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+  .home-project-group__header p {
+    margin-top: 0.35rem;
+    color: #71717a;
+    font-size: 0.8rem;
+  }
+
   .skills-marquee {
     animation: skills-marquee-scroll 36s linear infinite;
     mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
@@ -335,76 +302,12 @@ const skillCategories = [
       animation: none;
     }
   }
+
+  @media (max-width: 760px) {
+    .home-projects .projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (max-width: 540px) {
+    .home-projects .projects-grid { grid-template-columns: 1fr; }
+  }
 </style>
-
-<script>
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  // 1. TRANSITION HERO -> PRÉSENTATION
-  gsap.to("#hero-content", {
-    scrollTrigger: {
-      trigger: "#hero-section",
-      start: "top top",
-      end: "bottom top",
-      scrub: 1.5,
-    },
-    opacity: 0,
-    y: -50,
-    scale: 0.95,
-  });
-
-  // Entrée de la Présentation
-  gsap.from("#about-content", {
-    scrollTrigger: {
-      trigger: "#a-propos",
-      start: "top 85%",
-      end: "top 30%",
-      scrub: 1.5,
-    },
-    opacity: 0,
-    y: 60,
-  });
-
-  // Entrée du Titre des Projets
-  gsap.from("#projets-titre", {
-    scrollTrigger: {
-      trigger: "#niveau-1",
-      start: "top 85%",
-      end: "top 45%",
-      scrub: 1.5,
-    },
-    opacity: 0,
-    scale: 0.9,
-  });
-
-  // Entrée des panneaux
-  gsap.from("#projets-panneaux", {
-    scrollTrigger: {
-      trigger: "#projets-panneaux",
-      start: "top 85%",
-      end: "top 50%",
-      scrub: 1.5,
-    },
-    opacity: 0,
-    y: 30,
-  });
-
-  document.querySelectorAll(".panneau-header").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const cibleId = (btn as HTMLElement).dataset.cible!;
-      const contenu = document.getElementById(cibleId)!;
-      const isOpen = btn.getAttribute("aria-expanded") === "true";
-
-      if (isOpen) {
-        contenu.style.maxHeight = "0";
-        btn.setAttribute("aria-expanded", "false");
-      } else {
-        contenu.style.maxHeight = contenu.scrollHeight + 200 + "px";
-        btn.setAttribute("aria-expanded", "true");
-      }
-    });
-  });
-</script>

@@ -1,6 +1,7 @@
 ---
 // src/pages/projets/index.astro
 import Layout from '../../layouts/Layout.astro';
+import CalibrationGrid from '../../components/CalibrationGrid.astro';
 import { projects } from '../../data/projects';
 import ProjectCard from '../../components/ProjectCard.astro';
 
@@ -12,7 +13,8 @@ const countPerso = persos.length;
 
 <Layout title="Projets & Découvertes | Batiste COMET-BARTHE" backHref="/#niveau-1">
   <section class="projects-page__hero">
-    <div class="max-w-6xl mx-auto">
+    <CalibrationGrid />
+    <div class="projects-page__hero-inner max-w-6xl mx-auto">
       <span class="eyebrow">Portfolio</span>
       <h1 class="page-title">
         Projets &amp;<br/>
@@ -26,7 +28,7 @@ const countPerso = persos.length;
 
   <section class="projects-page__content">
     <div class="projects-page__grid">
-      <div class="project-panel" style="--panel-accent: rgba(167,139,250,0.7);">
+      <div class="project-panel">
         <div class="project-panel__header">
           <div>
             <span class="eyebrow">Catégorie 01</span>
@@ -37,18 +39,12 @@ const countPerso = persos.length;
 
         <div class="project-panel__body" id="panneau-academique">
           <div class="projects-grid">
-            {academiques.map(project => (
-              <ProjectCard project={project} />
-            ))}
-
-            {countAca % 2 !== 0 && (
-              <ProjectCard placeholder />
-            )}
+            {academiques.map(project => <ProjectCard project={project} />)}
           </div>
         </div>
       </div>
 
-      <div class="project-panel" style="--panel-accent: rgba(147,197,253,0.7);">
+      <div class="project-panel">
         <div class="project-panel__header">
           <div>
             <span class="eyebrow">Catégorie 02</span>
@@ -59,34 +55,10 @@ const countPerso = persos.length;
 
         <div class="project-panel__body" id="panneau-perso">
           <div class="projects-grid">
-            {persos.map(project => (
-              <ProjectCard project={project} />
-            ))}
-
-            {countPerso % 2 !== 0 && (
-              <ProjectCard placeholder />
-            )}
+            {persos.map(project => <ProjectCard project={project} />)}
           </div>
         </div>
       </div>
     </div>
   </section>
 </Layout>
-
-<script>
-  document.querySelectorAll(".panneau-header").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const cibleId = (btn as HTMLElement).dataset.cible!;
-      const contenu = document.getElementById(cibleId)!;
-      const isOpen = btn.getAttribute("aria-expanded") === "true";
-
-      if (isOpen) {
-        contenu.style.maxHeight = "0";
-        btn.setAttribute("aria-expanded", "false");
-      } else {
-        contenu.style.maxHeight = contenu.scrollHeight + 200 + "px";
-        btn.setAttribute("aria-expanded", "true");
-      }
-    });
-  });
-</script>

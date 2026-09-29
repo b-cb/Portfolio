@@ -1,7 +1,6 @@
 ---
-// src/components/ProjectCard.astro
 import { Image } from 'astro:assets';
-import type { Project } from '../data/projects';
+import { projects, type Project } from '../data/projects';
 
 interface Props {
   project?: Project;
@@ -9,160 +8,51 @@ interface Props {
 }
 
 const { project, placeholder = false } = Astro.props;
-
-// Thèmes de couleurs
-const themeStyles = {
-  violet: {
-    borderColor: "rgba(120,80,220,0.2)",
-    bgGradStart: "rgba(18,12,30,0.9)",
-    headerBgStart: "rgba(120,80,220,0.1)",
-    headerBgEnd: "rgba(10,8,18,0.9)",
-    headerBorder: "rgba(120,80,220,0.15)",
-    glowColor: "rgba(120,80,220,0.25)",
-    iconBg: "rgba(120,80,220,0.3)",
-    iconBorder: "rgba(167,139,250,0.3)",
-    iconColor: "text-violet-300",
-    dotColor: "bg-violet-400",
-    categoryTextColor: "rgba(167,139,250,0.7)",
-    titleHoverColor: "group-hover:text-violet-200",
-    tagBgColor: "rgba(120,80,220,0.15)",
-    tagTextColor: "rgba(167,139,250,0.8)"
-  },
-  amber: {
-    borderColor: "rgba(245, 158, 11, 0.2)",
-    bgGradStart: "rgba(30,20,10,0.9)",
-    headerBgStart: "rgba(245, 158, 11, 0.1)",
-    headerBgEnd: "rgba(15, 10, 8, 0.9)",
-    headerBorder: "rgba(245, 158, 11, 0.15)",
-    glowColor: "rgba(245, 158, 11, 0.25)",
-    iconBg: "rgba(245, 158, 11, 0.3)",
-    iconBorder: "rgba(252, 211, 77, 0.3)",
-    iconColor: "text-amber-300",
-    dotColor: "bg-amber-400",
-    categoryTextColor: "rgba(252, 211, 77, 0.7)",
-    titleHoverColor: "group-hover:text-amber-200",
-    tagBgColor: "rgba(245, 158, 11, 0.15)",
-    tagTextColor: "rgba(252, 211, 77, 0.8)"
-  },
-  teal: {
-    borderColor: "rgba(20, 184, 166, 0.2)",
-    bgGradStart: "rgba(10,25,25,0.9)",
-    headerBgStart: "rgba(20, 184, 166, 0.1)",
-    headerBgEnd: "rgba(8, 15, 14, 0.9)",
-    headerBorder: "rgba(20, 184, 166, 0.15)",
-    glowColor: "rgba(20, 184, 166, 0.25)",
-    iconBg: "rgba(20, 184, 166, 0.3)",
-    iconBorder: "rgba(94, 234, 212, 0.3)",
-    iconColor: "text-teal-300",
-    dotColor: "bg-teal-400",
-    categoryTextColor: "rgba(94, 234, 212, 0.7)",
-    titleHoverColor: "group-hover:text-teal-200",
-    tagBgColor: "rgba(20, 184, 166, 0.15)",
-    tagTextColor: "rgba(94, 234, 212, 0.8)"
-  },
-  emerald: {
-    borderColor: "rgba(16,185,129,0.2)",
-    bgGradStart: "rgba(10,20,18,0.9)",
-    headerBgStart: "rgba(16,185,129,0.08)",
-    headerBgEnd: "rgba(10,12,18,0.9)",
-    headerBorder: "rgba(16,185,129,0.15)",
-    glowColor: "rgba(16,185,129,0.2)",
-    iconBg: "rgba(16,185,129,0.25)",
-    iconBorder: "rgba(110,231,183,0.3)",
-    iconColor: "text-emerald-300",
-    dotColor: "bg-emerald-400",
-    categoryTextColor: "rgba(52, 211, 153, 0.7)",
-    titleHoverColor: "group-hover:text-emerald-200",
-    tagBgColor: "rgba(16,185,129,0.12)",
-    tagTextColor: "rgba(110,231,183,0.8)"
-  },
-  blue: {
-    borderColor: "rgba(59,130,246,0.2)",
-    bgGradStart: "rgba(10,14,24,0.9)",
-    headerBgStart: "rgba(59,130,246,0.08)",
-    headerBgEnd: "rgba(10,10,18,0.9)",
-    headerBorder: "rgba(59,130,246,0.15)",
-    glowColor: "rgba(59,130,246,0.2)",
-    iconBg: "rgba(59,130,246,0.25)",
-    iconBorder: "rgba(147,197,253,0.3)",
-    iconColor: "text-blue-300",
-    dotColor: "bg-blue-400",
-    categoryTextColor: "rgba(96, 165, 250, 0.7)",
-    titleHoverColor: "group-hover:text-blue-200",
-    tagBgColor: "rgba(59,130,246,0.12)",
-    tagTextColor: "rgba(147,197,253,0.8)"
-  },
-  pink: {
-    borderColor: "rgba(244,114,182,0.2)",
-    bgGradStart: "rgba(20,10,18,0.9)",
-    headerBgStart: "rgba(244,114,182,0.07)",
-    headerBgEnd: "rgba(10,8,18,0.9)",
-    headerBorder: "rgba(244,114,182,0.15)",
-    glowColor: "rgba(244,114,182,0.2)",
-    iconBg: "rgba(244,114,182,0.2)",
-    iconBorder: "rgba(249,168,212,0.3)",
-    iconColor: "text-pink-300",
-    dotColor: "bg-pink-400",
-    categoryTextColor: "rgba(244, 114, 182, 0.7)",
-    titleHoverColor: "group-hover:text-pink-200",
-    tagBgColor: "rgba(244,114,182,0.12)",
-    tagTextColor: "rgba(249,168,212,0.8)"
-  }
-};
-
-const theme = project ? themeStyles[project.theme] : null;
-const sizeClass = {
-  'neuro-archeologie': 'project-card--tall',
-  'entrainement-reseau': 'project-card--wide',
-  'edge-preserving': 'project-card--tall',
-  'appli-tarot': 'project-card--wide',
-  'quest3': 'project-card--tall',
-  'globe-historique': 'project-card--wide',
-  'tracker-golf': 'project-card--tall',
-};
-const cardClass = project ? sizeClass[project.id] ?? 'project-card--standard' : 'project-card--standard';
+const projectIndex = project ? Math.max(1, projects.findIndex(({ id }) => id === project.id) + 1) : 0;
 ---
 
-{placeholder || !project || !theme ? (
-  <div class="project-card project-card--placeholder">
-    <div class="h-36 flex items-center justify-center text-zinc-700 text-xs font-mono uppercase tracking-widest border-b border-white/10">[ À venir ]</div>
-    <div class="p-5 flex-grow flex flex-col">
-      <h4 class="font-medium text-sm text-zinc-600">Projet à définir</h4>
-      <p class="text-xs text-zinc-700 mt-1.5 font-light flex-grow">Placeholder — à remplir</p>
+{placeholder || !project ? (
+  <div class="project-card project-card--placeholder" aria-hidden="true">
+    <div class="project-card__frame">
+      <span class="project-card__corner project-card__corner--tl"></span>
+      <span class="project-card__corner project-card__corner--tr"></span>
+      <span class="project-card__corner project-card__corner--bl"></span>
+      <span class="project-card__corner project-card__corner--br"></span>
+    </div>
+    <div class="project-card__media"></div>
+    <div class="project-card__content">
+      <span class="project-card__code">PROJECT_--</span>
+      <h3>Projet à définir</h3>
     </div>
   </div>
 ) : (
-  <a href={project.href} class={`project-card group ${cardClass}`}>
-    <div class="project-card__media">
-      {project.image ? (
-        <Image 
-          src={project.image} 
-          alt={project.title} 
-          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" 
-        />
-      ) : (
-        <span class="z-10 select-none text-xs font-mono uppercase tracking-widest opacity-50" style={`color: ${theme.categoryTextColor};`}>[ Image à venir ]</span>
-      )}
-
-      <div class="project-card__icon">
-        <svg class={`w-3 h-3 ${theme.iconColor}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-        </svg>
-      </div>
+  <a href={project.href} class="project-card group">
+    <div class="project-card__frame" aria-hidden="true">
+      <span class="project-card__corner project-card__corner--tl"></span>
+      <span class="project-card__corner project-card__corner--tr"></span>
+      <span class="project-card__corner project-card__corner--bl"></span>
+      <span class="project-card__corner project-card__corner--br"></span>
     </div>
 
-    <div class="p-5 flex-grow flex flex-col">
-      <div class="flex items-center gap-2 mb-2 shrink-0">
-        <span class={`w-1.5 h-1.5 rounded-full ${theme.dotColor}`}></span>
-        <span class="text-xs font-mono tracking-widest" style={`color: ${theme.categoryTextColor};`}>{project.categoryText}</span>
+    <div class="project-card__media">
+      {project.image ? (
+        <Image src={project.image} alt={`${project.title}${project.accent ? ` ${project.accent}` : ''}`} class="project-card__image" />
+      ) : (
+        <span class="project-card__image-placeholder">IMAGE / NON DISPONIBLE</span>
+      )}
+      <span class="project-card__index" aria-hidden="true">DET. {String(projectIndex).padStart(2, '0')}</span>
+    </div>
+
+    <div class="project-card__content">
+      <div class="project-card__meta">
+        <span class="project-card__code">PROJET_{String(projectIndex).padStart(2, '0')}</span>
+        <span>{project.categoryText}</span>
       </div>
-      <h4 class={`font-semibold text-sm text-white transition-colors ${theme.titleHoverColor} shrink-0`}>{project.title}</h4>
-      <p class="text-xs text-zinc-500 mt-1.5 font-light leading-relaxed flex-grow">{project.description}</p>
-      <div class="flex flex-wrap gap-1.5 mt-4 shrink-0">
-        {project.tags.map(tag => (
-          <span class="text-[10px] font-mono text-[var(--accent)]">{tag}</span>
-        ))}
-      </div>
+      <h3>{project.title}{project.accent && ` ${project.accent}`}</h3>
+      <p>{project.description}</p>
+      <ul class="project-card__tags" aria-label="Technologies utilisées">
+        {project.tags.map((tag) => <li>{tag}</li>)}
+      </ul>
     </div>
   </a>
 )}

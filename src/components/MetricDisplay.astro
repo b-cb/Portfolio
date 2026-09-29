@@ -1,0 +1,52 @@
+---
+interface Metric {
+  value: string;
+  label: string;
+}
+
+interface Props {
+  metrics: Metric[];
+}
+
+const { metrics } = Astro.props;
+---
+
+<dl class="metric-display" aria-label="Chiffres clés du projet">
+  {metrics.map(({ value, label }) => (
+    <div class="metric-display__item">
+      <dt class="metric-display__value">{value}</dt>
+      <dd class="metric-display__label">{label}</dd>
+    </div>
+  ))}
+</dl>
+
+<style>
+  .metric-display {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+    gap: 1px;
+    margin: 0;
+    border: 1px solid rgb(255 255 255 / 8%);
+    background: rgb(255 255 255 / 8%);
+  }
+
+  .metric-display__item {
+    min-width: 0;
+    background: #09090b;
+    padding: 1rem 1.1rem;
+  }
+
+  .metric-display__value {
+    color: #e4e4e7;
+    font: 500 clamp(1.35rem, 2.5vw, 2rem)/1.1 ui-monospace, SFMono-Regular, Menlo, monospace;
+    letter-spacing: -0.06em;
+  }
+
+  .metric-display__label {
+    margin: 0.55rem 0 0;
+    color: #71717a;
+    font: 0.62rem/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+</style>
