@@ -21,6 +21,12 @@ const total = projects.length;
 const countAca = academiques.length;
 const countPerso = persos.length;
 
+const skillCategories = [
+  { name: 'XR & Vision', skills: ['Unity', 'OpenXR', 'OpenCV', 'YOLO', 'Eye-tracking'] },
+  { name: 'Core & System', skills: ['C++', 'C#', 'Python', 'Linux Native', 'Java', 'Kotlin'] },
+  { name: 'Web & Tools', skills: ['Astro', 'Tailwind CSS', 'Git', 'Spring Boot', 'MATLAB', 'Blender'] },
+];
+
 ---
 
 <Layout title="Batiste COMET-BARTHE | Portfolio">
@@ -169,6 +175,33 @@ const countPerso = persos.length;
       </div>
     </div>
   </section>
+
+  <!-- BANDEAU COMPÉTENCES -->
+  <section class="overflow-hidden border-y border-white/5 bg-black/50 py-5 backdrop-blur-md" aria-label="Compétences techniques">
+    <div class="skills-marquee flex w-max hover:[animation-play-state:paused]">
+      {[false, true].map((isDuplicate) => (
+        <ul
+          class="flex shrink-0 items-center gap-3 pr-6"
+          role="list"
+          aria-hidden={isDuplicate ? 'true' : undefined}
+        >
+          {skillCategories.map((category, index) => (
+            <li class={`flex shrink-0 items-center gap-3 ${index > 0 ? 'ml-6' : ''}`}>
+              <span class="font-mono text-xs uppercase tracking-[0.2em] text-zinc-600">
+                {category.name}
+              </span>
+              {category.skills.map((skill) => (
+                <span class="skill-pill rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-2 font-mono text-sm uppercase tracking-wider text-zinc-400 transition duration-200 hover:scale-105 hover:border-white/30 hover:text-white">
+                  {skill}
+                </span>
+              ))}
+            </li>
+          ))}
+        </ul>
+      ))}
+    </div>
+  </section>
+
   <!-- PROJETS & DÉCOUVERTES -->
   <section class="py-32 flex flex-col justify-center px-6 overflow-hidden" id="niveau-1"
     style="background: #0d0d12;">
@@ -284,7 +317,25 @@ const countPerso = persos.length;
 
 </Layout>
 
+<style>
+  .skills-marquee {
+    animation: skills-marquee-scroll 36s linear infinite;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
 
+  @keyframes skills-marquee-scroll {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .skills-marquee {
+      animation: none;
+    }
+  }
+</style>
 
 <script>
   import { gsap } from "gsap";
