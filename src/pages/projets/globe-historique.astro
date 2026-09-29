@@ -1,111 +1,202 @@
 ---
-// src/pages/projets/globe-historique.astro
 import Layout from '../../layouts/Layout.astro';
+import History from '../../Images/History.png';
 import ProjectHero from '../../components/ProjectHero.astro';
 import ProjectSection from '../../components/ProjectSection.astro';
 ---
 
 <Layout title="Globe Historique Mobile | Batiste COMET-BARTHE" backHref="/#niveau-1">
+  <ProjectHero
+    category="Projet personnel · Application Android · Histoire mondiale"
+    title="Globe Historique"
+    accent="Mobile"
+    description="Explorer l’histoire du monde par les lieux et les époques, puis approfondir ses découvertes avec des leçons et des outils de révision."
+    tags={['Kotlin', 'Jetpack Compose', 'MapLibre', 'Room / SQLite', 'GeoJSON']}
+    image={History}
+    imageAlt="Identité visuelle de l’application History, avec un globe et le titre de l’application"
+    imageFit="contain"
+  />
 
-
-  <ProjectHero category="Projet Universitaire · ENSEEIHT" title="Globe Historique" accent="Mobile" description="[ Description courte du projet — à remplir. Ex : Application Android de visualisation historique avec rendu 3D d'un globe interactif. ]" tags={['Kotlin', 'Jetpack Compose', 'MapLibre', 'Room SQLite']} />
-
-  <!-- CORPS DU PROJET -->
   <section class="px-6 pb-32" style="background: #09090b;">
     <ProjectSection variant="wide">
-    <div class="max-w-4xl mx-auto space-y-16">
-
-      <div class="w-full h-px" style="background: linear-gradient(90deg, transparent, rgba(16,185,129,0.3), transparent);"></div>
-
-      <!-- Contexte -->
-      <div class="grid md:grid-cols-3 gap-8">
-        <div>
-          <h2 class="text-xs font-mono uppercase tracking-widest mb-4 text-emerald-400/70">01 — Contexte</h2>
-        </div>
-        <div class="md:col-span-2">
-          <p class="text-zinc-400 leading-relaxed font-light">[ À remplir — Décrivez le contexte du projet : cours, équipe, objectif pédagogique... ]</p>
-        </div>
-      </div>
-
-      <div class="w-full h-px bg-white/5"></div>
-
-      <!-- Objectifs -->
-      <div class="grid md:grid-cols-3 gap-8">
-        <div>
-          <h2 class="text-xs font-mono uppercase tracking-widest mb-4 text-emerald-400/70">02 — Objectifs</h2>
-        </div>
-        <div class="md:col-span-2 space-y-3">
-          <p class="text-zinc-400 leading-relaxed font-light">[ À remplir ]</p>
-          <ul class="space-y-2 mt-4">
-            <li class="flex items-start gap-3 text-zinc-500 text-sm font-light">
-              <span class="mt-1.5 w-1 h-1 rounded-full bg-emerald-500 flex-shrink-0"></span>[ Objectif 1 ]
-            </li>
-            <li class="flex items-start gap-3 text-zinc-500 text-sm font-light">
-              <span class="mt-1.5 w-1 h-1 rounded-full bg-emerald-500 flex-shrink-0"></span>[ Objectif 2 ]
-            </li>
-            <li class="flex items-start gap-3 text-zinc-500 text-sm font-light">
-              <span class="mt-1.5 w-1 h-1 rounded-full bg-emerald-500 flex-shrink-0"></span>[ Objectif 3 ]
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="w-full h-px bg-white/5"></div>
-
-      <!-- Technologies -->
-      <div class="grid md:grid-cols-3 gap-8">
-        <div>
-          <h2 class="text-xs font-mono uppercase tracking-widest mb-4 text-emerald-400/70">03 — Technologies</h2>
-        </div>
-        <div class="md:col-span-2">
-          <p class="text-zinc-400 leading-relaxed font-light mb-6">[ À remplir ]</p>
-          <div class="flex flex-wrap gap-2">
-            <span class="px-3 py-1.5 text-xs font-mono rounded" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: #a1a1aa;">Kotlin</span>
-            <span class="px-3 py-1.5 text-xs font-mono rounded" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: #a1a1aa;">Jetpack Compose</span>
-            <span class="px-3 py-1.5 text-xs font-mono rounded" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: #a1a1aa;">MapLibre</span>
-            <span class="px-3 py-1.5 text-xs font-mono rounded" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: #a1a1aa;">Room SQLite</span>
-            <span class="px-3 py-1.5 text-xs font-mono rounded" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: #a1a1aa;">[ Autre ]</span>
+      <div class="history-project-content">
+        <article class="history-project-row">
+          <h2>01 — Une histoire à l’échelle du monde</h2>
+          <div class="history-project-row__body">
+            <p>
+              History est une application Android pédagogique consacrée à l’histoire mondiale. Son contenu met en regard les civilisations et les événements de plusieurs régions du monde, au-delà d’un récit uniquement centré sur l’Europe.
+            </p>
+            <p>
+              L’application articule trois façons d’apprendre : situer les événements dans le temps, les explorer sur un globe interactif et consolider ses connaissances avec des leçons, des quiz et des cartes de révision.
+            </p>
           </div>
-        </div>
-      </div>
+        </article>
 
-      <div class="w-full h-px bg-white/5"></div>
+        <article class="history-project-row">
+          <h2>02 — Explorer le globe</h2>
+          <div class="history-project-row__body">
+            <p>
+              Le globe 3D permet de sélectionner un pays et d’accéder à son contexte historique et à sa chronologie. Les données GeoJSON apportent une représentation géographique des pays ; les études associées aux périodes peuvent enrichir la sélection avec un nom historique, un contexte local et des dirigeants.
+            </p>
+            <p>
+              La navigation relie cette exploration géographique aux périodes et aux événements : le pays n’est pas isolé de son époque, et la chronologie peut être consultée depuis le lieu concerné.
+            </p>
+            <div class="history-project-tech">
+              <span>Globe MapLibre</span>
+              <span>Pays &amp; codes ISO</span>
+              <span>GeoJSON</span>
+              <span>Timelines</span>
+            </div>
+          </div>
+        </article>
 
-      <div class="w-full rounded-2xl overflow-hidden flex items-center justify-center"
-        style="height: 260px; background: rgba(255,255,255,0.02); border: 1px dashed rgba(255,255,255,0.08);">
-        <p class="text-zinc-700 text-xs font-mono uppercase tracking-widest">[ Image secondaire — optionnel ]</p>
-      </div>
+        <article class="history-project-row">
+          <h2>03 — Apprendre &amp; réviser</h2>
+          <div class="history-project-row__body">
+            <p>
+              Les périodes donnent accès à des modules organisés par thème et par région. Chaque leçon est découpée en étapes de lecture, avec un contenu rédigé en Markdown et des questions pour vérifier sa compréhension.
+            </p>
+            <ul>
+              <li>Leçons interactives avec progression étape par étape et retour explicatif après une réponse.</li>
+              <li>Questions à choix multiples, vrai ou faux et textes à trous.</li>
+              <li>Cartes de révision inspirées du format Anki pour retrouver les événements et leurs dates.</li>
+              <li>Chronologies par pays pour parcourir les événements dans leur contexte.</li>
+            </ul>
+          </div>
+        </article>
 
-      <div class="w-full h-px bg-white/5"></div>
+        <article class="history-project-row">
+          <h2>04 — Architecture &amp; données</h2>
+          <div class="history-project-row__body">
+            <p>
+              L’application est développée en Kotlin avec Jetpack Compose et suit une architecture MVVM organisée en couches UI, ViewModel, repository et données. Les écrans observent les états réactifs exposés par les ViewModels.
+            </p>
+            <p>
+              Room et SQLite stockent une base historique préremplie : périodes et sous-périodes, pays, événements, études géographiques, modules de leçons, étapes et questions. Kotlin Coroutines et Flow assurent le chargement et la mise à jour des données présentées dans l’interface.
+            </p>
+            <div class="history-project-tech">
+              <span>Kotlin</span>
+              <span>Jetpack Compose</span>
+              <span>MVVM</span>
+              <span>Room / SQLite</span>
+              <span>Coroutines &amp; Flow</span>
+              <span>MapLibre GL</span>
+            </div>
+          </div>
+        </article>
 
-      <!-- Résultats -->
-      <div class="grid md:grid-cols-3 gap-8">
-        <div>
-          <h2 class="text-xs font-mono uppercase tracking-widest mb-4 text-emerald-400/70">04 — Résultats</h2>
-        </div>
-        <div class="md:col-span-2">
-          <p class="text-zinc-400 leading-relaxed font-light">[ À remplir — Résultats, difficultés rencontrées, apprentissages. ]</p>
-        </div>
-      </div>
-
-      <div class="w-full h-px bg-white/5"></div>
-
-      <!-- Liens -->
-      <div class="grid md:grid-cols-3 gap-8">
-        <div>
-          <h2 class="text-xs font-mono uppercase tracking-widest mb-4 text-emerald-400/70">05 — Liens</h2>
-        </div>
-        <div class="md:col-span-2 flex gap-4">
-          <a href="#" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-mono text-zinc-400 hover:text-white transition-colors"
-            style="border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.02);">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-            [ GitHub — à remplir ]
+        <div class="history-project-footer">
+          <p>Un projet personnel qui réunit visualisation cartographique, structuration de données et conception d’outils pédagogiques.</p>
+          <a href="https://github.com/b-cb/History" target="_blank" rel="noreferrer">
+            Voir le projet sur GitHub
+            <span aria-hidden="true">↗</span>
           </a>
         </div>
       </div>
-
-    </div>
     </ProjectSection>
   </section>
-
 </Layout>
+
+<style>
+  .history-project-content {
+    width: min(100%, 74rem);
+    margin-inline: auto;
+    display: grid;
+    gap: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .history-project-row {
+    display: grid;
+    grid-template-columns: minmax(12rem, 0.8fr) minmax(0, 2.2fr);
+    gap: clamp(2rem, 6vw, 6rem);
+    padding-bottom: clamp(2rem, 4vw, 3rem);
+    border-bottom: 1px solid rgb(255 255 255 / 7%);
+  }
+
+  .history-project-row h2 {
+    margin: 0;
+    color: var(--accent);
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    line-height: 1.6;
+    text-transform: uppercase;
+  }
+
+  .history-project-row__body {
+    display: grid;
+    gap: 1rem;
+    color: #a1a1aa;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+
+  .history-project-row__body p,
+  .history-project-footer p {
+    margin: 0;
+  }
+
+  .history-project-row__body ul {
+    display: grid;
+    gap: 0.65rem;
+    margin: 0.25rem 0 0;
+    padding-left: 1.25rem;
+    color: #a1a1aa;
+  }
+
+  .history-project-row__body li::marker {
+    color: var(--accent);
+  }
+
+  .history-project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.25rem;
+    padding-top: 0.5rem;
+    color: #a1a1aa;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.75rem;
+  }
+
+  .history-project-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    color: #71717a;
+    font-size: 0.875rem;
+    font-weight: 300;
+  }
+
+  .history-project-footer a {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid rgb(255 255 255 / 10%);
+    border-radius: 0.6rem;
+    background: rgb(255 255 255 / 3%);
+    padding: 0.75rem 1rem;
+    color: #d4d4d8;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.75rem;
+    transition: border-color 180ms ease, color 180ms ease;
+  }
+
+  .history-project-footer a:hover {
+    border-color: rgb(255 255 255 / 25%);
+    color: white;
+  }
+
+  @media (max-width: 640px) {
+    .history-project-row {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    .history-project-footer {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+</style>
