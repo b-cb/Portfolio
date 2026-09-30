@@ -85,7 +85,7 @@ const skillCategories = [
       <div class="w-full mt-12">
 
         <!-- A. Version BUREAU (Horizontale fidèle au croquis) -->
-        <div class="hidden md:block relative w-full mt-10 h-64 timeline">
+        <div class="hidden md:block relative w-full mt-10 h-96 timeline">
           
           <!-- Ligne de fond globale -->
           <div class="absolute top-1/2 left-0 w-full h-px bg-zinc-800/80"></div>
@@ -95,8 +95,10 @@ const skillCategories = [
           <div class="absolute top-1/2 -translate-y-[0.5px] left-0 w-[35%] h-[2px] timeline-line timeline-line--prepa"></div>
           <!-- ENSEEIHT (environ 65% de la durée) -->
           <div class="absolute top-1/2 -translate-y-[0.5px] left-[35%] w-[65%] h-[2px] timeline-line timeline-line--enseeiht"></div>
+          <div class="timeline-line--master"></div>
           <span class="timeline-marker timeline-marker--prepa" aria-hidden="true"></span>
           <span class="timeline-marker timeline-marker--enseeiht" aria-hidden="true"></span>
+          <span class="timeline-marker timeline-marker--master" aria-hidden="true"></span>
           
           <!-- Séparateur vertical discret -->
           <div class="absolute top-1/2 left-[35%] h-8 w-px timeline-separator -translate-y-1/2"></div>
@@ -133,6 +135,13 @@ const skillCategories = [
             </div>
           </div>
 
+          <div class="timeline-step timeline-step--master">
+            <span class="timeline-master-connector" aria-hidden="true"></span>
+            <div class="timeline-step__content">
+              <h4 class="text-lg font-medium">{ui.home.researchMaster}</h4>
+            </div>
+          </div>
+
         </div>
 
         <!-- B. Version MOBILE (Verticale adaptée) -->
@@ -157,6 +166,10 @@ const skillCategories = [
               <span class="text-xs font-mono text-zinc-400 tracking-widest">{ui.home.stageDate}</span>
               <h4 class="text-lg font-medium text-zinc-200 mt-1">{ui.home.stage}</h4>
               <p class="text-sm text-zinc-500 font-light mt-1">IRISA / Inria (Rennes)</p>
+            </div>
+            <div class="timeline-mobile-step--master relative mt-6 border-l-2 pl-6">
+              <span class="absolute -left-[7px] top-1 h-3 w-3 rounded-full bg-zinc-400 ring-4 ring-black"></span>
+              <h4 class="text-lg font-medium mt-1">{ui.home.researchMaster}</h4>
             </div>
           </div>
 

@@ -32,6 +32,8 @@
   --timeline-enseeiht: #526f9d;
   --timeline-enseeiht-text: #3f5c87;
   --timeline-stage: #39754f;
+  --timeline-master: #8064a8;
+  --timeline-master-text: #5f477f;
   --timeline-stage-glow: #f4f0e8;
   --timeline-separator: var(--timeline-enseeiht);
   --timeline-marker-ring: #f5f2eb;
@@ -171,7 +173,41 @@ body::before {
 }
 .timeline-marker--prepa { left: 0; color: var(--timeline-prepa); transform: translateY(-50%); }
 .timeline-marker--enseeiht { left: 35%; color: var(--timeline-enseeiht); }
+.timeline-marker--master { left: 82%; color: var(--timeline-master); }
 .timeline-separator { background: var(--timeline-separator) !important; }
+.timeline-step--master {
+  position: absolute;
+  inset: 0;
+  left: 82%;
+  width: 18%;
+}
+.timeline-line--master {
+  position: absolute;
+  top: calc(50% - 2.5px);
+  left: 82%;
+  z-index: 1;
+  width: 18%;
+  height: 2px;
+  background: var(--timeline-master);
+}
+.timeline-step--master .timeline-step__content {
+  position: absolute;
+  bottom: calc(50% + 1rem);
+  left: 0;
+  padding: 0;
+}
+.timeline-master-connector {
+  position: absolute;
+  bottom: calc(50% + 0.25rem);
+  left: 0;
+  height: 0.75rem;
+  border-left: 1px solid var(--timeline-master);
+}
+.timeline-step--master h4,
+.timeline-mobile-step--master h4 { color: var(--timeline-master-text) !important; }
+.timeline-mobile-step--enseeiht .timeline-mobile-step--master { border-color: var(--timeline-master) !important; }
+.timeline-mobile-step--enseeiht .timeline-mobile-step--master > span { background: var(--timeline-master) !important; }
+:root[data-theme] .timeline-mobile-step--enseeiht .timeline-mobile-step--master h4 { color: var(--timeline-master-text) !important; }
 
 a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 
@@ -1136,6 +1172,8 @@ body [style*="border: 1px dashed rgba(255,255,255"] {
   --timeline-enseeiht: #818cf8;
   --timeline-enseeiht-text: #a5b4fc;
   --timeline-stage: #4ade80;
+  --timeline-master: #c4b5fd;
+  --timeline-master-text: #ddd5ff;
   --timeline-stage-glow: #0b0b12;
   --reticle-color: #f1eff7;
   --reticle-opacity: 0.95;
