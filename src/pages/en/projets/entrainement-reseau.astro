@@ -1,0 +1,142 @@
+---
+import { Image } from 'astro:assets';
+
+import Layout from '../../../layouts/Layout.astro';
+import ProjectHero from '../../../components/ProjectHero.astro';
+import ProjectSection from '../../../components/ProjectSection.astro';
+import MetricDisplay from '../../../components/MetricDisplay.astro';
+import Apprentissage from '../../../Images/Apprentissage.jpg';
+import TrainBatch from '../../../Images/TrainBatch.png';
+import YOLOresults from '../../../Images/YOLOresults.png';
+import YOLOtrain from '../../../Images/YOLOtrain.jpg';
+---
+
+<Layout title="Neural Network Training | Batiste COMET-BARTHE" backHref="/en/#projects" lang="en">
+  <ProjectHero category="Independent project · Deep Learning · M1 second semester" title="Neural Network" accent="Training" description="Building a dataset and training a YOLO model to recognize mudras, from image collection through to performance analysis." tags={['Yolo', 'Python']} image={Apprentissage} imageAlt="Mudra detections by the YOLO model" imageFit="contain" technologyLabel="Technologies" />
+
+  <!-- Project body -->
+  <section class="px-6 pb-32" style="background: #09090b;">
+    <ProjectSection variant="wide">
+      <div class="max-w-4xl mx-auto space-y-16">
+        <div class="w-full h-px bg-white/10"></div>
+
+        <!-- Context -->
+        <div class="grid md:grid-cols-3 gap-8">
+          <div>
+            <h2 class="text-xs font-mono uppercase tracking-widest mb-4 text-zinc-400">01 — Context</h2>
+          </div>
+          <div class="md:col-span-2">
+            <p class="text-zinc-400 leading-relaxed font-light">
+              Completed as part of the M1 Deep Learning course, this independent project asked us, in a group of 4 to 5 people, to build a complete object-detection pipeline—from assembling the training dataset to conducting a detailed analysis of the results. My group chose to work on recognizing mudras—symbolic hand gestures—from images using the YOLO architecture.
+            </p>
+          </div>
+        </div>
+
+        <div class="w-full h-px bg-white/5"></div>
+
+        <!-- Objectives -->
+        <div class="grid md:grid-cols-3 gap-8">
+          <div>
+            <h2 class="text-xs font-mono uppercase tracking-widest mb-4 text-zinc-400">02 — Objectives</h2>
+          </div>
+          <div class="md:col-span-2 space-y-3">
+            <p class="text-zinc-400 leading-relaxed font-light">Develop a detection model capable of recognizing mudras in real-world conditions:</p>
+            <ul class="space-y-2 mt-4">
+              <li class="flex items-start gap-3 text-zinc-500 text-sm font-light">
+                <span class="mt-1.5 w-1 h-1 rounded-full bg-zinc-500 flex-shrink-0"></span>
+                Achieve the best possible mAP and precision to maximize the chances of correctly detecting and classifying gestures.
+              </li>
+              <li class="flex items-start gap-3 text-zinc-500 text-sm font-light">
+                <span class="mt-1.5 w-1 h-1 rounded-full bg-zinc-500 flex-shrink-0"></span>
+                Ensure robust detection despite variations in lighting, backgrounds, and hand morphology.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="w-full h-px bg-white/5"></div>
+
+        <!-- Dataset -->
+        <div class="grid md:grid-cols-3 gap-8">
+          <div>
+            <h2 class="text-xs font-mono uppercase tracking-widest mb-4 text-zinc-400">03 — Dataset</h2>
+          </div>
+          <div class="md:col-span-2">
+            <p class="text-zinc-400 leading-relaxed font-light">
+              To build the dataset, we took photos of ourselves from different angles and in different positions, did the same with people close to us, and searched for images online. Once we had 450 images, we used the CVAT annotation tool to ensure consistency across the files.
+            </p>
+          </div>
+        </div>
+
+        <!-- Dataset image -->
+        <Image
+          src={TrainBatch}
+          alt="Batch of training images"
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        />
+
+        <div class="w-full h-px bg-white/5"></div>
+
+        <!-- Architecture and training -->
+        <div class="grid md:grid-cols-3 gap-8">
+          <div>
+            <h2 class="text-xs font-mono uppercase tracking-widest mb-4 text-zinc-400">04 — Architecture &amp; training</h2>
+          </div>
+          <div class="md:col-span-2">
+            <p class="text-zinc-400 leading-relaxed font-light">
+              We chose YOLOv11m for its capabilities, speed, and ease of training. We first ran benchmarks to identify the parameters best suited to our project, then started training for 500 epochs using the optimal parameters we had found.
+            </p>
+          </div>
+        </div>
+
+        <!-- Architecture / training curves image -->
+
+        <div class="w-full h-px bg-white/5"></div>
+
+        <!-- Results and learning -->
+        <div class="grid md:grid-cols-3 gap-8">
+          <div>
+            <h2 class="text-xs font-mono uppercase tracking-widest mb-4 text-zinc-400">05 — Results</h2>
+          </div>
+          <div class="md:col-span-2 space-y-4">
+            <p class="text-zinc-400 leading-relaxed font-light">
+              The model achieves excellent overall performance on the test set. We recorded a precision of 98,25 % and a recall of 98,18 %, resulting in an F1-score of 98,21 %. The quality and robustness of the detections are confirmed by an mAP@50 of 99,50 % and an mAP@50-95 of 91,69 %, demonstrating very high accuracy in the spatial positioning of bounding boxes.
+            </p>
+            <MetricDisplay lang="en" metrics={[
+              { value: '98,25 %', label: 'Precision' },
+              { value: '98,18 %', label: 'Recall' },
+              { value: '98,21 %', label: 'F1-score' },
+              { value: '99,50 %', label: 'mAP@50' },
+              { value: '91,69 %', label: 'mAP@50–95' },
+              { value: '450', label: 'Annotated images' },
+              { value: '500', label: 'Epochs' },
+            ]} />
+          </div>
+        </div>
+
+        <!-- Qualitative results image -->
+        <Image
+          src={YOLOtrain}
+          alt="YOLO training results"
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        />
+
+        <div class="w-full h-px bg-white/5"></div>
+
+        <!-- Takeaways -->
+        <div class="grid md:grid-cols-3 gap-8">
+          <div>
+            <h2 class="text-xs font-mono uppercase tracking-widest mb-4 text-zinc-400">06 — Takeaways</h2>
+          </div>
+          <div class="md:col-span-2">
+            <p class="text-zinc-400 leading-relaxed font-light">
+              This project was a valuable learning experience. Technically, it gave us the opportunity to manage a computer vision project from start to finish and showed us in practice that a good dataset matters just as much as a good model.
+
+              From an organizational standpoint, annotating as a team in CVAT required discipline: we had to establish strict rules so that everyone outlined hands in the same way. Our biggest challenge was achieving robust results with only 450 images, which pushed us to plan our shots (lighting, backgrounds) carefully. Finally, faced with long training times, we quickly learned to test our settings thoroughly before running the final computations for 500 epochs.
+            </p>
+          </div>
+        </div>
+      </div>
+    </ProjectSection>
+  </section>
+</Layout>

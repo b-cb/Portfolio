@@ -5,21 +5,42 @@ import '../styles/global.css';
 import Analytics from '@vercel/analytics/astro';
 import { ClientRouter } from 'astro:transitions';
 import { Image } from 'astro:assets';
+import { getRelativeLocaleUrl } from 'astro:i18n';
 
 import monLogo from '../Images/bcb.svg';
+import fr from '../i18n/fr.json';
+import en from '../i18n/en.json';
 
 interface Props {
   title: string;
   backHref?: string;
+  lang?: 'fr' | 'en';
 }
-const { title, backHref } = Astro.props;
+const { title, backHref, lang = 'fr' } = Astro.props;
+const ui = lang === 'en' ? en : fr;
+const routePath = Astro.url.pathname.replace(/^\/en(?:\/|$)/, '').replace(/^\/+|\/+$/g, '');
+const alternateLocale = lang === 'en' ? 'fr' : 'en';
+const alternateHref = getRelativeLocaleUrl(alternateLocale, routePath);
+const frenchHref = getRelativeLocaleUrl('fr', routePath);
 ---
 <!doctype html>
-<html lang="fr" class="overflow-x-hidden">
+<html lang={lang} class="overflow-x-hidden" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
+    <script is:inline>
+      try {
+        const savedTheme = window.localStorage.getItem('portfolio-theme');
+        document.documentElement.dataset.theme = savedTheme === 'dark' ? 'dark' : 'light';
+      } catch (error) {
+        console.warn('Could not load the saved theme preference.', error);
+        document.documentElement.dataset.theme = 'light';
+      }
+    </script>
     <link rel="icon" type="image/svg+xml" href="/bcb.svg" />
+    <link rel="alternate" hreflang="fr" href={`${Astro.url.origin}${frenchHref}`} />
+    <link rel="alternate" hreflang="en" href={`${Astro.url.origin}${getRelativeLocaleUrl('en', routePath)}`} />
+    <link rel="alternate" hreflang="x-default" href={`${Astro.url.origin}${frenchHref}`} />
     <ClientRouter />
     <title>{title}</title>
   </head>
@@ -27,25 +48,47 @@ const { title, backHref } = Astro.props;
     <canvas class="cursor-particles" aria-hidden="true" transition:persist></canvas>
     <div class="cursor-reticle" aria-hidden="true" transition:persist></div>
 
-    <nav class="site-nav fixed top-0 w-full z-50 p-6 flex justify-between" aria-label="Navigation principale">
+    <nav class="site-nav fixed top-0 w-full z-50 p-6 flex justify-between" aria-label={lang === 'en' ? 'Main navigation' : 'Navigation principale'}>
       <div class="flex flex-col">
-        <a href="/" class="flex items-center nav-link">
-          <Image src={monLogo} alt="Logo Portfolio Batiste" class="h-8 w-auto object-contain" />
+        <a href={getRelativeLocaleUrl(lang, '')} class="flex items-center nav-link">
+          <Image src={monLogo} alt={lang === 'en' ? "Batiste's portfolio logo" : 'Logo Portfolio Batiste'} class="h-8 w-auto object-contain" />
         </a>
         {backHref && (
           <a href={backHref} class="nav-link flex items-center gap-1.5 mt-2 text-xs font-mono opacity-70 hover:opacity-100 transition-opacity group">
             <svg class="w-3 h-3 group-hover:-translate-x-0.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
             </svg>
-            Retour aux projets
+            {ui.navigation.backToProjects}
           </a>
         )}
       </div>
 
-      <div class="flex gap-6 text-sm font-medium">
-        <a href="/" class="nav-link hover:text-gray-400 transition-colors">Accueil</a>
-        <a href="/projets" class="nav-link hover:text-gray-400 transition-colors">Projets</a>
-        <a href="/cv" class="nav-link hover:text-gray-400 transition-colors">CV</a>
+      <div class="site-nav__links flex items-center gap-6 text-sm font-medium">
+        <a href={getRelativeLocaleUrl(lang, '')} class="nav-link hover:text-gray-400 transition-colors">{ui.navigation.home}</a>
+        <a href={getRelativeLocaleUrl(lang, 'projets')} class="nav-link hover:text-gray-400 transition-colors">{ui.navigation.projects}</a>
+        <a href={getRelativeLocaleUrl(lang, 'cv')} class="nav-link hover:text-gray-400 transition-colors">{ui.navigation.resume}</a>
+        <a class="language-switch" href={alternateHref} hreflang={alternateLocale} aria-label={`${ui.navigation.languageLabel}: ${ui.navigation.switchTo}`}>
+          <span class:list={{ 'language-switch__active': lang === 'fr' }} aria-current={lang === 'fr' ? 'true' : undefined}>FR</span>
+          <span aria-hidden="true">/</span>
+          <span class:list={{ 'language-switch__active': lang === 'en' }} aria-current={lang === 'en' ? 'true' : undefined}>EN</span>
+        </a>
+        <button
+          class="theme-switch"
+          id="theme-toggle"
+          type="button"
+          aria-label={lang === 'en' ? 'Switch to dark theme' : 'Activer le thème sombre'}
+          aria-pressed="false"
+          data-light-label={lang === 'en' ? 'Switch to dark theme' : 'Activer le thème sombre'}
+          data-dark-label={lang === 'en' ? 'Switch to light theme' : 'Activer le thème clair'}
+        >
+          <svg class="theme-switch__moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M20.2 15.1A8.4 8.4 0 0 1 8.9 3.8 8.5 8.5 0 1 0 20.2 15.1Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <svg class="theme-switch__sun" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6" />
+            <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+          </svg>
+        </button>
       </div>
     </nav>
 
@@ -53,6 +96,34 @@ const { title, backHref } = Astro.props;
     <Analytics />
 
     <script is:inline>
+      const syncThemeToggle = () => {
+        const toggle = document.querySelector('#theme-toggle');
+        if (!toggle) return;
+
+        const isDark = document.documentElement.dataset.theme === 'dark';
+        toggle.setAttribute('aria-pressed', String(isDark));
+        toggle.setAttribute('aria-label', isDark ? toggle.dataset.darkLabel : toggle.dataset.lightLabel);
+      };
+
+      document.addEventListener('click', (event) => {
+        if (!(event.target instanceof Element)) return;
+        const toggle = event.target.closest('#theme-toggle');
+        if (!toggle) return;
+
+        const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = nextTheme;
+        syncThemeToggle();
+        try {
+          window.localStorage.setItem('portfolio-theme', nextTheme);
+        } catch (error) {
+          console.warn('Could not save the theme preference.', error);
+        }
+      });
+
+      document.addEventListener('astro:before-swap', (event) => {
+        event.newDocument.documentElement.dataset.theme = document.documentElement.dataset.theme || 'light';
+      });
+
       const initReveal = () => {
         const reveals = document.querySelectorAll('.reveal');
         const observer = new IntersectionObserver((entries) => {
@@ -110,6 +181,7 @@ const { title, backHref } = Astro.props;
 
           const drawParticles = () => {
             context.clearRect(0, 0, width, height);
+            const darkTheme = document.documentElement.dataset.theme === 'dark';
 
             for (const particle of particles) {
               if (pointer.active) {
@@ -146,7 +218,8 @@ const { title, backHref } = Astro.props;
                 if (distance >= connectionDistance) continue;
 
                 context.beginPath();
-                context.strokeStyle = `rgba(104, 76, 48, ${((1 - distance / connectionDistance) * 0.2).toFixed(3)})`;
+                const lineColor = darkTheme ? '196, 181, 253' : '104, 76, 48';
+                context.strokeStyle = `rgba(${lineColor}, ${((1 - distance / connectionDistance) * 0.2).toFixed(3)})`;
                 context.lineWidth = 0.7;
                 context.moveTo(particle.x, particle.y);
                 context.lineTo(neighbor.x, neighbor.y);
@@ -156,7 +229,8 @@ const { title, backHref } = Astro.props;
 
             for (const particle of particles) {
               context.beginPath();
-              context.fillStyle = `rgba(${particle.shade}, 0.24)`;
+              const particleColor = darkTheme ? '196, 181, 253' : particle.shade;
+              context.fillStyle = `rgba(${particleColor}, 0.24)`;
               context.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
               context.fill();
             }
@@ -213,9 +287,11 @@ const { title, backHref } = Astro.props;
 
       document.addEventListener('astro:page-load', () => {
         initReveal();
+        syncThemeToggle();
       });
 
       initReveal();
+      syncThemeToggle();
     </script>
   </body>
 </html>

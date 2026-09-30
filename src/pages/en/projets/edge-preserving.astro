@@ -1,0 +1,214 @@
+---
+import { Image } from 'astro:assets';
+
+import Layout from '../../../layouts/Layout.astro';
+import ProjetImage from '../../../Images/ProjetImage.png';
+import EdgeAlpha from '../../../Images/edge-alpha-0-1.jpg';
+import EdgeDetailBoost from '../../../Images/edge-detail-boost.jpg';
+import EdgeBaseLayer from '../../../Images/edge-base-layer.jpg';
+import ProjectHero from '../../../components/ProjectHero.astro';
+import ProjectSection from '../../../components/ProjectSection.astro';
+---
+
+<Layout title="Edge-Preserving Processing | Batiste COMET-BARTHE" backHref="/en/#projects" lang="en">
+  <ProjectHero
+    category="M1 second semester"
+    title="Edge-Preserving"
+    accent="Processing"
+    description="Spatial decomposition pipeline for independent control of detail and lighting."
+    tags={['C++', 'OpenCV', 'Eigen3']}
+    image={ProjetImage}
+    imageAlt="Illustration of detail decomposition at different scales"
+    technologyLabel="Technologies"
+  />
+
+  <section class="px-6 pb-32" style="background: #09090b;">
+    <ProjectSection variant="wide">
+      <div class="edge-project-content">
+        <div class="edge-project-row">
+          <div class="edge-project-row__title">
+            <h2 class="text-xs font-mono uppercase tracking-widest" style="color: var(--accent);">01 — Context</h2>
+          </div>
+          <div class="edge-project-row__body">
+            <p class="text-zinc-400 leading-relaxed font-light">
+              Completed in a pair as part of the M1 second-semester image processing project, this work is based on the paper <em>Edge-Preserving Decompositions for Multi-Scale Tone and Detail Manipulation</em> by Zeev Farbman, Raanan Fattal, Dani Lischinski, and Richard Szeliski. The project involved studying a research paper, implementing its proposed algorithm, and evaluating the results both qualitatively and quantitatively.
+            </p>
+          </div>
+        </div>
+
+        <div class="edge-project-row">
+          <div class="edge-project-row__title">
+            <h2 class="text-xs font-mono uppercase tracking-widest" style="color: var(--accent);">02 — Objective</h2>
+          </div>
+          <div class="edge-project-row__body">
+            <p class="text-zinc-400 leading-relaxed font-light">
+              Implement an edge-preserving decomposition that separates an image into a smoothed base layer and a detail layer. Controlling these layers makes it possible to observe the effect of different smoothing levels and to enhance or reduce details without treating edges as simple transitions to blur.
+            </p>
+          </div>
+        </div>
+
+        <div class="edge-project-row">
+          <div class="edge-project-row__title">
+            <h2 class="text-xs font-mono uppercase tracking-widest" style="color: var(--accent);">03 — Method</h2>
+          </div>
+          <div class="edge-project-row__body">
+            <p class="text-zinc-400 leading-relaxed font-light">
+              The implementation operates on image luminance in the CIELAB color space, after conversion to the logarithmic domain. Gradients are used to calculate edge-aware weights, which are then used to build a sparse weighted least squares (WLS) system. Solving it yields the base layer; the difference from the original image forms the detail layer.
+            </p>
+            <p class="text-zinc-400 leading-relaxed font-light">
+              Reconstruction combines the base and details according to the chosen factor, before converting back from the logarithmic domain and reintegrating luminance into the color image:
+            </p>
+            <p class="font-mono text-sm text-zinc-200 bg-white/[0.03] border border-white/[0.06] px-5 py-4">
+              result = base + c × (logarithmic luminance − base)
+            </p>
+            <p class="text-zinc-500 text-sm leading-relaxed">
+              The code implements a decomposition controlled by λ; it does not claim to reproduce by itself the full multi-scale processing described in the paper.
+            </p>
+          </div>
+        </div>
+
+        <div class="edge-project-row">
+          <div class="edge-project-row__title">
+            <h2 class="text-xs font-mono uppercase tracking-widest" style="color: var(--accent);">04 — Implementation</h2>
+          </div>
+          <div class="edge-project-row__body">
+            <p class="text-zinc-400 leading-relaxed font-light">
+              The program is written in C++17. OpenCV handles image reading, color-space conversions, and image writing; Eigen builds and solves the sparse system using the conjugate gradient method; OpenMP parallelizes several computation steps.
+            </p>
+            <p class="text-zinc-400 leading-relaxed font-light">
+              The input image, output path, and parameters are supplied through the command line. This makes it possible to test different images and configurations without modifying the code.
+            </p>
+            <div class="flex flex-wrap gap-x-6 gap-y-2 pt-2 font-mono text-xs text-zinc-400">
+              <span>C++17</span>
+              <span>OpenCV</span>
+              <span>Eigen3</span>
+              <span>OpenMP</span>
+              <span>Conjugate gradient</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="edge-project-row">
+          <div class="edge-project-row__title">
+            <h2 class="text-xs font-mono uppercase tracking-widest" style="color: var(--accent);">05 — Parameters</h2>
+          </div>
+          <div class="edge-project-row__body">
+            <ul class="edge-project-parameters text-zinc-400 leading-relaxed font-light">
+              <li><strong class="text-zinc-200">α — edge sensitivity:</strong> affects how weights vary with the gradient. Tests include α = 0,1, 1,2, and 3,0.</li>
+              <li><strong class="text-zinc-200">λ — smoothing:</strong> controls the scale of the base layer. Tests explore values from 0,05 to 5,0.</li>
+              <li><strong class="text-zinc-200">c — detail reconstruction:</strong> c = 0 retains only the base layer, c = 1 corresponds to the reference reconstruction, and values greater than 1 enhance details.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="edge-project-row">
+          <div class="edge-project-row__title">
+            <h2 class="text-xs font-mono uppercase tracking-widest" style="color: var(--accent);">06 — Results</h2>
+          </div>
+          <div class="edge-project-row__body">
+            <p class="text-zinc-400 leading-relaxed font-light">
+              These examples come from the project's tests and illustrate the effect of the parameters on the output: pronounced detail enhancement, the reference configuration, and the base layer alone. They allow the transformations to be compared visually without attributing undocumented numerical measurements to them.
+            </p>
+          </div>
+        </div>
+
+        <div class="edge-project-gallery">
+          <figure class="project-media project-media--secondary reveal">
+            <Image src={EdgeAlpha} alt="Algorithm output with α = 0,1, λ = 2,0, and c = 3,0" class="project-media__image" />
+            <figcaption class="px-2 pt-3 text-xs font-mono text-zinc-400">α = 0,1 · λ = 2,0 · c = 3,0</figcaption>
+          </figure>
+          <figure class="project-media project-media--secondary reveal">
+            <Image src={EdgeDetailBoost} alt="Algorithm output with α = 1,2, λ = 0,5, and c = 2,5" class="project-media__image" />
+            <figcaption class="px-2 pt-3 text-xs font-mono text-zinc-400">α = 1,2 · λ = 0,5 · c = 2,5</figcaption>
+          </figure>
+          <figure class="project-media project-media--secondary reveal">
+            <Image src={EdgeBaseLayer} alt="Base layer only, with α = 2,0, λ = 4,0, and c = 0" class="project-media__image" />
+            <figcaption class="px-2 pt-3 text-xs font-mono text-zinc-400">α = 2,0 · λ = 4,0 · c = 0</figcaption>
+          </figure>
+        </div>
+
+        <div class="edge-project-row">
+          <div class="edge-project-row__title">
+            <h2 class="text-xs font-mono uppercase tracking-widest" style="color: var(--accent);">07 — Lessons learned</h2>
+          </div>
+          <div class="edge-project-row__body">
+            <p class="text-zinc-400 leading-relaxed font-light">
+              Working in a pair, gaining an in-depth understanding of C++, and reading a research paper were the project's main challenges. Studying the parameters and implementing the solver helped connect the algorithm's choices to the changes observed in the images.
+            </p>
+          </div>
+        </div>
+      </div>
+    </ProjectSection>
+  </section>
+</Layout>
+
+<style>
+  .edge-project-content {
+    width: min(100%, 74rem);
+    margin-inline: auto;
+    display: grid;
+    gap: clamp(3.5rem, 6vw, 5.5rem);
+  }
+
+  .edge-project-row {
+    display: grid;
+    grid-template-columns: minmax(13rem, 0.8fr) minmax(0, 2.2fr);
+    gap: clamp(3rem, 7vw, 7rem);
+    align-items: start;
+    padding-bottom: clamp(2.5rem, 4vw, 4rem);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .edge-project-row__title h2 {
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .edge-project-row__body {
+    display: grid;
+    gap: 1.25rem;
+    min-width: 0;
+  }
+
+  .edge-project-row__body p {
+    max-width: 58rem;
+    margin: 0;
+  }
+
+  .edge-project-parameters {
+    display: grid;
+    gap: 1.25rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .edge-project-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(1.5rem, 3vw, 3rem);
+    align-items: start;
+  }
+
+  .edge-project-gallery .project-media {
+    width: 100%;
+    height: auto;
+    margin: 0;
+  }
+
+  .edge-project-gallery .project-media__image {
+    height: auto;
+    aspect-ratio: 1.34;
+  }
+
+  @media (max-width: 760px) {
+    .edge-project-row {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    .edge-project-gallery {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>

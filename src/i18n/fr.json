@@ -1,0 +1,58 @@
+{
+  "navigation": {
+    "home": "Accueil",
+    "projects": "Projets",
+    "resume": "CV",
+    "backToProjects": "Retour aux projets",
+    "languageLabel": "Langue",
+    "switchTo": "English"
+  },
+  "common": {
+    "technologies": "Technologies utilisées",
+    "backToPortfolio": "Retour au portfolio",
+    "viewProjectOnGithub": "Voir le projet sur GitHub",
+    "category": "Catégorie",
+    "academic": "Académiques",
+    "personal": "Expériences Perso.",
+    "academicProjects": "Projets scolaires & universitaires",
+    "personalProjects": "Projets personnels & explorations",
+    "projectsCount": "projets",
+    "open": "Ouvrir",
+    "allProjects": "Tous les projets",
+    "allProjectsDescription": "Voir la page complète",
+    "portfolio": "Portfolio",
+    "discoveries": "Découvertes"
+  },
+  "home": {
+    "heroLabel": "Hero portfolio",
+    "heroHeadingFirst": "Ingénieur",
+    "heroHeadingSecond": "Image & Multimédia",
+    "availability": "Disponible — Stage terminé · IRISA / Inria",
+    "discover": "Découvrir",
+    "about": "À propos",
+    "profileJourney": "Profil & Parcours",
+    "profileFirst": "Élève-ingénieur passionné par le traitement d'image, la réalité virtuelle et le rendu temps réel. Mon approche combine rigueur algorithmique bas niveau (C++, Python) et conception d'expériences interactives immersives sous Linux et casques autonomes.",
+    "profileSecond": "Au-delà du code, je cultive une approche pluridisciplinaire alliant persévérance sportive (sports d'endurance, tennis), création multimédia et gestion de projets associatifs.",
+    "englishLevel": "Anglais C1",
+    "preparatorySchool": "Lycée Déodat de Séverac",
+    "engineeringDegree": "Ingénierie Image & Multimédia",
+    "stage": "Stage : Neuro-archéologie VR",
+    "stageDate": "ÉTÉ 2026",
+    "marqueeLabel": "Compétences techniques",
+    "projectsTitle": "Projets & Découvertes",
+    "projectsDescription": "Découvrez mes travaux académiques et personnels.",
+    "categoryLabel": "Catégorie",
+    "knowHow": "Savoir-faire",
+    "skills": "Compétences"
+  },
+  "projectsPage": {
+    "title": "Projets & Découvertes",
+    "description": "Découvrez l'ensemble de mes travaux académiques et personnels."
+  },
+  "resume": {
+    "eyebrow": "Document",
+    "title": "Curriculum vitae",
+    "description": "Consultez mon CV dans le navigateur.",
+    "open": "Ouvrir le CV"
+  }
+}

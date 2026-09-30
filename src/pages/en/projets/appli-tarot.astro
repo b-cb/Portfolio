@@ -1,0 +1,192 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Appliweb from '../../../Images/Appliweb.png';
+import ProjectHero from '../../../components/ProjectHero.astro';
+import ProjectSection from '../../../components/ProjectSection.astro';
+---
+
+<Layout title="Tarot/Coinche Web App | Batiste COMET-BARTHE" backHref="/en/#projects" lang="en">
+  <ProjectHero
+    category="M1 · 2nd semester"
+    title="Web application"
+    accent="Tarot/Coinche"
+    description="A web application for playing Tarot or Coinche solo or over a local network"
+    tags={['Java', 'Vite', 'H2 database', 'SpringBoot 3']}
+    image={Appliweb}
+    imageAlt="Tarot and Coinche web application interface"
+    technologyLabel="Technologies"
+  />
+
+  <section class="px-6 pb-32" style="background: #09090b;">
+    <ProjectSection variant="wide">
+      <div class="appli-project-content">
+        <div class="appli-project-row">
+          <div class="appli-project-row__title">
+            <h2 class="text-xs font-mono uppercase tracking-widest" style="color: var(--accent);">01 — Context</h2>
+          </div>
+          <div class="appli-project-row__body">
+            <p class="text-zinc-400 leading-relaxed font-light">
+              Developed by a team of three during the second semester of M1, this project involves designing a multiplayer card game web application. It brings together two games, Coinche and Tarot, and lets players create or join games from a lobby.
+            </p>
+          </div>
+        </div>
+
+        <div class="appli-project-row">
+          <div class="appli-project-row__title">
+            <h2 class="text-xs font-mono uppercase tracking-widest" style="color: var(--accent);">02 — Features</h2>
+          </div>
+          <div class="appli-project-row__body">
+            <p class="text-zinc-400 leading-relaxed font-light">
+              The player journey covers identification, game creation and tracking, followed by in-game interaction. Games can include invited players or be filled out with bots.
+            </p>
+            <ul class="appli-project-list text-zinc-400 leading-relaxed font-light">
+              <li>Create or join a Coinche or Tarot game, with several player configurations.</li>
+              <li>Invite other players and browse available games from the lobby.</li>
+              <li>Play in real time with game-state updates and an integrated chat.</li>
+              <li>Handle bidding and game-specific actions, including the dog and calling the King in Tarot.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="appli-project-row">
+          <div class="appli-project-row__title">
+            <h2 class="text-xs font-mono uppercase tracking-widest" style="color: var(--accent);">03 — Interface</h2>
+          </div>
+          <div class="appli-project-row__body">
+            <p class="text-zinc-400 leading-relaxed font-light">
+              The frontend is built with React and Vite. It separates the authentication, lobby and game screens, with dedicated components for cards, bidding, players and chat. The game screens adapt to the rules of Coinche or Tarot.
+            </p>
+            <div class="appli-project-tech">
+              <span>React</span>
+              <span>Vite</span>
+              <span>STOMP.js</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="appli-project-row">
+          <div class="appli-project-row__title">
+            <h2 class="text-xs font-mono uppercase tracking-widest" style="color: var(--accent);">04 — Architecture</h2>
+          </div>
+          <div class="appli-project-row__body">
+            <p class="text-zinc-400 leading-relaxed font-light">
+              The backend is built on Spring Boot and follows an MVC structure, with controllers, business services and repositories. The frontend communicates with the API over REST; authentication uses JWT tokens sent with requests.
+            </p>
+            <p class="text-zinc-400 leading-relaxed font-light">
+              Live gameplay communication uses WebSocket and STOMP. Shared events — such as a player joining or a message — are broadcast to the game, while state containing a player's hand is sent over a channel dedicated to that player.
+            </p>
+            <div class="appli-project-tech">
+              <span>Spring Boot 3</span>
+              <span>REST</span>
+              <span>JWT</span>
+              <span>WebSocket</span>
+              <span>STOMP</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="appli-project-row">
+          <div class="appli-project-row__title">
+            <h2 class="text-xs font-mono uppercase tracking-widest" style="color: var(--accent);">05 — Data</h2>
+          </div>
+          <div class="appli-project-row__body">
+            <p class="text-zinc-400 leading-relaxed font-light">
+              Persistence uses Spring Data JPA and Hibernate. The model represents users, games, players, cards, bids, tricks, invitations and chat messages. H2 is intended for development and PostgreSQL for production.
+            </p>
+            <div class="appli-project-tech">
+              <span>Spring Data JPA</span>
+              <span>Hibernate</span>
+              <span>H2</span>
+              <span>PostgreSQL</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="appli-project-row">
+          <div class="appli-project-row__title">
+            <h2 class="text-xs font-mono uppercase tracking-widest" style="color: var(--accent);">06 — Teamwork</h2>
+          </div>
+          <div class="appli-project-row__body">
+            <p class="text-zinc-400 leading-relaxed font-light">
+              The project was completed by a team of three. Its organization separates the frontend, backend and communication between them, built around a shared data model for the different stages of a game.
+            </p>
+          </div>
+        </div>
+      </div>
+    </ProjectSection>
+  </section>
+</Layout>
+
+<style>
+  .appli-project-content {
+    width: min(100%, 74rem);
+    margin-inline: auto;
+    display: grid;
+    gap: clamp(3.5rem, 6vw, 5.5rem);
+  }
+
+  .appli-project-row {
+    display: grid;
+    grid-template-columns: minmax(13rem, 0.8fr) minmax(0, 2.2fr);
+    gap: clamp(3rem, 7vw, 7rem);
+    align-items: start;
+    padding-bottom: clamp(2.5rem, 4vw, 4rem);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .appli-project-row__title h2 {
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .appli-project-row__body {
+    display: grid;
+    gap: 1.25rem;
+    min-width: 0;
+  }
+
+  .appli-project-row__body p {
+    max-width: 58rem;
+    margin: 0;
+  }
+
+  .appli-project-list {
+    display: grid;
+    gap: 0.9rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .appli-project-list li {
+    position: relative;
+    padding-left: 1.1rem;
+  }
+
+  .appli-project-list li::before {
+    position: absolute;
+    top: 0.8em;
+    left: 0;
+    width: 0.3rem;
+    height: 0.3rem;
+    border-radius: 50%;
+    background: var(--accent);
+    content: "";
+  }
+
+  .appli-project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    padding-top: 0.35rem;
+    color: #a1a1aa;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.75rem;
+  }
+
+  @media (max-width: 760px) {
+    .appli-project-row {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+  }
+</style>

@@ -1,0 +1,52 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CalibrationGrid from '../../../components/CalibrationGrid.astro';
+import ProjectCard from '../../../components/ProjectCard.astro';
+import { englishProjects } from '../../../data/projects.en';
+import ui from '../../../i18n/en.json';
+
+const academics = englishProjects.filter((project) => project.group === 'academique');
+const personal = englishProjects.filter((project) => project.group === 'perso');
+---
+
+<Layout title="Projects & Explorations | Batiste COMET-BARTHE" backHref="/en/#projects" lang="en">
+  <section class="projects-page__hero">
+    <CalibrationGrid />
+    <div class="projects-page__hero-inner max-w-6xl mx-auto">
+      <span class="eyebrow">{ui.common.portfolio}</span>
+      <h1 class="page-title">
+        Projects &amp;<br />
+        <span>Explorations</span>
+      </h1>
+      <p class="project-hero__description">{ui.projectsPage.description}</p>
+    </div>
+  </section>
+
+  <section class="projects-page__content projects-page__content--museum">
+    <div class="projects-page__grid">
+      <details class="project-panel project-panel--academic" open>
+        <summary class="project-panel__header">
+          <span class="eyebrow">{ui.common.category} 01</span>
+          <span class="project-panel__title" role="heading" aria-level="3">{ui.common.academic}</span>
+          <span class="project-panel__description">{ui.common.academicProjects} · {academics.length} {ui.common.projectsCount}</span>
+          <span class="project-panel__toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="project-panel__body" id="academic-panel">
+          <div class="projects-grid">{academics.map((project) => <ProjectCard project={project} lang="en" />)}</div>
+        </div>
+      </details>
+
+      <details class="project-panel project-panel--personal" open>
+        <summary class="project-panel__header">
+          <span class="eyebrow">{ui.common.category} 02</span>
+          <span class="project-panel__title" role="heading" aria-level="3">{ui.common.personal}</span>
+          <span class="project-panel__description">{ui.common.personalProjects} · {personal.length} {ui.common.projectsCount}</span>
+          <span class="project-panel__toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="project-panel__body" id="personal-panel">
+          <div class="projects-grid">{personal.map((project) => <ProjectCard project={project} lang="en" />)}</div>
+        </div>
+      </details>
+    </div>
+  </section>
+</Layout>

@@ -1,49 +1,50 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import History from '../../Images/History.png';
-import ProjectHero from '../../components/ProjectHero.astro';
-import ProjectSection from '../../components/ProjectSection.astro';
+import Layout from '../../../layouts/Layout.astro';
+import History from '../../../Images/History.png';
+import ProjectHero from '../../../components/ProjectHero.astro';
+import ProjectSection from '../../../components/ProjectSection.astro';
 ---
 
-<Layout title="Globe Historique Mobile | Batiste COMET-BARTHE" backHref="/#niveau-1">
+<Layout title="Historical Globe Mobile | Batiste COMET-BARTHE" backHref="/en/#projects" lang="en">
   <ProjectHero
-    category="Projet personnel · Application Android · Histoire mondiale"
-    title="Globe Historique"
+    category="Personal project · Android application · World history"
+    title="Historical Globe"
     accent="Mobile"
-    description="Explorer l’histoire du monde par les lieux et les époques, puis approfondir ses découvertes avec des leçons et des outils de révision."
+    description="Explore world history through places and eras, then dive deeper with lessons and revision tools."
     tags={['Kotlin', 'Jetpack Compose', 'MapLibre', 'Room / SQLite', 'GeoJSON']}
     image={History}
-    imageAlt="Identité visuelle de l’application History, avec un globe et le titre de l’application"
+    imageAlt="Visual identity for the History app, featuring a globe and the app title"
     imageFit="contain"
+    technologyLabel="Technologies"
   />
 
   <section class="px-6 pb-32" style="background: #09090b;">
     <ProjectSection variant="wide">
       <div class="history-project-content">
         <article class="history-project-row">
-          <h2>01 — Une histoire à l’échelle du monde</h2>
+          <h2>01 — A world-spanning history</h2>
           <div class="history-project-row__body">
             <p>
-              History est une application Android pédagogique consacrée à l’histoire mondiale. Son contenu met en regard les civilisations et les événements de plusieurs régions du monde, au-delà d’un récit uniquement centré sur l’Europe.
+              History is an educational Android app focused on world history. Its content brings civilizations and events from regions around the world into conversation, moving beyond a narrative centered solely on Europe.
             </p>
             <p>
-              L’application articule trois façons d’apprendre : situer les événements dans le temps, les explorer sur un globe interactif et consolider ses connaissances avec des leçons, des quiz et des cartes de révision.
+              The app offers three ways to learn: place events in time, explore them on an interactive globe, and consolidate knowledge with lessons, quizzes, and revision cards.
             </p>
           </div>
         </article>
 
         <article class="history-project-row">
-          <h2>02 — Explorer le globe</h2>
+          <h2>02 — Explore the globe</h2>
           <div class="history-project-row__body">
             <p>
-              Le globe 3D permet de sélectionner un pays et d’accéder à son contexte historique et à sa chronologie. Les données GeoJSON apportent une représentation géographique des pays ; les études associées aux périodes peuvent enrichir la sélection avec un nom historique, un contexte local et des dirigeants.
+              The 3D globe lets users select a country and access its historical context and timeline. GeoJSON data provides a geographic representation of countries; studies associated with specific periods can enrich a selection with a historical name, local context, and rulers.
             </p>
             <p>
-              La navigation relie cette exploration géographique aux périodes et aux événements : le pays n’est pas isolé de son époque, et la chronologie peut être consultée depuis le lieu concerné.
+              Navigation connects geographic exploration to periods and events: a country is never isolated from its era, and its timeline can be explored from the place concerned.
             </p>
             <div class="history-project-tech">
-              <span>Globe MapLibre</span>
-              <span>Pays &amp; codes ISO</span>
+              <span>MapLibre globe</span>
+              <span>Countries &amp; ISO codes</span>
               <span>GeoJSON</span>
               <span>Timelines</span>
             </div>
@@ -51,28 +52,28 @@ import ProjectSection from '../../components/ProjectSection.astro';
         </article>
 
         <article class="history-project-row">
-          <h2>03 — Apprendre &amp; réviser</h2>
+          <h2>03 — Learn &amp; revise</h2>
           <div class="history-project-row__body">
             <p>
-              Les périodes donnent accès à des modules organisés par thème et par région. Chaque leçon est découpée en étapes de lecture, avec un contenu rédigé en Markdown et des questions pour vérifier sa compréhension.
+              Periods provide access to modules organized by theme and region. Each lesson is divided into reading steps, with content written in Markdown and questions to check understanding.
             </p>
             <ul>
-              <li>Leçons interactives avec progression étape par étape et retour explicatif après une réponse.</li>
-              <li>Questions à choix multiples, vrai ou faux et textes à trous.</li>
-              <li>Cartes de révision inspirées du format Anki pour retrouver les événements et leurs dates.</li>
-              <li>Chronologies par pays pour parcourir les événements dans leur contexte.</li>
+              <li>Interactive lessons with step-by-step progress and explanatory feedback after each answer.</li>
+              <li>Multiple-choice, true-or-false, and fill-in-the-blank questions.</li>
+              <li>Anki-inspired revision cards for reviewing events and their dates.</li>
+              <li>Country timelines for exploring events in context.</li>
             </ul>
           </div>
         </article>
 
         <article class="history-project-row">
-          <h2>04 — Architecture &amp; données</h2>
+          <h2>04 — Architecture &amp; data</h2>
           <div class="history-project-row__body">
             <p>
-              L’application est développée en Kotlin avec Jetpack Compose et suit une architecture MVVM organisée en couches UI, ViewModel, repository et données. Les écrans observent les états réactifs exposés par les ViewModels.
+              The app is built with Kotlin and Jetpack Compose and follows a layered MVVM architecture comprising UI, ViewModel, repository, and data layers. Screens observe the reactive states exposed by ViewModels.
             </p>
             <p>
-              Room et SQLite stockent une base historique préremplie : périodes et sous-périodes, pays, événements, études géographiques, modules de leçons, étapes et questions. Kotlin Coroutines et Flow assurent le chargement et la mise à jour des données présentées dans l’interface.
+              Room and SQLite store a pre-populated historical database: periods and sub-periods, countries, events, geographic studies, lesson modules, steps, and questions. Kotlin Coroutines and Flow handle loading and updating the data displayed in the interface.
             </p>
             <div class="history-project-tech">
               <span>Kotlin</span>
@@ -86,9 +87,9 @@ import ProjectSection from '../../components/ProjectSection.astro';
         </article>
 
         <div class="history-project-footer">
-          <p>Un projet personnel qui réunit visualisation cartographique, structuration de données et conception d’outils pédagogiques.</p>
+          <p>A personal project bringing together map visualization, data modeling, and the design of educational tools.</p>
           <a href="https://github.com/b-cb/History" target="_blank" rel="noreferrer">
-            Voir le projet sur GitHub
+            View the project on GitHub
             <span aria-hidden="true">↗</span>
           </a>
         </div>

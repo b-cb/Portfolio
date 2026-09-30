@@ -1,0 +1,128 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ui from '../../i18n/en.json';
+---
+
+<Layout title="Resume | Batiste COMET-BARTHE" lang="en">
+  <main class="min-h-screen px-6 pt-40 pb-24">
+    <div class="resume-page max-w-5xl mx-auto">
+      <p class="eyebrow">{ui.resume.eyebrow}</p>
+      <h1 class="text-5xl md:text-7xl font-medium tracking-tight mt-4">{ui.resume.title}</h1>
+      <p class="text-zinc-400 text-lg mt-6 max-w-xl leading-relaxed">{ui.resume.description}</p>
+      <a class="inline-flex mt-10 text-sm font-mono text-[var(--accent)] border-b border-[var(--accent)] pb-2" href="/cv.pdf" target="_blank" rel="noopener">{ui.resume.open}</a>
+      <section class="resume-content" aria-label="Full résumé">
+        <header class="resume-header">
+          <h2>Batiste COMET-BARTHE</h2>
+          <p class="resume-headline">Engineering student — XR, Vision &amp; Spatial Computing</p>
+          <p>batiste.cometbarthe@etu.inp-n7.fr · 06 02 49 14 12 · @Batiste Comet-Barthe · 20 years old, French, Category B driving licence</p>
+          <p class="resume-summary">Engineering student specializing in image processing and data analysis. Passionate about virtual reality and computer vision, I aim to apply my technical skills to the challenges of XR innovation and spatial computing.</p>
+        </header>
+
+        <div class="resume-grid">
+          <div class="resume-column">
+            <section>
+              <h3>Software &amp; Tools</h3>
+              <p>XR &amp; 3D: Unity, Blender, OpenXR</p>
+              <p>Mobile: Android Studio</p>
+              <p>DevOps: Git, GitHub</p>
+              <p>Systems: Linux, Windows</p>
+              <p>Multimedia: Lightroom, Photoshop</p>
+              <p>IDE: VS Code, Eclipse, Matlab</p>
+            </section>
+            <section>
+              <h3>Strengths</h3>
+              <ul>
+                <li>Leadership (BDD presidency)</li>
+                <li>Project management</li>
+                <li>Creativity (photography / DJ mixing)</li>
+                <li>Discipline (marathon / preparatory classes)</li>
+              </ul>
+            </section>
+            <section>
+              <h3>Technical skills</h3>
+              <h4>Programming | Data</h4>
+              <p>C# / C++ / OpenCV: software development, Unity and image processing.</p>
+              <p>Python: data and AI.</p>
+              <p>Java / Kotlin: application development.</p>
+              <p>Matlab / Julia: signal processing and optimization.</p>
+              <p>SQL: database processing.</p>
+              <h4>Applied mathematics</h4>
+              <p>Optimization: constrained minimization.</p>
+              <p>Analysis: modeling for imaging.</p>
+            </section>
+            <section>
+              <h3>Languages</h3>
+              <p>English (C1): Cambridge B2 certificate</p>
+              <p>Spanish (B1)</p>
+              <p>Chinese (A2): beginner (2024)</p>
+            </section>
+            <section>
+              <h3>Sports</h3>
+              <p>Tennis (15/5), golf, marathon, skiing, boxing, judo</p>
+            </section>
+          </div>
+
+          <div class="resume-column">
+            <section>
+              <h3>Education</h3>
+              <h4>Engineering degree in Computer Science and Telecommunications</h4>
+              <p>September 2024 – 2027 | ENSEEIHT TOULOUSE – Image &amp; Multimedia specialization.</p>
+              <h4>Preparatory classes for the Grandes Écoles, PT*</h4>
+              <p>September 2022 – July 2024 | Lycée Déodat-de-Séverac, Toulouse</p>
+              <h4>French General Baccalaureate, highest honours</h4>
+              <p>2021 | Lycée Polyvalent Jean-de-Prades – Specialties: Mathematics, Physics and Chemistry. European English section.</p>
+            </section>
+            <section>
+              <h3>Professional experience</h3>
+              <h4>CNRS Intern in Neuro-archaeology &amp; VR (M1)</h4>
+              <p>June – August 2026 | IRISA Rennes, Seamless Team</p>
+              <p>Development of a 3D processing and visualization pipeline for perceptual behaviour (eye-tracking, movement) in virtual reality. Integration into the 3D reconstruction of the Temple of Mars.</p>
+              <h4>Server / Bartender</h4>
+              <p>Summer 2025 (Le Roots Resto) &amp; Summer 2021 (Hôtel François Ier)</p>
+              <h4>Corn detasseler</h4>
+              <p>Summers 2018 &amp; 2019 (Mr Jean Paul Garrigues, Coutures)</p>
+            </section>
+            <section>
+              <h3>Personal projects</h3>
+              <h4>XR development — Meta Quest 3</h4>
+              <p>Creation of a virtual reality (XR) game specifically designed and optimized for the Meta Quest 3 headset.</p>
+              <h4>Mobile development — Android &amp; Wearable</h4>
+              <p>Design of an educational history-learning application for Android Studio and a golf-tracking application for an Amazfit smartwatch.</p>
+              <h4>Web application: agenda management</h4>
+              <p>Development of a Google Calendar-style application (planning, events).</p>
+            </section>
+            <section>
+              <h3>Academic projects</h3>
+              <p>Data analysis &amp; Vision (2026): processing methods (facial recognition, object detection).</p>
+              <p>Sign recognition (2026): image dataset and neural network for classification.</p>
+              <p>C++/OpenCV image processing (2026): implementation of algorithms (k-means, mean shift, superpixels).</p>
+            </section>
+            <section>
+              <h3>Community experience</h3>
+              <h4>President of the Sustainable Development Office (BDD)</h4>
+              <p>Term 2025 – 2026 | ENSEEIHT – Team management, awareness events, budget.</p>
+              <p>Technical associations: CAN7 (DJ and mixing instructor) · Photo7 (event photography).</p>
+            </section>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .resume-content { margin-top: 4rem; padding: clamp(1.25rem, 4vw, 3rem); border: 1px solid rgb(104 76 48 / 20%); background: rgb(255 255 255 / 38%); color: #554d44; }
+  .resume-header { padding-bottom: 2rem; border-bottom: 1px solid rgb(104 76 48 / 20%); }
+  .resume-header h2 { color: #302b25; font-size: clamp(1.8rem, 4vw, 2.7rem); font-weight: 500; }
+  .resume-headline { margin-top: 0.3rem; color: #805b3e; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.8rem; }
+  .resume-header p:last-child { max-width: 54rem; margin-top: 1.25rem; line-height: 1.7; }
+  .resume-grid { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.5fr); gap: clamp(2rem, 5vw, 4rem); padding-top: 2rem; }
+  .resume-column { display: grid; align-content: start; gap: 2rem; }
+  .resume-column section { display: grid; align-content: start; gap: 0.45rem; }
+  .resume-column h3 { margin-bottom: 0.35rem; color: #754a2b; font-size: 0.8rem; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 0.08em; text-transform: uppercase; }
+  .resume-column h4 { margin-top: 0.45rem; color: #302b25; font-size: 0.9rem; font-weight: 500; }
+  .resume-column p, .resume-column li { font-size: 0.8rem; line-height: 1.65; }
+  .resume-column ul { padding-left: 1.1rem; list-style: disc; }
+  .resume-column li::marker { color: #86562f; }
+  @media (max-width: 760px) { .resume-grid { grid-template-columns: 1fr; } }
+</style>

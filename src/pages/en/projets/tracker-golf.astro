@@ -1,76 +1,77 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Golf from '../../Images/golf.png';
-import ProjectHero from '../../components/ProjectHero.astro';
-import ProjectSection from '../../components/ProjectSection.astro';
+import Layout from '../../../layouts/Layout.astro';
+import Golf from '../../../Images/golf.png';
+import ProjectHero from '../../../components/ProjectHero.astro';
+import ProjectSection from '../../../components/ProjectSection.astro';
 ---
 
-<Layout title="Tracker de Golf | Batiste COMET-BARTHE" backHref="/#niveau-1">
+<Layout title="Golf Tracker | Batiste COMET-BARTHE" backHref="/en/#projects" lang="en">
   <ProjectHero
-    category="Projet personnel · Amazfit T-Rex 2 · Sport connecté"
-    title="Tracker de"
-    accent="Golf"
-    description="Un compagnon de parcours sur montre Amazfit : position GPS, distances jusqu’aux greens et obstacles, suivi des coups et score par trou."
+    category="Personal project · Amazfit T-Rex 2 · Connected sports"
+    title="Golf"
+    accent="Tracker"
+    description="An on-course companion for Amazfit watches: GPS positioning, distances to greens and hazards, shot tracking, and hole-by-hole scoring."
     tags={['Zepp OS', 'JavaScript ES5', 'GPS', 'OpenStreetMap', 'Bluetooth']}
     image={Golf}
-    imageAlt="Écran du tracker de golf affichant un trou, les distances GPS et la carte du green"
+    imageAlt="Golf tracker screen showing a hole, GPS distances, and the green map"
+    technologyLabel="Technologies"
   />
 
   <section class="px-6 pb-32" style="background: #09090b;">
     <ProjectSection variant="wide">
       <div class="golf-project-content">
         <article class="golf-project-row">
-          <h2>01 — Le projet</h2>
+          <h2>01 — The project</h2>
           <div class="golf-project-row__body">
             <p>
-              Golf Tracker est une application de suivi de parcours conçue pour l’Amazfit T-Rex 2. L’écran rond de la montre devient un tableau de bord consultable en jeu : il rassemble la carte du trou, la position GPS du joueur et les distances utiles, sans avoir à sortir son téléphone.
+              Golf Tracker is a round-tracking app designed for the Amazfit T-Rex 2. The watch’s round screen becomes an at-a-glance on-course dashboard, bringing together a hole map, the player’s GPS position, and useful distances—without needing to take out a phone.
             </p>
             <p>
-              Le projet s’appuie sur Zepp OS et son environnement JavaScript embarqué. Une application compagnon sur téléphone complète l’expérience pour préparer les parcours et configurer la partie.
+              The project is built on Zepp OS and its embedded JavaScript environment. A companion phone app rounds out the experience, letting players prepare courses and configure a game.
             </p>
           </div>
         </article>
 
         <article class="golf-project-row">
-          <h2>02 — Préparer le parcours</h2>
+          <h2>02 — Prepare the course</h2>
           <div class="golf-project-row__body">
             <p>
-              Depuis les paramètres du téléphone, le joueur peut rechercher un golf à proximité grâce aux données OpenStreetMap. Le service compagnon interroge Overpass, rapproche les départs, greens et bunkers, puis transmet à la montre une version compacte des données du parcours.
+              From the phone settings, players can search for nearby golf courses using OpenStreetMap data. The companion service queries Overpass, correlates tees, greens, and bunkers, then sends a compact version of the course data to the watch.
             </p>
             <p>
-              Des parcours de secours restent disponibles sur la montre : la partie peut démarrer avec ces données locales pendant la recherche ou la synchronisation du parcours personnalisé.
+              Backup courses remain available on the watch: a round can start with this local data while a custom course is being searched for or synchronized.
             </p>
             <div class="golf-project-tech">
               <span>OpenStreetMap</span>
               <span>Overpass API</span>
               <span>PeerSocket</span>
-              <span>Données locales de secours</span>
+              <span>Local backup data</span>
             </div>
           </div>
         </article>
 
         <article class="golf-project-row">
-          <h2>03 — Sur le parcours</h2>
+          <h2>03 — On the course</h2>
           <div class="golf-project-row__body">
             <p>
-              Pendant le jeu, le GPS de la montre actualise la position du joueur et les distances vers le green et les bunkers. Une formule de Haversine calcule les distances géographiques à partir des coordonnées GPS. Lorsque la carte du trou est disponible, le point de position se superpose à son image.
+              During play, the watch’s GPS updates the player’s position and distances to the green and bunkers. A Haversine formula calculates geographic distances from GPS coordinates. When a hole map is available, the position marker is overlaid on its image.
             </p>
             <ul>
-              <li>Choisir le club utilisé avec les commandes à l’écran ou les boutons physiques de la montre.</li>
-              <li>Enregistrer chaque coup avec sa position et le club sélectionné.</li>
-              <li>Passer d’un trou à l’autre et conserver le score de la partie.</li>
+              <li>Select the club in use with on-screen controls or the watch’s physical buttons.</li>
+              <li>Record each shot with its position and selected club.</li>
+              <li>Move between holes while keeping the round’s score.</li>
             </ul>
           </div>
         </article>
 
         <article class="golf-project-row">
-          <h2>04 — Synchronisation &amp; bilan</h2>
+          <h2>04 — Sync &amp; summary</h2>
           <div class="golf-project-row__body">
             <p>
-              À la fin de la partie, la montre transmet le récapitulatif au téléphone. Celui-ci peut envoyer les scores par requête HTTP POST vers un webhook personnel, au format JSON : parcours, date, total des coups et détail par trou.
+              At the end of a round, the watch sends a summary to the phone. The phone can send scores as a JSON payload via an HTTP POST request to a personal webhook: course, date, total strokes, and hole-by-hole details.
             </p>
             <p>
-              Le développement prend en compte les contraintes d’une montre connectée : affichage sur écran rond de 454 × 454 pixels, exécution embarquée et échanges Bluetooth avec l’application compagnon.
+              Development accounts for the constraints of a connected watch: a 454 × 454 pixel round display, embedded execution, and Bluetooth communication with the companion app.
             </p>
             <div class="golf-project-tech">
               <span>Zepp OS 1.0</span>
@@ -83,9 +84,9 @@ import ProjectSection from '../../components/ProjectSection.astro';
         </article>
 
         <div class="golf-project-footer">
-          <p>Un projet personnel autour du GPS embarqué, de la cartographie libre et du suivi sportif en conditions réelles.</p>
+          <p>A personal project exploring embedded GPS, open mapping, and sports tracking in real-world conditions.</p>
           <a href="https://github.com/b-cb/Golf-Traker" target="_blank" rel="noreferrer">
-            Voir le projet sur GitHub
+            View the project on GitHub
             <span aria-hidden="true">↗</span>
           </a>
         </div>

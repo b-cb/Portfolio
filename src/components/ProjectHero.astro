@@ -13,9 +13,10 @@ interface Props {
   poster?: ImageMetadata;
   imageAlt?: string;
   imageFit?: 'cover' | 'contain';
+  technologyLabel?: string;
 }
 
-const { category, title, accent, description, tags, image, video, poster, imageAlt = title, imageFit = 'cover' } = Astro.props;
+const { category, title, accent, description, tags, image, video, poster, imageAlt = title, imageFit = 'cover', technologyLabel = 'Technologies utilisées' } = Astro.props;
 ---
 
 <section class="project-hero reveal">
@@ -25,7 +26,7 @@ const { category, title, accent, description, tags, image, video, poster, imageA
     <p class="eyebrow">{category}</p>
     <h1>{title}<br /><span>{accent}</span></h1>
     <p class="project-hero__description">{description}</p>
-    <div class="project-tags" aria-label="Technologies utilisées">
+    <div class="project-tags" aria-label={technologyLabel}>
       {tags.map((tag) => <span>{tag}</span>)}
     </div>
     <ProjectMedia image={image} video={video} poster={poster} alt={imageAlt} className={`project-media project-media--hero project-media--${imageFit}`} />

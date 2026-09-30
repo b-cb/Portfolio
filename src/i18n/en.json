@@ -1,0 +1,58 @@
+{
+  "navigation": {
+    "home": "Home",
+    "projects": "Projects",
+    "resume": "Resume",
+    "backToProjects": "Back to projects",
+    "languageLabel": "Language",
+    "switchTo": "Français"
+  },
+  "common": {
+    "technologies": "Technologies",
+    "backToPortfolio": "Back to portfolio",
+    "viewProjectOnGithub": "View project on GitHub",
+    "category": "Category",
+    "academic": "Academic",
+    "personal": "Personal projects",
+    "academicProjects": "Academic projects",
+    "personalProjects": "Personal projects & explorations",
+    "projectsCount": "projects",
+    "open": "Open",
+    "allProjects": "All projects",
+    "allProjectsDescription": "Browse the full collection",
+    "portfolio": "Portfolio",
+    "discoveries": "Projects & explorations"
+  },
+  "home": {
+    "heroLabel": "Portfolio introduction",
+    "heroHeadingFirst": "Engineering student",
+    "heroHeadingSecond": "Image & Multimedia",
+    "availability": "Available — Internship completed · IRISA / Inria",
+    "discover": "Explore",
+    "about": "About",
+    "profileJourney": "Profile & Journey",
+    "profileFirst": "I am an engineering student passionate about image processing, virtual reality and real-time rendering. My approach combines low-level algorithmic rigour (C++, Python) with the design of immersive interactive experiences on Linux and standalone headsets.",
+    "profileSecond": "Beyond coding, I take a multidisciplinary approach that brings together sporting perseverance (endurance sports, tennis), multimedia creation and association project management.",
+    "englishLevel": "English C1",
+    "preparatorySchool": "Lycée Déodat de Séverac",
+    "engineeringDegree": "Image & Multimedia Engineering",
+    "stage": "Internship: VR Neuro-archaeology",
+    "stageDate": "SUMMER 2026",
+    "marqueeLabel": "Technical skills",
+    "projectsTitle": "Projects & Explorations",
+    "projectsDescription": "Explore my academic and personal projects.",
+    "categoryLabel": "Category",
+    "knowHow": "Expertise",
+    "skills": "Skills"
+  },
+  "projectsPage": {
+    "title": "Projects & Explorations",
+    "description": "Explore all of my academic and personal projects."
+  },
+  "resume": {
+    "eyebrow": "Document",
+    "title": "Curriculum vitae",
+    "description": "View my résumé in your browser.",
+    "open": "Download the original French PDF"
+  }
+}

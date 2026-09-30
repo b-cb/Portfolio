@@ -1,0 +1,130 @@
+---
+import { Image } from 'astro:assets';
+
+import Layout from '../../../layouts/Layout.astro';
+import ProjectHero from '../../../components/ProjectHero.astro';
+import ProjectSection from '../../../components/ProjectSection.astro';
+import MetricDisplay from '../../../components/MetricDisplay.astro';
+import Artefacts from '../../../Images/Stage2A.png';
+import Temple from '../../../Images/Stage2ATemple.png';
+---
+
+<Layout title="Neuroarchaeology VR | Batiste COMET-BARTHE" backHref="/en/#projects" lang="en">
+  <ProjectHero category="IRISA / Inria Internship · Rennes · Summer 2026" title="Neuroarchaeology" accent="VR" description="Design of 3D visualization and heatmap tools to analyze virtual reality exploration recordings, applied to the study of artefacts and a Gallo-Roman temple." tags={['OpenXR', 'C++', 'HTML', 'Python', 'Unity']} image={Artefacts} imageAlt="Artefact" technologyLabel="Technologies" />
+
+  <!-- Project body -->
+  <section class="px-6 pb-32" style="background: #09090b;">
+    <ProjectSection variant="wide">
+      <div class="max-w-4xl mx-auto space-y-16">
+        <!-- Divider -->
+        <div class="w-full h-px bg-white/10"></div>
+
+        <!-- Context -->
+        <div class="grid md:grid-cols-3 gap-8">
+          <div>
+            <h2 class="text-xs font-mono uppercase tracking-widest mb-4 text-zinc-400">01 — Context</h2>
+          </div>
+          <div class="md:col-span-2">
+            <p class="text-zinc-400 leading-relaxed font-light">
+              Hosted by the Seamless research team at IRISA, which specializes in extended reality, I completed my M1 internship developing a spatial data visualization pipeline. As part of Maxime Dumonteil's PhD research, I designed custom 3D heatmap rendering tools to analyze and visually represent complex exploration paths in virtual reality.
+            </p>
+          </div>
+        </div>
+
+        <div class="w-full h-px bg-white/5"></div>
+
+        <!-- Objectives -->
+        <div class="grid md:grid-cols-3 gap-8">
+          <div>
+            <h2 class="text-xs font-mono uppercase tracking-widest mb-4 text-zinc-400">02 — Objectives</h2>
+          </div>
+          <div class="md:col-span-2 space-y-3">
+            <p class="text-zinc-400 leading-relaxed font-light">Enable detailed visual analysis of exploration recordings collected in VR, at two different scales:</p>
+            <ul class="space-y-2 mt-4">
+              <li class="flex items-start gap-3 text-zinc-500 text-sm font-light">
+                <span class="mt-1.5 w-1 h-1 rounded-full bg-zinc-500 flex-shrink-0"></span>
+                Design a web interface to analyze the paths of 60 participants from 3 different countries as they explored 15 artefacts.
+              </li>
+              <li class="flex items-start gap-3 text-zinc-500 text-sm font-light">
+                <span class="mt-1.5 w-1 h-1 rounded-full bg-zinc-500 flex-shrink-0"></span>
+                Develop a rendering engine to analyze recordings from 40 participants during a virtual visit to a Gallo-Roman temple dedicated to Mars.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="w-full h-px bg-white/5"></div>
+
+        <!-- Technologies -->
+        <div class="grid md:grid-cols-3 gap-8">
+          <div>
+            <h2 class="text-xs font-mono uppercase tracking-widest mb-4 text-zinc-400">03 — Technologies</h2>
+          </div>
+          <div class="md:col-span-2">
+            <p class="text-zinc-400 leading-relaxed font-light mb-6">A lightweight HTML/JavaScript page for visualizing heatmaps on artefacts, designed for smooth performance and accessibility.</p>
+            <p class="text-zinc-400 leading-relaxed font-light mb-6">A C++ rendering engine for the temple, where the size of the area to process called for greater performance.</p>
+
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 text-xs font-mono rounded" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: #a1a1aa;">Unity</span>
+              <span class="px-3 py-1.5 text-xs font-mono rounded" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: #a1a1aa;">HTML and JavaScript</span>
+              <span class="px-3 py-1.5 text-xs font-mono rounded" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: #a1a1aa;">C++</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-full h-px bg-white/5"></div>
+
+        <!-- Secondary image -->
+        <div class="w-full rounded-2xl overflow-hidden flex items-center justify-center"
+          style="height: 400px; background: rgba(255,255,255,0.02); border: 1px dashed rgba(255,255,255,0.08);">
+          <Image
+            src={Temple}
+            alt="Gallo-Roman temple"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+        </div>
+
+        <div class="w-full h-px bg-white/5"></div>
+
+        <!-- Results and learning -->
+        <div class="grid md:grid-cols-3 gap-8">
+          <div>
+            <h2 class="text-xs font-mono uppercase tracking-widest mb-4 text-zinc-400">04 — Results</h2>
+          </div>
+          <div class="md:col-span-2">
+            <p class="text-zinc-400 leading-relaxed font-light">
+              The results exceeded initial expectations: the artefact pages remain responsive while displaying recordings for all 15 artefacts and 60 participants simultaneously. The C++ rendering engine, meanwhile, runs at a steady 90 FPS, with recalculation taking less than 3 seconds when switching shaders—one of the project's main technical challenges.
+            </p>
+            <MetricDisplay lang="en" metrics={[
+              { value: '15', label: 'Artefacts displayed' },
+              { value: '60', label: 'Participants · Web' },
+              { value: '3', label: 'Countries · Web' },
+              { value: '40', label: 'Participants · VR temple' },
+              { value: '90 FPS', label: 'C++ rendering' },
+              { value: '< 3 s', label: 'Shader recalculation' },
+            ]} />
+          </div>
+        </div>
+
+        <div class="w-full h-px bg-white/5"></div>
+      </div>
+    </ProjectSection>
+  </section>
+
+  <!-- Page footer -->
+  <section class="px-6 pb-24" style="background: #09090b;">
+    <div class="max-w-4xl mx-auto flex flex-col items-center text-center gap-6 pt-4">
+      <div class="w-12 h-px bg-white/20"></div>
+
+      <p class="text-zinc-500 text-sm font-light max-w-md">
+        This project is part of my research journey in extended reality and data visualization.
+      </p>
+
+      <a href="/en/#projects"
+        class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-mono uppercase tracking-widest transition-colors duration-300"
+        style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.12); color: #d4d4d8;">
+        ← Back to portfolio
+      </a>
+    </div>
+  </section>
+</Layout>

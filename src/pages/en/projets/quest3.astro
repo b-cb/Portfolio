@@ -1,0 +1,165 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import ProjectHero from '../../../components/ProjectHero.astro';
+import ProjectSection from '../../../components/ProjectSection.astro';
+import MetricDisplay from '../../../components/MetricDisplay.astro';
+import { Image } from 'astro:assets';
+import jumeauQuestImage from '../../../Images/jumeauquest.png';
+import jumeauQuestVideo from '../../../Videos/jumeauquest.mp4';
+import pythonJumeauVideo from '../../../Videos/pythonJumeau.mp4';
+
+const heroCopy = {
+  category: 'Personal project · Toulouse · Quest 3',
+  title: 'Tisséo digital twin',
+  accent: 'on Quest 3',
+  description: 'Immersive rendering of Toulouse’s public transport network on Quest 3, powered by Tisséo GTFS and GTFS-RT data.',
+  tags: ['Quest 3', 'Unity', 'Cesium', 'Java', 'Spring Boot', 'Python', 'Pygame'],
+};
+---
+
+<Layout title={`${heroCopy.title} ${heroCopy.accent} | Batiste COMET-BARTHE`} backHref="/en/#projects" lang="en">
+  <ProjectHero
+    category={heroCopy.category}
+    title={heroCopy.title}
+    accent={heroCopy.accent}
+    description={heroCopy.description}
+    tags={heroCopy.tags}
+    technologyLabel="Technologies"
+  />
+
+  <section class="twin-project-visuals" aria-label="Quest 3 rendering and project media">
+    <div class="twin-project-visuals__inner">
+      <figure class="twin-project-video twin-project-video--main">
+        <video
+          src={jumeauQuestVideo}
+          controls
+          playsinline
+          preload="metadata"
+          aria-label="Video of the immersive Tisséo digital twin rendering on Quest 3"
+        ></video>
+        <figcaption>
+          <span class="twin-project-placeholder__index">01 / QUEST 3 RENDERING</span>
+          <span class="twin-project-placeholder__label">Immersive rendering of the Tisséo network on Quest 3</span>
+        </figcaption>
+      </figure>
+      <div class="twin-project-placeholder-grid">
+        <figure class="twin-project-video twin-project-image">
+          <Image
+            src={jumeauQuestImage}
+            alt="Georeferenced 3D rendering of the Tisséo digital twin"
+            class="twin-project-image__media"
+          />
+          <figcaption>
+            <span class="twin-project-placeholder__index">02 / UNITY · CESIUM SCENE</span>
+            <span class="twin-project-placeholder__label">Georeferenced 3D rendering</span>
+          </figcaption>
+        </figure>
+        <figure class="twin-project-video">
+          <video
+            src={pythonJumeauVideo}
+            controls
+            playsinline
+            preload="metadata"
+            aria-label="Video of the network's 2D visualization stage with Python and Pygame"
+          ></video>
+          <figcaption>
+            <span class="twin-project-placeholder__index">03 / 2D VISUALIZATION STAGE</span>
+            <span class="twin-project-placeholder__label">Intermediate visualization with Python / Pygame</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="px-6 pb-32" style="background: #09090b;">
+    <ProjectSection variant="wide">
+      <div class="twin-project-content">
+        <div class="twin-project-row">
+          <div class="twin-project-row__title">
+            <h2 class="text-xs font-mono uppercase tracking-widest" style="color: var(--accent);">01 — Immersive rendering on Quest 3</h2>
+          </div>
+          <div class="twin-project-row__body">
+            <p class="text-zinc-400 leading-relaxed font-light">
+              This project focuses on immersive rendering of the Tisséo network digital twin on Quest 3. The Unity scene uses Cesium to georeference the environment and display vehicles from their GPS coordinates; their presence is managed around the player wearing the VR rig.
+            </p>
+          </div>
+        </div>
+
+        <div class="twin-project-row">
+          <div class="twin-project-row__title">
+            <h2 class="text-xs font-mono uppercase tracking-widest" style="color: var(--accent);">02 — Data &amp; pipeline</h2>
+          </div>
+          <div class="twin-project-row__body">
+            <p class="text-zinc-400 leading-relaxed font-light">
+              At startup, the server imports GTFS files — stops, routes, trips, schedules and route geometries — into an H2 database. It then polls Tisséo’s GTFS-RT feed every 30 seconds and publishes vehicle state through a REST API.
+            </p>
+            <MetricDisplay lang="en" metrics={[{ value: '30 s', label: 'GTFS-RT polling interval' }]} />
+            <p class="text-zinc-400 leading-relaxed font-light">
+              Bus positions come from the real-time feed when available. The positions of metro lines A and B, which are absent from this feed, are estimated from scheduled times and GTFS route geometries.
+            </p>
+          </div>
+        </div>
+
+        <div class="twin-project-row">
+          <div class="twin-project-row__title">
+            <h2 class="text-xs font-mono uppercase tracking-widest" style="color: var(--accent);">03 — Position calculations</h2>
+          </div>
+          <div class="twin-project-row__body">
+            <p class="text-zinc-400 leading-relaxed font-light">
+              To estimate a vehicle’s progress, the service compares the current time and any delay against the GTFS schedule, identifies the stops before and after its position, then projects those stops onto the route geometry. Interpolation along the geometry provides the estimated coordinates.
+            </p>
+            <p class="text-zinc-400 leading-relaxed font-light">
+              Route geometries and schedules are cached to avoid traversing the same data for every calculation. Clients then interpolate between snapshots to display continuous movement between server updates.
+            </p>
+          </div>
+        </div>
+
+        <div class="twin-project-row">
+          <div class="twin-project-row__title">
+            <h2 class="text-xs font-mono uppercase tracking-widest" style="color: var(--accent);">04 — Visualization</h2>
+          </div>
+          <div class="twin-project-row__body">
+            <p class="text-zinc-400 leading-relaxed font-light">
+              Python and Pygame provide a 2D visualization stage for the network and vehicles ahead of the immersive Quest 3 rendering. The client lets users pan and zoom; hovering over a vehicle displays information about its route and delay.
+            </p>
+            <p class="text-zinc-400 leading-relaxed font-light">
+              When the server is unavailable, the client can switch to simulation mode and move simulated buses along the GTFS route geometries.
+            </p>
+          </div>
+        </div>
+
+        <div class="twin-project-row">
+          <div class="twin-project-row__title">
+            <h2 class="text-xs font-mono uppercase tracking-widest" style="color: var(--accent);">05 — Unity / Cesium integration</h2>
+          </div>
+          <div class="twin-project-row__body">
+            <p class="text-zinc-400 leading-relaxed font-light">
+              The Unity script retrieves vehicles from the API, converts their GPS coordinates into positions in the Cesium-georeferenced scene, then interpolates their movement. It also manages vehicle visibility within a radius around the player.
+            </p>
+            <div class="twin-project-tech">
+              <span>Java 21</span>
+              <span>Spring Boot 3</span>
+              <span>GTFS / GTFS-RT</span>
+              <span>H2</span>
+              <span>Python</span>
+              <span>Pygame</span>
+              <span>Unity</span>
+              <span>Cesium</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="twin-project-row">
+          <div class="twin-project-row__title">
+            <h2 class="text-xs font-mono uppercase tracking-widest" style="color: var(--accent);">06 — Implementation</h2>
+          </div>
+          <div class="twin-project-row__body">
+            <p class="text-zinc-400 leading-relaxed font-light">
+              The backend requires a Tisséo API key configured in the environment to access network data. The pipeline separates GTFS import, periodic traffic data acquisition, position calculation and consumption by the visualizers.
+            </p>
+          </div>
+        </div>
+      </div>
+    </ProjectSection>
+  </section>
+</Layout>
