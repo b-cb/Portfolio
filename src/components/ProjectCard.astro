@@ -9,6 +9,15 @@ interface Props {
 
 const { project, placeholder = false } = Astro.props;
 const projectIndex = project ? Math.max(1, projects.findIndex(({ id }) => id === project.id) + 1) : 0;
+const projectAccents: Record<string, string> = {
+  'neuro-archeologie': '103 91 120',
+  'entrainement-reseau': '144 91 50',
+  'edge-preserving': '67 105 105',
+  'appli-tarot': '151 91 62',
+  quest3: '75 105 127',
+  'globe-historique': '77 112 89',
+  'tracker-golf': '133 106 51',
+};
 ---
 
 {placeholder || !project ? (
@@ -26,7 +35,7 @@ const projectIndex = project ? Math.max(1, projects.findIndex(({ id }) => id ===
     </div>
   </div>
 ) : (
-  <a href={project.href} class="project-card group">
+  <a href={project.href} class="project-card group" style={`--project-accent-rgb: ${projectAccents[project.id] ?? '138 85 42'}`}>
     <div class="project-card__frame" aria-hidden="true">
       <span class="project-card__corner project-card__corner--tl"></span>
       <span class="project-card__corner project-card__corner--tr"></span>

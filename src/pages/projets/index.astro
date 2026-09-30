@@ -26,39 +26,37 @@ const countPerso = persos.length;
     </div>
   </section>
 
-  <section class="projects-page__content">
+  <section class="projects-page__content projects-page__content--museum">
     <div class="projects-page__grid">
-      <div class="project-panel">
-        <div class="project-panel__header">
-          <div>
-            <span class="eyebrow">Catégorie 01</span>
-            <h3>Académiques</h3>
-            <p>Projets scolaires &amp; universitaires · {countAca} projets</p>
-          </div>
-        </div>
+      <details class="project-panel project-panel--academic" open>
+        <summary class="project-panel__header">
+          <span class="eyebrow">Catégorie 01</span>
+          <span class="project-panel__title" role="heading" aria-level="3">Académiques</span>
+          <span class="project-panel__description">Projets scolaires &amp; universitaires · {countAca} projets</span>
+          <span class="project-panel__toggle" aria-hidden="true"></span>
+        </summary>
 
         <div class="project-panel__body" id="panneau-academique">
           <div class="projects-grid">
             {academiques.map(project => <ProjectCard project={project} />)}
           </div>
         </div>
-      </div>
+      </details>
 
-      <div class="project-panel">
-        <div class="project-panel__header">
-          <div>
-            <span class="eyebrow">Catégorie 02</span>
-            <h3>Expériences Perso.</h3>
-            <p>Projets personnels &amp; explorations · {countPerso} projets</p>
-          </div>
-        </div>
+      <details class="project-panel project-panel--personal" open>
+        <summary class="project-panel__header">
+          <span class="eyebrow">Catégorie 02</span>
+          <span class="project-panel__title" role="heading" aria-level="3">Expériences Perso.</span>
+          <span class="project-panel__description">Projets personnels &amp; explorations · {countPerso} projets</span>
+          <span class="project-panel__toggle" aria-hidden="true"></span>
+        </summary>
 
         <div class="project-panel__body" id="panneau-perso">
           <div class="projects-grid">
             {persos.map(project => <ProjectCard project={project} />)}
           </div>
         </div>
-      </div>
+      </details>
     </div>
   </section>
 </Layout>

@@ -208,27 +208,29 @@ const skillCategories = [
         </a>
 
         <div class="home-project-groups">
-          <section class="home-project-group" aria-labelledby="home-academic-title">
-            <header class="home-project-group__header">
+          <details class="home-project-group home-project-group--academic" open>
+            <summary class="home-project-group__header">
               <span class="eyebrow">Catégorie 01</span>
-              <h3 id="home-academic-title">Académiques</h3>
-              <p>Projets scolaires &amp; universitaires · {countAca} projets</p>
-            </header>
+              <span class="home-project-group__title" id="home-academic-title" role="heading" aria-level="3">Académiques</span>
+              <span class="home-project-group__description">Projets scolaires &amp; universitaires · {countAca} projets</span>
+              <span class="home-project-group__toggle" aria-hidden="true"></span>
+            </summary>
             <div class="projects-grid">
               {academiques.map(project => <ProjectCard project={project} />)}
             </div>
-          </section>
+          </details>
 
-          <section class="home-project-group" aria-labelledby="home-personal-title">
-            <header class="home-project-group__header">
+          <details class="home-project-group home-project-group--personal" open>
+            <summary class="home-project-group__header">
               <span class="eyebrow">Catégorie 02</span>
-              <h3 id="home-personal-title">Expériences Perso.</h3>
-              <p>Projets personnels &amp; explorations · {countPerso} projets</p>
-            </header>
+              <span class="home-project-group__title" id="home-personal-title" role="heading" aria-level="3">Expériences Perso.</span>
+              <span class="home-project-group__description">Projets personnels &amp; explorations · {countPerso} projets</span>
+              <span class="home-project-group__toggle" aria-hidden="true"></span>
+            </summary>
             <div class="projects-grid">
               {persos.map(project => <ProjectCard project={project} />)}
             </div>
-          </section>
+          </details>
         </div>
       </div>
     </div>
@@ -293,44 +295,58 @@ const skillCategories = [
     border-bottom: 1px solid rgb(138 85 42 / 22%);
   }
 
-  .home-project-group__header { margin-bottom: 1.5rem; }
-  .home-project-group__header h3 {
-    margin-top: 0.5rem;
+  .home-project-group--academic { border-top-color: rgb(128 91 62 / 56%); }
+  .home-project-group--personal { border-top-color: rgb(66 99 101 / 58%); }
+  .home-project-group__header {
+    margin-bottom: 1.5rem;
+    padding: 0;
+  }
+  .home-project-group__title {
     color: #302b25;
-    font-size: 1.25rem;
-    font-weight: 500;
+    transition: color 180ms ease;
   }
-  .home-project-group__header p {
-    margin-top: 0.35rem;
-    color: #62594f;
-  }
+  .home-project-group--academic .home-project-group__title { color: #805b3e; }
+  .home-project-group--personal .home-project-group__title { color: #426365; }
+  .home-project-group__description { color: #62594f; }
 
   .timeline-line { height: 2px; }
   .timeline-line--prepa { background: #9b6840; }
-  .timeline-line--enseeiht { background: #bd8b4e; }
-  .timeline-step--prepa:hover > div:first-child { border-color: #9b6840; }
-  .timeline-step--prepa > div > span { color: #89552f; }
+  .timeline-line--enseeiht { background: #92713f; }
+  .timeline-step--prepa:hover > div:first-child { border-color: #9b6840 !important; }
+  .timeline-step--prepa > div > span { color: #80542f !important; }
   .timeline-step--prepa h4,
   .timeline-step--enseeiht h4,
   .timeline-step--stage h4 { color: #302b25; }
   .timeline-step--prepa p,
   .timeline-step--enseeiht p,
   .timeline-step--stage p { color: #62594f; }
-  .timeline-step--enseeiht:hover > div:first-child { border-color: #bd8b4e; }
-  .timeline-step--enseeiht > div > span { color: #805923; }
+  .timeline-step--enseeiht:hover > div:first-child { border-color: #92713f !important; }
+  .timeline-step--enseeiht > div > span { color: #765b31 !important; }
   .timeline-step--stage > div:first-child {
-    background: #a66e45;
+    background: #426365;
     box-shadow: 0 0 0 4px #f4f0e8;
   }
-  .timeline-step--stage > div:nth-child(2) { background: #a66e45; }
-  .timeline-step--stage:hover > div:last-child { border-color: #a66e45; }
-  .timeline-step--stage > div > span { color: #89552f; }
+  .timeline-step--stage > div:nth-child(2) { background: #426365; }
+  .timeline-step--stage:hover > div:last-child { border-color: #426365 !important; }
+  .timeline-step--stage > div > span { color: #426365 !important; }
   .timeline-mobile-step--prepa { border-color: #9b6840; }
-  .timeline-mobile-step--enseeiht { border-color: #bd8b4e; }
-  .timeline-mobile-step > span { color: #89552f; }
+  .timeline-mobile-step--enseeiht { border-color: #92713f; }
+  .timeline-mobile-step > span { color: #80542f !important; }
+  .timeline-mobile-step--enseeiht > span { color: #765b31 !important; }
+  .timeline-mobile-step--enseeiht .relative > span:nth-child(2) { color: #426365 !important; }
   .timeline-mobile-step h4 { color: #302b25; }
   .timeline-mobile-step p { color: #62594f; }
-  .timeline-mobile-step--enseeiht .relative > span:first-child { background: #a66e45; }
+  .timeline-mobile-step--enseeiht .relative > span:first-child { background: #426365; }
+  .timeline-step,
+  .timeline-mobile-step,
+  .timeline-step > div,
+  .timeline-mobile-step h4 { transition: color 180ms ease, border-color 180ms ease; }
+  .timeline-step--prepa:hover h4,
+  .timeline-mobile-step--prepa:hover h4 { color: #80542f !important; }
+  .timeline-step--enseeiht:hover h4,
+  .timeline-mobile-step--enseeiht:hover > h4 { color: #765b31 !important; }
+  .timeline-step--stage:hover h4,
+  .timeline-mobile-step--enseeiht .relative:hover h4 { color: #426365 !important; }
 
   .skills-detail-section {
     background: #eee8dc;
@@ -397,6 +413,12 @@ const skillCategories = [
     .skills-marquee {
       animation: none;
     }
+
+    .home-project-group__title,
+    .timeline-step,
+    .timeline-mobile-step,
+    .timeline-step > div,
+    .timeline-mobile-step h4 { transition: none; }
   }
 
   @media (max-width: 760px) {

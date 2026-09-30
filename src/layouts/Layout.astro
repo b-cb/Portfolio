@@ -24,6 +24,7 @@ const { title, backHref } = Astro.props;
     <title>{title}</title>
   </head>
   <body class="font-sans antialiased site-shell">
+    <canvas class="cursor-particles" aria-hidden="true" transition:persist></canvas>
     <div class="cursor-reticle" aria-hidden="true" transition:persist></div>
 
     <nav class="site-nav fixed top-0 w-full z-50 p-6 flex justify-between" aria-label="Navigation principale">
@@ -68,6 +69,120 @@ const { title, backHref } = Astro.props;
 
       const cursor = document.querySelector('.cursor-reticle');
       const finePointer = window.matchMedia('(pointer: fine)').matches;
+      const particleCanvas = document.querySelector('.cursor-particles');
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (particleCanvas && finePointer && !reducedMotion && !document.documentElement.dataset.particlesInitialized) {
+        document.documentElement.dataset.particlesInitialized = 'true';
+        const canvas = particleCanvas;
+        const context = canvas.getContext('2d');
+
+        if (context) {
+          const particles = [];
+          const pointer = { x: -1000, y: -1000, active: false };
+          let width = 0;
+          let height = 0;
+          let pixelRatio = 1;
+
+          const resizeParticles = () => {
+            pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = Math.round(width * pixelRatio);
+            canvas.height = Math.round(height * pixelRatio);
+            context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+
+            const count = Math.min(72, Math.max(32, Math.round((width * height) / 24000)));
+            while (particles.length < count) {
+              const direction = Math.random() * Math.PI * 2;
+              const speed = 0.12 + Math.random() * 0.12;
+              particles.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                vx: Math.cos(direction) * speed,
+                vy: Math.sin(direction) * speed,
+                radius: 2 + Math.random() * 1.5,
+                shade: Math.random() > 0.78 ? '66, 99, 101' : '134, 86, 47',
+              });
+            }
+            particles.length = count;
+          };
+
+          const drawParticles = () => {
+            context.clearRect(0, 0, width, height);
+
+            for (const particle of particles) {
+              if (pointer.active) {
+                const dx = particle.x - pointer.x;
+                const dy = particle.y - pointer.y;
+                const distance = Math.hypot(dx, dy);
+                const radius = 105;
+
+                if (distance > 0 && distance < radius) {
+                  const force = ((radius - distance) / radius) * 0.055;
+                  particle.vx += (dx / distance) * force;
+                  particle.vy += (dy / distance) * force;
+                }
+              }
+
+              particle.vx *= 0.999;
+              particle.vy *= 0.999;
+              particle.x += particle.vx;
+              particle.y += particle.vy;
+
+              if (particle.x < -4) particle.x = width + 4;
+              if (particle.x > width + 4) particle.x = -4;
+              if (particle.y < -4) particle.y = height + 4;
+              if (particle.y > height + 4) particle.y = -4;
+
+            }
+
+            const connectionDistance = 145;
+            for (let i = 0; i < particles.length; i += 1) {
+              const particle = particles[i];
+              for (let j = i + 1; j < particles.length; j += 1) {
+                const neighbor = particles[j];
+                const distance = Math.hypot(particle.x - neighbor.x, particle.y - neighbor.y);
+                if (distance >= connectionDistance) continue;
+
+                context.beginPath();
+                context.strokeStyle = `rgba(104, 76, 48, ${((1 - distance / connectionDistance) * 0.2).toFixed(3)})`;
+                context.lineWidth = 0.7;
+                context.moveTo(particle.x, particle.y);
+                context.lineTo(neighbor.x, neighbor.y);
+                context.stroke();
+              }
+            }
+
+            for (const particle of particles) {
+              context.beginPath();
+              context.fillStyle = `rgba(${particle.shade}, 0.24)`;
+              context.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+              context.fill();
+            }
+
+            window.requestAnimationFrame(drawParticles);
+          };
+
+          document.addEventListener('pointermove', (event) => {
+            if (event.pointerType !== 'mouse' && event.pointerType !== 'pen') return;
+            pointer.x = event.clientX;
+            pointer.y = event.clientY;
+            pointer.active = true;
+          }, { passive: true });
+          document.addEventListener('pointerout', (event) => {
+            if (!event.relatedTarget) pointer.active = false;
+          });
+          window.addEventListener('blur', () => { pointer.active = false; });
+          window.addEventListener('resize', resizeParticles, { passive: true });
+          resizeParticles();
+          window.requestAnimationFrame(drawParticles);
+        } else {
+          canvas.style.display = 'none';
+        }
+      } else if (particleCanvas && (!finePointer || reducedMotion)) {
+        particleCanvas.style.display = 'none';
+      }
 
       if (cursor && finePointer && !document.documentElement.dataset.cursorInitialized) {
         document.documentElement.dataset.cursorInitialized = 'true';
