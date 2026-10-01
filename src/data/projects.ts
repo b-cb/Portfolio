@@ -7,7 +7,7 @@ import Stage2A from '../Images/Stage2A.png';
 import Apprentissage from '../Images/Apprentissage.jpg';
 import ProjetImage from '../Images/ProjetImage.png';
 import Appliweb from '../Images/Appliweb.png';
-import VR from '../Images/VR.png';
+import JumeauQuest from '../Images/JumeauQuest.png';
 import History from '../Images/History.png';
 import Golf from '../Images/golf.png';
 
@@ -76,7 +76,7 @@ export const projects: Project[] = [
     id: "quest3",
     ...quest3Project,
     href: "/projets/quest3",
-    image: VR,
+    image: JumeauQuest,
     group: "perso"
   },
   {
