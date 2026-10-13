@@ -10,6 +10,7 @@ import { getRelativeLocaleUrl } from 'astro:i18n';
 import monLogo from '../Images/bcb.svg';
 import fr from '../i18n/fr.json';
 import en from '../i18n/en.json';
+import ObfuscatedEmail from '../components/ObfuscatedEmail.astro';
 
 interface Props {
   title?: string;
@@ -109,6 +110,41 @@ const frenchHref = getRelativeLocaleUrl('fr', routePath);
     </nav>
 
     <slot />
+
+    <section id="contact" class="site-contact relative z-10 px-6 pt-24 pb-8" aria-labelledby="contact-title">
+      <div class="max-w-4xl mx-auto text-center border-t border-[var(--accent)]/20 pt-16">
+        <p class="eyebrow">Contact</p>
+        <h2 id="contact-title" class="text-3xl md:text-5xl font-medium tracking-tight mt-4">
+          {lang === 'en' ? "Let's work together" : 'Travaillons ensemble'}
+        </h2>
+        <p class="text-zinc-500 mt-4 max-w-xl mx-auto leading-relaxed">
+          {lang === 'en'
+            ? 'An internship, a project or a question? Feel free to reach out by email or on LinkedIn.'
+            : 'Un stage, un projet ou une question ? N’hésitez pas à me contacter par email ou sur LinkedIn.'}
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 mt-8">
+          <ObfuscatedEmail
+            user="batiste.cometbarthe"
+            domain="etu.inp-n7.fr"
+            class="inline-flex text-base md:text-lg font-mono text-[var(--accent)] border-b border-[var(--accent)] pb-1 hover:opacity-70 transition-opacity"
+            fallback={lang === 'en' ? '[email protected — enable JavaScript]' : '[email protégé — activez JavaScript]'}
+          />
+          <a
+            id="contact-linkedin"
+            href="https://www.linkedin.com/in/batiste-comet-barthe/"
+            target="_blank"
+            rel="noopener noreferrer me"
+            class="inline-flex items-center gap-2 text-base md:text-lg font-mono text-[var(--accent)] border-b border-[var(--accent)] pb-1 hover:opacity-70 transition-opacity"
+            aria-label={lang === 'en' ? 'LinkedIn profile of Batiste Comet-Barthe' : 'Profil LinkedIn de Batiste Comet-Barthe'}
+          >
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z" />
+            </svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+    </section>
 
     <footer class="site-footer relative z-10 text-center text-zinc-600 text-xs py-8">
       &copy; 2026 Batiste Comet-Barthe. {lang === 'en' ? 'All rights reserved.' : 'Tous droits réservés.'}
