@@ -1,6 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import ui from '../../i18n/en.json';
+import ObfuscatedEmail from '../../components/ObfuscatedEmail.astro';
+import ObfuscatedPhone from '../../components/ObfuscatedPhone.astro';
+import ProtectedCvLink from '../../components/ProtectedCvLink.astro';
 ---
 
 <Layout title="Resume | Batiste COMET-BARTHE" lang="en">
@@ -9,12 +12,12 @@ import ui from '../../i18n/en.json';
       <p class="eyebrow">{ui.resume.eyebrow}</p>
       <h1 class="text-5xl md:text-7xl font-medium tracking-tight mt-4">{ui.resume.title}</h1>
       <p class="text-zinc-400 text-lg mt-6 max-w-xl leading-relaxed">{ui.resume.description}</p>
-      <a class="inline-flex mt-10 text-sm font-mono text-[var(--accent)] border-b border-[var(--accent)] pb-2" href="/cv.pdf" target="_blank" rel="noopener">{ui.resume.open}</a>
+      <ProtectedCvLink class="inline-flex mt-10 text-sm font-mono text-[var(--accent)] border-b border-[var(--accent)] pb-2">{ui.resume.open}</ProtectedCvLink>
       <section class="resume-content" aria-label="Full résumé">
         <header class="resume-header">
           <h2>Batiste COMET-BARTHE</h2>
           <p class="resume-headline">Engineering student — XR, Vision &amp; Spatial Computing</p>
-          <p>batiste.cometbarthe@etu.inp-n7.fr · 06 02 49 14 12 · @Batiste Comet-Barthe · 20 years old, French, Category B driving licence</p>
+          <p><ObfuscatedEmail user="batiste.cometbarthe" domain="etu.inp-n7.fr" fallback="[email protected — enable JavaScript]" /> · <ObfuscatedPhone number="06 02 49 14 12" fallback="[phone protected — enable JavaScript]" /> · @Batiste Comet-Barthe · 20 years old, French, Category B driving licence</p>
           <p class="resume-summary">Engineering student specializing in image processing and data analysis. Passionate about virtual reality and computer vision, I aim to apply my technical skills to the challenges of XR innovation and spatial computing.</p>
         </header>
 

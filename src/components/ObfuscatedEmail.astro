@@ -1,0 +1,41 @@
+---
+// src/components/ObfuscatedEmail.astro
+// Anti-spam : l'adresse n'apparaît jamais en clair dans le HTML.
+// Elle est stockée inversée + encodée en base64 et reconstituée en JS côté navigateur.
+interface Props {
+  user: string;
+  domain: string;
+  class?: string;
+  fallback?: string;
+}
+const { user, domain, class: className, fallback = '[email protégé — activez JavaScript]' } = Astro.props;
+const encode = (value: string) => Buffer.from(value.split('').reverse().join('')).toString('base64');
+---
+<a
+  href="#"
+  class:list={['obf-email', className]}
+  data-u={encode(user)}
+  data-d={encode(domain)}
+  rel="nofollow"
+>{fallback}</a>
+
+<script>
+  const decode = (value: string) => atob(value).split('').reverse().join('');
+
+  const initEmails = () => {
+    document.querySelectorAll<HTMLAnchorElement>('a.obf-email:not([data-ready])').forEach((link) => {
+      const { u, d } = link.dataset;
+      if (!u || !d) return;
+      const address = `${decode(u)}@${decode(d)}`;
+      link.textContent = address;
+      link.dataset.ready = 'true';
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        window.location.href = `mailto:${address}`;
+      });
+    });
+  };
+
+  document.addEventListener('astro:page-load', initEmails);
+  initEmails();
+</script>

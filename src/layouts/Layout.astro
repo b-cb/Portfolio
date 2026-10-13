@@ -51,6 +51,7 @@ const frenchHref = getRelativeLocaleUrl('fr', routePath);
     <meta name="description" content={description} />
     <meta name="keywords" content={KEYWORDS} />
     <meta name="author" content="Batiste Comet-Barthe" />
+    <meta name="robots" content="noai, noimageai" />
     <link rel="canonical" href={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -108,6 +109,11 @@ const frenchHref = getRelativeLocaleUrl('fr', routePath);
     </nav>
 
     <slot />
+
+    <footer class="site-footer relative z-10 text-center text-zinc-600 text-xs py-8">
+      &copy; 2026 Batiste Comet-Barthe. {lang === 'en' ? 'All rights reserved.' : 'Tous droits réservés.'}
+    </footer>
+
     <Analytics />
 
     <script is:inline>

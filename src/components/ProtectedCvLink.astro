@@ -1,0 +1,30 @@
+---
+// src/components/ProtectedCvLink.astro
+// Le chemin du PDF n'apparaît pas en clair dans le HTML : les robots qui suivent
+// les liens ne le découvrent pas. Pour un humain, le lien fonctionne normalement.
+interface Props {
+  path?: string;
+  class?: string;
+}
+const { path = '/cv.pdf', class: className } = Astro.props;
+const encoded = Buffer.from(path.split('').reverse().join('')).toString('base64');
+---
+<a href="#" class:list={['protected-cv', className]} data-f={encoded} rel="nofollow noopener"><slot /></a>
+
+<script>
+  const initCvLinks = () => {
+    document.querySelectorAll<HTMLAnchorElement>('a.protected-cv:not([data-ready])').forEach((link) => {
+      const encoded = link.dataset.f;
+      if (!encoded) return;
+      link.dataset.ready = 'true';
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        const path = atob(encoded).split('').reverse().join('');
+        window.open(path, '_blank', 'noopener');
+      });
+    });
+  };
+
+  document.addEventListener('astro:page-load', initCvLinks);
+  initCvLinks();
+</script>

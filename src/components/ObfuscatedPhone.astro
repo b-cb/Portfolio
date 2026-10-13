@@ -1,0 +1,33 @@
+---
+// src/components/ObfuscatedPhone.astro
+// Anti-spam : le numéro n'apparaît jamais en clair dans le HTML.
+// Stocké inversé + base64, reconstitué en JS côté navigateur (lien tel: au clic).
+interface Props {
+  number: string;
+  class?: string;
+  fallback?: string;
+}
+const { number, class: className, fallback = '[numéro protégé — activez JavaScript]' } = Astro.props;
+const encoded = Buffer.from(number.split('').reverse().join('')).toString('base64');
+---
+<a href="#" class:list={['obf-phone', className]} data-p={encoded} rel="nofollow">{fallback}</a>
+
+<script>
+  const initPhones = () => {
+    document.querySelectorAll<HTMLAnchorElement>('a.obf-phone:not([data-ready])').forEach((link) => {
+      const encoded = link.dataset.p;
+      if (!encoded) return;
+      const display = atob(encoded).split('').reverse().join('');
+      const dial = display.replace(/[^\d+]/g, '').replace(/^0/, '+33');
+      link.textContent = display;
+      link.dataset.ready = 'true';
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        window.location.href = `tel:${dial}`;
+      });
+    });
+  };
+
+  document.addEventListener('astro:page-load', initPhones);
+  initPhones();
+</script>
