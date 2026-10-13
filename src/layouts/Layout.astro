@@ -18,10 +18,12 @@ interface Props {
   backHref?: string;
   lang?: 'fr' | 'en';
 }
-const DEFAULT_TITLE = 'Batiste COMET-BARTHE | Ingénieur Image, VR & Multimédia';
-const DEFAULT_DESCRIPTION = "Portfolio de Batiste Comet-Barthe, élève-ingénieur à l'ENSEEIHT spécialisé en Computer Graphics, Spatial Computing (XR/VR), et traitement d'image.";
+const DEFAULT_TITLE_FR = 'Batiste COMET-BARTHE | Ingénieur Image, VR & Multimédia';
+const DEFAULT_TITLE_EN = 'Batiste COMET-BARTHE | Image, VR & Multimedia Engineer';
+const DEFAULT_DESCRIPTION_FR = "Portfolio de Batiste Comet-Barthe, élève-ingénieur à l'ENSEEIHT spécialisé en Computer Graphics, Spatial Computing (XR/VR), et traitement d'image.";
+const DEFAULT_DESCRIPTION_EN = 'Portfolio of Batiste Comet-Barthe, engineering student at ENSEEIHT specializing in Computer Graphics, Spatial Computing (XR/VR), and image processing.';
 const KEYWORDS = "Batiste Comet-Barthe, portfolio, ingénieur, VR, XR, C++, traitement d'image, ENSEEIHT, développeur, 3D";
-const { title = DEFAULT_TITLE, description = DEFAULT_DESCRIPTION, backHref, lang = 'fr' } = Astro.props;
+const { lang = 'fr', title = lang === 'en' ? DEFAULT_TITLE_EN : DEFAULT_TITLE_FR, description = lang === 'en' ? DEFAULT_DESCRIPTION_EN : DEFAULT_DESCRIPTION_FR, backHref } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).href;
 const ui = lang === 'en' ? en : fr;
 const routePath = Astro.url.pathname.replace(/^\/en(?:\/|$)/, '').replace(/^\/+|\/+$/g, '');
@@ -153,11 +155,11 @@ const frenchHref = getRelativeLocaleUrl('fr', routePath);
     <Analytics />
 
     <script is:inline>
-      const syncThemeToggle = () => {
-        const toggle = document.querySelector('#theme-toggle');
+      const syncThemeToggle = (root = document) => {
+        const toggle = root.querySelector('#theme-toggle');
         if (!toggle) return;
 
-        const isDark = document.documentElement.dataset.theme === 'dark';
+        const isDark = root.documentElement.dataset.theme === 'dark';
         toggle.setAttribute('aria-pressed', String(isDark));
         toggle.setAttribute('aria-label', isDark ? toggle.dataset.darkLabel : toggle.dataset.lightLabel);
       };
@@ -179,6 +181,7 @@ const frenchHref = getRelativeLocaleUrl('fr', routePath);
 
       document.addEventListener('astro:before-swap', (event) => {
         event.newDocument.documentElement.dataset.theme = document.documentElement.dataset.theme || 'light';
+        syncThemeToggle(event.newDocument);
       });
 
       const initReveal = () => {
