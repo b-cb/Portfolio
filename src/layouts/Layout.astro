@@ -12,11 +12,16 @@ import fr from '../i18n/fr.json';
 import en from '../i18n/en.json';
 
 interface Props {
-  title: string;
+  title?: string;
+  description?: string;
   backHref?: string;
   lang?: 'fr' | 'en';
 }
-const { title, backHref, lang = 'fr' } = Astro.props;
+const DEFAULT_TITLE = 'Batiste COMET-BARTHE | Ingénieur Image, VR & Multimédia';
+const DEFAULT_DESCRIPTION = "Portfolio de Batiste Comet-Barthe, élève-ingénieur à l'ENSEEIHT spécialisé en Computer Graphics, Spatial Computing (XR/VR), et traitement d'image.";
+const KEYWORDS = "Batiste Comet-Barthe, portfolio, ingénieur, VR, XR, C++, traitement d'image, ENSEEIHT, développeur, 3D";
+const { title = DEFAULT_TITLE, description = DEFAULT_DESCRIPTION, backHref, lang = 'fr' } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).href;
 const ui = lang === 'en' ? en : fr;
 const routePath = Astro.url.pathname.replace(/^\/en(?:\/|$)/, '').replace(/^\/+|\/+$/g, '');
 const alternateLocale = lang === 'en' ? 'fr' : 'en';
@@ -43,6 +48,16 @@ const frenchHref = getRelativeLocaleUrl('fr', routePath);
     <link rel="alternate" hreflang="x-default" href={`${Astro.url.origin}${frenchHref}`} />
     <ClientRouter />
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={KEYWORDS} />
+    <meta name="author" content="Batiste Comet-Barthe" />
+    <link rel="canonical" href={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:site_name" content="Batiste Comet-Barthe" />
+    <meta property="og:locale" content={lang === 'en' ? 'en_US' : 'fr_FR'} />
   </head>
   <body class="font-sans antialiased site-shell">
     <canvas class="cursor-particles" aria-hidden="true" transition:persist></canvas>
